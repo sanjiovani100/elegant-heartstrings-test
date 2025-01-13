@@ -44,7 +44,7 @@ const ticketOptions = [
 
 const Tickets = () => {
   return (
-    <section className="py-12 overflow-hidden" id="tickets">
+    <section className="py-8 overflow-hidden" id="tickets">
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <Heart
@@ -64,22 +64,22 @@ const Tickets = () => {
           <h2 className="text-4xl md:text-5xl font-playfair text-white mb-4">
             Choose Your Perfect Ticket
           </h2>
-          <p className="text-white/90 font-montserrat mb-6">
+          <p className="text-white/90 font-montserrat mb-3">
             Reserve your spot for Medellín's most glamorous night!
           </p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm mb-8">
             Join 100 attendees who've already booked!
           </p>
+          
+          <div className="mb-12">
+            <CountdownTimer />
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ticketOptions.map((ticket, index) => (
             <TicketCard key={index} {...ticket} />
           ))}
-        </div>
-
-        <div className="mt-12">
-          <CountdownTimer />
         </div>
         
         <div className="mt-6 text-center">

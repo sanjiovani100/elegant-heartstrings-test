@@ -9,22 +9,9 @@ interface TimeLeft {
   seconds: number;
 }
 
-const FloatingHeart = ({ delay }: { delay: number }) => (
-  <div 
-    className="absolute animate-float"
-    style={{
-      left: `${Math.random() * 100}%`,
-      animationDelay: `${delay}s`,
-      opacity: 0.3
-    }}
-  >
-    <Heart className="text-fashionista-pink w-4 h-4" />
-  </div>
-);
-
 const TimeUnit = ({ value, label }: { value: number; label: string }) => (
   <div className="flex flex-col items-center mx-4 md:mx-6 relative group">
-    <div className="text-3xl md:text-5xl font-bold font-montserrat text-white">
+    <div className="text-3xl md:text-4xl font-bold font-montserrat text-white">
       {value.toString().padStart(2, '0')}
     </div>
     <div className="text-xs md:text-sm uppercase tracking-wider text-gray-400 mt-2">
@@ -62,16 +49,8 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-4 py-8" aria-label="Countdown to event start">
-      {[...Array(8)].map((_, i) => (
-        <FloatingHeart key={i} delay={i * 2} />
-      ))}
-
-      <div className="relative z-10 bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 transition-all duration-300 hover:bg-black/40">
-        <h3 className="text-2xl md:text-3xl font-playfair text-white mb-6 text-center">
-          Countdown to Elegance
-        </h3>
-
+    <div className="w-full max-w-4xl mx-auto px-4" aria-label="Countdown to event start">
+      <div className="relative z-10 bg-black/20 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:bg-black/30">
         <div className={cn(
           "flex flex-wrap justify-center items-center gap-2 md:gap-4",
           "before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-black/20 before:to-transparent before:pointer-events-none"
