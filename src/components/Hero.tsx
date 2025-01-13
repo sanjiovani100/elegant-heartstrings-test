@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 
 const FloatingHeart = ({ delay }: { delay: number }) => (
@@ -15,31 +14,6 @@ const FloatingHeart = ({ delay }: { delay: number }) => (
 );
 
 const Hero = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 14,
-    hours: 23,
-    minutes: 59,
-    seconds: 59
-  });
-
-  useEffect(() => {
-    const countdown = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
-    return () => clearInterval(countdown);
-  }, []);
-
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Floating Hearts */}
@@ -79,18 +53,6 @@ const Hero = () => {
             <button className="border-2 border-fashionista-pink text-white px-8 py-3 rounded-full hover:bg-fashionista-pink hover:text-white transition-all duration-300 transform hover:scale-105">
               Sign Up Now
             </button>
-          </div>
-
-          {/* Countdown Timer */}
-          <div className="mt-8 flex justify-center gap-4 text-white animate-fade-up delay-300">
-            {Object.entries(timeLeft).map(([unit, value]) => (
-              <div key={unit} className="text-center">
-                <div className="text-3xl font-bold text-fashionista-pink">
-                  {String(value).padStart(2, '0')}
-                </div>
-                <div className="text-sm uppercase text-gray-300">{unit}</div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
