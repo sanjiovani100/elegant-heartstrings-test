@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useMediaQuery } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const sponsors = [
   {
@@ -29,7 +29,7 @@ const sponsors = [
 ];
 
 const SponsorShowcase = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useIsMobile();
 
   return (
     <section className="w-full py-20 bg-gradient-to-b from-black to-[#2B0000]">
