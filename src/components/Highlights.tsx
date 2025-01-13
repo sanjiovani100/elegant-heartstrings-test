@@ -78,7 +78,7 @@ const Highlights = () => {
 
         <div 
           ref={containerRef}
-          className="flex gap-8 md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory md:overflow-x-visible pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+          className="flex gap-8 md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory md:overflow-x-visible pb-12 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
         >
           {highlights.map((highlight, index) => (
             <HighlightCard
