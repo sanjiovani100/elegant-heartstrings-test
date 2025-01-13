@@ -14,21 +14,21 @@ const signUpOptions = [
     title: 'Sign Up as a Designer',
     description: 'Showcase your lingerie designs to an exclusive audience of fashion enthusiasts.',
     image: '/lovable-uploads/6463082c-0155-4faa-80b7-3a65c079d12f.png',
-    accentColor: 'fashionista-pink',
+    accentColor: 'fashionista-red',
     link: '/signup/designer'
   },
   {
     title: 'Become a Sponsor',
     description: 'Partner with us to reach luxury fashion consumers and industry leaders.',
     image: '/lovable-uploads/b8d53a64-c5a1-45cd-a961-a84d40d8cd74.png',
-    accentColor: 'fashionista-grey',
+    accentColor: 'fashionista-red',
     link: '/signup/sponsor'
   }
 ];
 
 const SignUpSection = () => {
   return (
-    <section className="w-full py-20 bg-black">
+    <section className="w-full py-20 bg-black" id="signup">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-playfair text-white text-center mb-4">
           Join the Fashionistas Experience!

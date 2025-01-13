@@ -43,14 +43,7 @@ const SignUpCard = ({
         <h3 className="text-2xl font-playfair text-white">{title}</h3>
         <p className="text-gray-300 font-montserrat text-sm md:text-base">{description}</p>
         <Button
-          className={cn(
-            "w-full transition-all duration-300 mt-4",
-            {
-              'bg-fashionista-red hover:bg-fashionista-red/90': accentColor === 'fashionista-red',
-              'bg-fashionista-pink hover:bg-fashionista-pink/90': accentColor === 'fashionista-pink',
-              'bg-fashionista-grey hover:bg-fashionista-grey/90': accentColor === 'fashionista-grey',
-            }
-          )}
+          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-all duration-300 mt-4"
           onClick={() => window.location.href = link}
         >
           Sign Up Now

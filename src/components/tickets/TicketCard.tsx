@@ -17,7 +17,7 @@ interface TicketCardProps {
 
 const TicketCard = ({ title, price, perks, isPopular, availability }: TicketCardProps) => {
   return (
-    <Card className="relative w-full max-w-sm bg-black/50 border border-fashionista-grey/20 p-6 transition-all duration-300 hover:shadow-glow group animate-fade-up">
+    <Card className="relative w-full max-w-sm mx-auto bg-black/50 border border-fashionista-grey/20 p-6 transition-all duration-300 hover:shadow-glow group animate-fade-up">
       {isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-fashionista-red px-4 py-1 rounded-full text-sm font-montserrat text-white">
           Most Popular
@@ -26,7 +26,7 @@ const TicketCard = ({ title, price, perks, isPopular, availability }: TicketCard
       
       <h3 className="text-2xl font-playfair text-white mb-4">{title}</h3>
       
-      <div className="text-4xl font-montserrat font-bold text-fashionista-pink mb-6">
+      <div className="text-4xl font-montserrat font-bold text-white mb-6">
         ${price}
       </div>
       
@@ -35,12 +35,12 @@ const TicketCard = ({ title, price, perks, isPopular, availability }: TicketCard
           <li 
             key={index} 
             className={`flex items-center gap-2 text-sm ${
-              perk.included ? 'text-white' : 'text-fashionista-grey line-through'
+              perk.included ? 'text-white' : 'text-gray-500 line-through'
             }`}
           >
             <Check 
               className={`w-4 h-4 ${
-                perk.included ? 'text-fashionista-pink' : 'text-fashionista-grey'
+                perk.included ? 'text-fashionista-red' : 'text-gray-500'
               }`} 
             />
             {perk.text}
@@ -50,20 +50,20 @@ const TicketCard = ({ title, price, perks, isPopular, availability }: TicketCard
       
       <div className="space-y-3">
         <Button 
-          className="w-full bg-fashionista-pink hover:bg-fashionista-grey transition-colors duration-300"
+          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-colors duration-300"
         >
-          Buy Now
+          Reserve Now
         </Button>
         <Button 
           variant="outline" 
-          className="w-full border-fashionista-red text-fashionista-red hover:bg-fashionista-red/10"
+          className="w-full border-gray-600 text-white hover:bg-white/10"
         >
           Learn More
         </Button>
       </div>
       
       {availability && (
-        <p className="mt-4 text-xs text-fashionista-grey uppercase tracking-wider text-center">
+        <p className="mt-4 text-xs text-gray-400 uppercase tracking-wider text-center">
           {availability}
         </p>
       )}

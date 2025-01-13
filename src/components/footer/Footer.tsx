@@ -33,21 +33,23 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Column 1: Event Overview */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center justify-center md:justify-start group">
               <img
                 src="/lovable-uploads/196663b0-0dd0-4f0e-a715-b7ce52470ba9.png"
-                alt="Fashionistas Logo - High-Fashion Event Branding"
-                className="w-[120px] h-auto transition-transform duration-300 group-hover:scale-105 hover:filter hover:brightness-125"
+                alt="Fashionistas Logo"
+                className="w-[120px] h-auto transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
             <p className="text-gray-300 leading-relaxed">
               Experience elegance and glamour in Medellín's ultimate Valentine's event.
             </p>
-            <Button variant="outline" className="hover:text-fashionista-pink hover:border-fashionista-pink">
+            <Button 
+              variant="outline" 
+              className="hover:text-fashionista-red hover:border-fashionista-red"
+            >
               Learn More
             </Button>
           </div>
@@ -60,7 +62,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="nav-link inline-flex items-center hover:text-fashionista-pink transition-colors"
+                      className="nav-link inline-flex items-center hover:text-fashionista-red transition-colors"
                     >
                       {link.label}
                     </a>
@@ -69,13 +71,13 @@ const Footer = () => {
               </ul>
             </nav>
             <div className="pt-4">
-              <h4 className="text-fashionista-pink font-playfair mb-4">Follow Us</h4>
+              <h4 className="text-white font-playfair mb-4">Follow Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
-                    className="hover:text-fashionista-pink transition-colors"
+                    className="hover:text-fashionista-red transition-colors"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -88,7 +90,7 @@ const Footer = () => {
           {/* Column 3: Newsletter & Contact */}
           <div className="space-y-6">
             <div className="newsletter-signup">
-              <h4 className="font-playfair text-lg text-fashionista-pink mb-4">
+              <h4 className="font-playfair text-lg text-white mb-4">
                 Stay Updated
               </h4>
               <form onSubmit={handleSubscribe} className="space-y-3">
@@ -102,7 +104,7 @@ const Footer = () => {
                 />
                 <Button 
                   type="submit"
-                  className="w-full bg-fashionista-red hover:bg-fashionista-pink transition-colors"
+                  className="w-full bg-fashionista-red hover:bg-fashionista-red/90 transition-colors"
                 >
                   Subscribe Now
                 </Button>
@@ -110,15 +112,15 @@ const Footer = () => {
             </div>
             <div className="contact-info space-y-3 text-gray-300">
               <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4 text-fashionista-pink" />
+                <MapPin className="w-4 h-4 text-fashionista-red" />
                 <span>Skybox Medellín, Colombia</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-fashionista-pink" />
+                <Phone className="w-4 h-4 text-fashionista-red" />
                 <span>(+57) 123-456-7890</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-fashionista-pink" />
+                <Mail className="w-4 h-4 text-fashionista-red" />
                 <span>contact@fashionistas.com</span>
               </div>
             </div>
@@ -131,14 +133,14 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-gray-400">
           <div className="flex items-center space-x-2">
             <span>© 2024 Fashionistas.</span>
-            <Heart className="w-4 h-4 text-fashionista-pink" />
+            <Heart className="w-4 h-4 text-fashionista-red" />
             <span>All Rights Reserved.</span>
           </div>
           <div className="flex space-x-4">
-            <a href="#privacy" className="hover:text-fashionista-pink transition-colors">
+            <a href="#privacy" className="hover:text-fashionista-red transition-colors">
               Privacy Policy
             </a>
-            <a href="#terms" className="hover:text-fashionista-pink transition-colors">
+            <a href="#terms" className="hover:text-fashionista-red transition-colors">
               Terms of Service
             </a>
           </div>
