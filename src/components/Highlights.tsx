@@ -5,19 +5,19 @@ import Pagination from "./highlights/Pagination";
 
 const highlights = [
   {
-    title: "Runway Highlights",
-    description: "Experience the glamour of haute couture lingerie on the catwalk.",
-    image: "/hero1.jpg"
+    title: "Runway Collection",
+    description: "Experience our exclusive Valentine's collection featuring elegant evening wear and haute couture designs.",
+    image: "/lovable-uploads/356fce11-fc3c-49c5-aa17-53b584a0bcf8.png"
   },
   {
-    title: "Live Performances",
-    description: "Immerse yourself in mesmerizing live music and artistic shows.",
-    image: "/hero2.jpg"
+    title: "Luxury Lingerie",
+    description: "Discover our curated selection of premium silk and satin pieces in romantic blush tones.",
+    image: "/lovable-uploads/9d7f93fc-b3ee-4a60-8e66-a7dd53721a75.png"
   },
   {
-    title: "Venue Ambiance",
-    description: "Discover our romantic setting with dramatic lighting and elegant décor.",
-    image: "/hero3.jpg"
+    title: "Backstage Glamour",
+    description: "Get a glimpse of the behind-the-scenes magic and artistic preparation.",
+    image: "/lovable-uploads/520b431f-8c25-4a32-bb07-94ff7f89d575.png"
   }
 ];
 
@@ -78,7 +78,7 @@ const Highlights = () => {
 
         <div 
           ref={containerRef}
-          className="flex gap-8 md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory md:overflow-x-visible pb-8 md:pb-0"
+          className="flex gap-8 md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory md:overflow-x-visible pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
         >
           {highlights.map((highlight, index) => (
             <HighlightCard
