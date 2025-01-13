@@ -3,8 +3,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import NavigationControls from "@/components/highlights/NavigationControls";
-import Pagination from "@/components/highlights/Pagination";
 import LingeriePiece from "./LingeriePiece";
 import { useState } from "react";
 
@@ -32,14 +30,6 @@ const showcaseItems = [
 const LingerieShowcase = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const handlePrevious = () => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : showcaseItems.length - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev < showcaseItems.length - 1 ? prev + 1 : 0));
-  };
-
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-black to-fashionista-dark">
       <div className="absolute inset-0 overflow-hidden">
@@ -47,7 +37,7 @@ const LingerieShowcase = () => {
       </div>
 
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-montserrat text-white">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-playfair text-white">
           Exclusive Collection
         </h2>
 
@@ -55,7 +45,7 @@ const LingerieShowcase = () => {
           <Carousel 
             className="w-full"
             opts={{
-              loop: false,
+              loop: true,
               dragFree: false,
               skipSnaps: false,
               align: "start",
@@ -69,20 +59,7 @@ const LingerieShowcase = () => {
               ))}
             </CarouselContent>
           </Carousel>
-
-          <NavigationControls
-            onPrevious={handlePrevious}
-            onNext={handleNext}
-            isFirstSlide={currentSlide === 0}
-            isLastSlide={currentSlide === showcaseItems.length - 1}
-          />
         </div>
-
-        <Pagination
-          total={showcaseItems.length}
-          active={currentSlide}
-          onSelect={setCurrentSlide}
-        />
       </div>
     </section>
   );

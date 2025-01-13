@@ -10,9 +10,9 @@ interface HighlightCardProps {
 const HighlightCard = ({ title, description, image }: HighlightCardProps) => {
   return (
     <Card 
-      className="min-w-[300px] md:min-w-0 bg-black/50 border border-fashionista-grey/20 overflow-hidden group transition-all duration-300 hover:shadow-glow snap-center animate-fade-up"
+      className="bg-black/50 border border-fashionista-grey/20 overflow-hidden group transition-all duration-300 hover:shadow-glow animate-fade-up aspect-square"
     >
-      <div className="relative aspect-square">
+      <div className="relative h-full">
         <img
           src={image}
           alt={title}
@@ -21,15 +21,15 @@ const HighlightCard = ({ title, description, image }: HighlightCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
-          <h3 className="font-playfair text-2xl text-white mb-3 group-hover:text-fashionista-pink transition-colors">
+          <h3 className="font-playfair text-2xl text-white mb-3 group-hover:text-[#F0F0F0] transition-colors">
             {title}
           </h3>
-          <p className="font-montserrat text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <p className="font-montserrat text-[#F0F0F0] text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             {description}
           </p>
           <Button 
             variant="outline" 
-            className="w-full bg-fashionista-grey hover:bg-fashionista-grey/80 text-white border-fashionista-pink hover:text-fashionista-pink transition-colors duration-300"
+            className="w-full bg-[#F0F0F0] hover:bg-white text-black transition-colors duration-300"
           >
             Learn More
           </Button>
