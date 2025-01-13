@@ -10,41 +10,22 @@ import { useState } from "react";
 
 const showcaseItems = [
   {
-    image: "/placeholder.svg", // Replace with actual image paths
-    title: "Midnight Romance Collection",
-    designer: "By Isabella Laurent",
-    description: "Exquisite lace detailing with pearl embellishments, perfect for a romantic evening.",
-    favorites: 2.5,
-    isTrending: true,
+    image: "/lovable-uploads/4aeca21e-741d-434b-8ce7-a57b4a6402e2.png",
+    title: "Midnight Lace Collection",
+    designer: "By Noir Elegance",
+    description: "Exquisite black lace design with intricate detailing, perfect for a romantic evening.",
   },
   {
-    image: "/placeholder.svg",
-    title: "Rose Petal Dreams",
-    designer: "By Sofia Elegance",
-    description: "Delicate silk and satin blend with rose gold accents.",
-    favorites: 1.8,
-  },
-  {
-    image: "/placeholder.svg",
-    title: "Enchanted Evening",
-    designer: "By Valentina Grace",
-    description: "Premium Italian lace with crystal embellishments.",
-    favorites: 3.2,
-    isTrending: true,
-  },
-  {
-    image: "/placeholder.svg",
-    title: "Moonlight Whispers",
+    image: "/lovable-uploads/21a4cbc2-da88-4b3b-906e-b622ffb567f9.png",
+    title: "Shadow & Light",
     designer: "By Luna Noir",
-    description: "Sheer elegance meets modern sophistication.",
-    favorites: 2.1,
+    description: "Contemporary silhouette with classic black lace and modern styling.",
   },
   {
-    image: "/placeholder.svg",
-    title: "Velvet Dreams",
-    designer: "By Aurora Belle",
-    description: "Luxurious velvet and lace combination for unforgettable moments.",
-    favorites: 1.9,
+    image: "/lovable-uploads/3114b336-2a67-4d77-98bd-165c2c6145e4.png",
+    title: "Pink Glamour",
+    designer: "By Rose Atelier",
+    description: "Delicate lace bralette with strappy details and romantic aesthetic.",
   },
 ];
 
@@ -63,20 +44,6 @@ const LingerieShowcase = () => {
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-black to-fashionista-dark">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(192,0,0,0.1)_0%,rgba(0,0,0,0.5)_100%)]" />
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              opacity: 0.1,
-            }}
-          >
-            ❤️
-          </div>
-        ))}
       </div>
 
       <div className="container mx-auto px-4">
@@ -86,9 +53,9 @@ const LingerieShowcase = () => {
 
         <div className="relative">
           <Carousel className="w-full">
-            <CarouselContent>
+            <CarouselContent className="-ml-4 md:-ml-6">
               {showcaseItems.map((item, index) => (
-                <CarouselItem key={index} className="md:basis-1/1 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
                   <LingeriePiece {...item} />
                 </CarouselItem>
               ))}
