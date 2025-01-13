@@ -101,13 +101,12 @@ interface SponsorLogoProps {
   className?: string;
 }
 
-const SponsorLogo = ({ name, logo, url, featured, className }: SponsorLogoProps) => {
+const SponsorLogo = ({ name, logo, url, className }: SponsorLogoProps) => {
   return (
     <div 
       className={cn(
         "group cursor-pointer transition-all duration-300",
         "hover:scale-105",
-        featured ? "col-span-2" : "",
         className
       )}
       onClick={() => window.open(url, '_blank')}
@@ -117,12 +116,12 @@ const SponsorLogo = ({ name, logo, url, featured, className }: SponsorLogoProps)
         "transition-all duration-300",
         "hover:shadow-glow",
         "flex items-center justify-center",
-        "aspect-square w-full" // Ensures uniform dimensions
+        "aspect-square w-full max-w-[200px] mx-auto" // Added max-width and centered
       )}>
         <img
           src={logo}
           alt={`${name} logo`}
-          className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain filter brightness-0 invert opacity-75 group-hover:opacity-100 transition-all duration-300"
+          className="w-24 h-24 object-contain filter brightness-0 invert opacity-75 group-hover:opacity-100 transition-all duration-300"
         />
       </div>
     </div>
