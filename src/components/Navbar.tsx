@@ -16,11 +16,11 @@ const Navbar = () => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="group">
+          <Link to="/" className="group px-3">
             <img
-              src="/lovable-uploads/10ac5800-7327-473c-bfd1-2a77ddb82412.png"
-              alt="Fashionistas Valentine's Lingerie Fashion Event Logo"
-              className="w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-105"
+              src="/lovable-uploads/196663b0-0dd0-4f0e-a715-b7ce52470ba9.png"
+              alt="Fashionistas Logo - High-Fashion Event Branding"
+              className="w-[100px] md:w-[150px] h-auto transition-transform duration-300 group-hover:scale-105 hover:filter hover:brightness-125"
             />
           </Link>
           <div className="hidden md:flex space-x-8">

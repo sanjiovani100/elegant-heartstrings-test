@@ -37,15 +37,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Column 1: Event Overview */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center space-x-3 group">
+            <Link to="/" className="flex items-center justify-center md:justify-start group">
               <img
-                src="/lovable-uploads/10ac5800-7327-473c-bfd1-2a77ddb82412.png"
-                alt="Fashionistas Valentine's Lingerie Fashion Event Logo"
-                className="w-10 h-10 transition-transform duration-300 group-hover:scale-105"
+                src="/lovable-uploads/196663b0-0dd0-4f0e-a715-b7ce52470ba9.png"
+                alt="Fashionistas Logo - High-Fashion Event Branding"
+                className="w-[120px] h-auto transition-transform duration-300 group-hover:scale-105 hover:filter hover:brightness-125"
               />
-              <h3 className="font-playfair text-xl text-fashionista-pink">
-                Fashionistas Valentine's
-              </h3>
             </Link>
             <p className="text-gray-300 leading-relaxed">
               Experience elegance and glamour in Medellín's ultimate Valentine's event.
