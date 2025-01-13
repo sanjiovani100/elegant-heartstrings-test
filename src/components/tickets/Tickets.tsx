@@ -44,7 +44,7 @@ const ticketOptions = [
 
 const Tickets = () => {
   return (
-    <section className="relative py-16 overflow-hidden" id="tickets">
+    <section className="py-12 overflow-hidden" id="tickets">
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <Heart
@@ -60,11 +60,11 @@ const Tickets = () => {
       </div>
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-playfair text-white mb-4">
             Choose Your Perfect Ticket
           </h2>
-          <p className="text-white font-montserrat mb-8">
+          <p className="text-white/90 font-montserrat mb-6">
             Reserve your spot for Medellín's most glamorous night!
           </p>
           <p className="text-gray-400 text-sm">
@@ -78,9 +78,11 @@ const Tickets = () => {
           ))}
         </div>
 
-        <CountdownTimer />
+        <div className="mt-12">
+          <CountdownTimer />
+        </div>
         
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm">
             Secure Checkout • Verified by Stripe
           </p>

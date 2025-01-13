@@ -17,7 +17,7 @@ interface TicketCardProps {
 
 const TicketCard = ({ title, price, perks, isPopular, availability }: TicketCardProps) => {
   return (
-    <Card className="relative w-full max-w-sm mx-auto bg-black/50 border border-fashionista-grey/20 p-6 transition-all duration-300 hover:shadow-glow group animate-fade-up">
+    <Card className="relative w-full max-w-sm mx-auto bg-black/30 border-0 p-6 transition-all duration-300 hover:shadow-glow group animate-fade-up">
       {isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-fashionista-red px-4 py-1 rounded-full text-sm font-montserrat text-white">
           Most Popular
@@ -50,13 +50,13 @@ const TicketCard = ({ title, price, perks, isPopular, availability }: TicketCard
       
       <div className="space-y-3">
         <Button 
-          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-colors duration-300"
+          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-all duration-300"
         >
           Reserve Now
         </Button>
         <Button 
-          variant="outline" 
-          className="w-full border-gray-600 text-white hover:bg-white/10"
+          variant="secondary"
+          className="w-full bg-[#f0f0f0] hover:bg-[#e0e0e0] text-black transition-all duration-300"
         >
           Learn More
         </Button>
