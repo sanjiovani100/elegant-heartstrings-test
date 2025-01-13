@@ -9,7 +9,6 @@ interface SignUpCardProps {
   image: string;
   accentColor: string;
   link: string;
-  trending?: boolean;
   className?: string;
 }
 
@@ -19,7 +18,6 @@ const SignUpCard = ({
   image,
   accentColor,
   link,
-  trending,
   className
 }: SignUpCardProps) => {
   return (
@@ -31,25 +29,22 @@ const SignUpCard = ({
         className
       )}
     >
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative aspect-square overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
         />
-        {trending && (
-          <div className="absolute top-4 right-4 bg-fashionista-red px-4 py-1 rounded-full">
-            <span className="text-sm font-montserrat text-white">Trending</span>
-          </div>
-        )}
       </div>
       
-      <CardContent className="p-6 text-center">
-        <h3 className="text-2xl font-playfair text-white mb-4">{title}</h3>
-        <p className="text-gray-300 font-montserrat mb-6">{description}</p>
+      <CardContent className="p-6 space-y-4">
+        <h3 className="text-2xl font-playfair text-white">{title}</h3>
+        <p className="text-gray-300 font-montserrat text-sm md:text-base">{description}</p>
         <Button
           className={cn(
-            "w-full transition-all duration-300",
+            "w-full transition-all duration-300 mt-4",
             {
               'bg-fashionista-red hover:bg-fashionista-red/90': accentColor === 'fashionista-red',
               'bg-fashionista-pink hover:bg-fashionista-pink/90': accentColor === 'fashionista-pink',

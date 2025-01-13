@@ -6,22 +6,21 @@ const signUpOptions = [
   {
     title: 'Register as a Model',
     description: 'Join the runway and showcase your talent at Medellín\'s most glamorous event.',
-    image: '/models-signup.jpg',
+    image: '/lovable-uploads/353c7c99-abfc-4cb6-8c71-febb2f53f43e.png',
     accentColor: 'fashionista-red',
-    link: '/signup/model',
-    trending: true
+    link: '/signup/model'
   },
   {
     title: 'Sign Up as a Designer',
     description: 'Showcase your lingerie designs to an exclusive audience of fashion enthusiasts.',
-    image: '/designers-signup.jpg',
+    image: '/lovable-uploads/6463082c-0155-4faa-80b7-3a65c079d12f.png',
     accentColor: 'fashionista-pink',
     link: '/signup/designer'
   },
   {
     title: 'Become a Sponsor',
     description: 'Partner with us to reach luxury fashion consumers and industry leaders.',
-    image: '/sponsors-signup.jpg',
+    image: '/lovable-uploads/b8d53a64-c5a1-45cd-a961-a84d40d8cd74.png',
     accentColor: 'fashionista-grey',
     link: '/signup/sponsor'
   }
