@@ -52,7 +52,15 @@ const LingerieShowcase = () => {
         </h2>
 
         <div className="relative">
-          <Carousel className="w-full">
+          <Carousel 
+            className="w-full"
+            opts={{
+              loop: false,
+              dragFree: false,
+              skipSnaps: false,
+              align: "start",
+            }}
+          >
             <CarouselContent className="-ml-4 md:-ml-6">
               {showcaseItems.map((item, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
