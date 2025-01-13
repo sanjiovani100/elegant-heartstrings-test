@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const FloatingHeart = ({ delay }: { delay: number }) => (
   <div 
@@ -47,12 +48,15 @@ const Hero = () => {
 
           {/* CTAs */}
           <div className="space-x-4 animate-fade-up delay-200">
-            <button className="bg-fashionista-red hover:bg-fashionista-pink text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-glow">
+            <Button size="lg">
               Get Tickets
-            </button>
-            <button className="border-2 border-fashionista-pink text-white px-8 py-3 rounded-full hover:bg-fashionista-pink hover:text-white transition-all duration-300 transform hover:scale-105">
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+            >
               Sign Up Now
-            </button>
+            </Button>
           </div>
         </div>
       </div>

@@ -28,13 +28,13 @@ const LingeriePiece = ({
       
       <CardContent className="flex-1 p-6 flex flex-col justify-between">
         <div className="mb-4">
-          <h3 className="text-2xl font-bold font-montserrat text-white mb-2 group-hover:text-fashionista-pink transition-colors duration-300">
+          <h3 className="text-2xl font-bold font-playfair text-white mb-2 group-hover:text-fashionista-pink transition-colors duration-300">
             {title}
           </h3>
           <p className="text-lg text-fashionista-pink mb-2 font-playfair">
             {designer}
           </p>
-          <p className="text-gray-300 line-clamp-2 text-sm">
+          <p className="text-gray-300 line-clamp-2 text-sm font-montserrat">
             {description}
           </p>
         </div>
@@ -42,12 +42,12 @@ const LingeriePiece = ({
         <div className="flex gap-3 mt-auto">
           <Button 
             variant="outline" 
-            className="flex-1 bg-fashionista-grey hover:bg-fashionista-grey/80 text-white border-fashionista-pink hover:text-fashionista-pink transition-all duration-300"
+            className="flex-1"
           >
             Explore
           </Button>
           <Button 
-            className="flex-1 bg-fashionista-red hover:bg-fashionista-red/80 text-white transition-all duration-300"
+            className="flex-1"
           >
             Details
           </Button>
