@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -25,7 +26,6 @@ const Footer = () => {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add newsletter subscription logic here
     console.log("Subscribing email:", email);
     setEmail("");
   };
@@ -37,9 +37,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Column 1: Event Overview */}
           <div className="space-y-6">
-            <h3 className="font-playfair text-xl text-fashionista-pink">
-              Fashionistas Valentine's
-            </h3>
+            <Link to="/" className="flex items-center space-x-3 group">
+              <img
+                src="/lovable-uploads/10ac5800-7327-473c-bfd1-2a77ddb82412.png"
+                alt="Fashionistas Valentine's Lingerie Fashion Event Logo"
+                className="w-10 h-10 transition-transform duration-300 group-hover:scale-105"
+              />
+              <h3 className="font-playfair text-xl text-fashionista-pink">
+                Fashionistas Valentine's
+              </h3>
+            </Link>
             <p className="text-gray-300 leading-relaxed">
               Experience elegance and glamour in Medellín's ultimate Valentine's event.
             </p>
