@@ -63,6 +63,9 @@ export default {
         playfair: ["Playfair Display", "serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
+      boxShadow: {
+        glow: "0 0 15px rgba(255, 193, 193, 0.5)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
