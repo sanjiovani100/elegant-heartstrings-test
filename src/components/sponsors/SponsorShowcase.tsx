@@ -62,7 +62,7 @@ const SponsorShowcase = () => {
             <CarouselNext className="right-0" />
           </Carousel>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
             {sponsors.map((sponsor, index) => (
               <SponsorLogo
                 key={index}
@@ -81,7 +81,8 @@ const SponsorShowcase = () => {
 
         <div className="text-center opacity-0 animate-fade-up animation-delay-500">
           <Button
-            className="bg-fashionista-pink hover:bg-fashionista-grey transition-colors duration-300"
+            variant="secondary"
+            className="bg-[#F0F0F0] text-black hover:bg-gray-200 transition-colors duration-300"
             onClick={() => window.location.href = "/become-sponsor"}
           >
             Become a Sponsor
@@ -116,12 +117,12 @@ const SponsorLogo = ({ name, logo, url, featured, className }: SponsorLogoProps)
         "transition-all duration-300",
         "hover:shadow-glow",
         "flex items-center justify-center",
-        featured ? "h-48" : "h-32"
+        "aspect-square w-full" // Ensures uniform dimensions
       )}>
         <img
           src={logo}
           alt={`${name} logo`}
-          className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-75 group-hover:opacity-100 transition-all duration-300"
+          className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain filter brightness-0 invert opacity-75 group-hover:opacity-100 transition-all duration-300"
         />
       </div>
     </div>
