@@ -62,6 +62,7 @@ export default {
       fontFamily: {
         playfair: ["Playfair Display", "serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       boxShadow: {
         glow: "0 0 15px rgba(255, 193, 193, 0.5)",
