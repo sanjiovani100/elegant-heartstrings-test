@@ -6,6 +6,7 @@ import ModelTestimonialCarousel from "@/components/models/ModelTestimonialCarous
 import ModelSignUpForm from "@/components/models/ModelSignUpForm";
 import ModelFAQ from "@/components/models/ModelFAQ";
 import { cn } from "@/lib/utils";
+import HighlightCard from "@/components/highlights/HighlightCard";
 
 const Models = () => {
   const benefits = [
@@ -13,16 +14,19 @@ const Models = () => {
       icon: <Star className="w-8 h-8 text-fashionista-red" />,
       title: "Industry Exposure",
       description: "Connect with top designers, brands, and industry leaders.",
+      image: "/hero1.jpg"
     },
     {
       icon: <Camera className="w-8 h-8 text-fashionista-red" />,
       title: "Professional Portfolio",
       description: "Get professional runway and photoshoot opportunities.",
+      image: "/hero2.jpg"
     },
     {
       icon: <Users className="w-8 h-8 text-fashionista-red" />,
       title: "Networking",
       description: "Build valuable connections within the fashion industry.",
+      image: "/hero3.jpg"
     },
   ];
 
@@ -30,17 +34,17 @@ const Models = () => {
     {
       icon: <FileText className="w-6 h-6" />,
       title: "Application",
-      description: "Fill out our detailed application form",
+      description: "Fill out our detailed application form"
     },
     {
       icon: <Camera className="w-6 h-6" />,
       title: "Portfolio",
-      description: "Submit your photos or portfolio",
+      description: "Submit your photos or portfolio"
     },
     {
       icon: <User className="w-6 h-6" />,
       title: "Selection",
-      description: "Attend the selection process",
+      description: "Attend the selection process"
     },
   ];
 
@@ -91,23 +95,17 @@ const Models = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <div 
+              <HighlightCard
                 key={index}
-                className={cn(
-                  "bg-white/5 p-6 rounded-lg text-center transition-all duration-300",
-                  "hover:bg-white/10 hover:shadow-glow hover:scale-105"
-                )}
-              >
-                <div className="mb-4 flex justify-center">{benefit.icon}</div>
-                <h3 className="text-xl font-montserrat mb-2">{benefit.title}</h3>
-                <p className="text-gray-300">{benefit.description}</p>
-              </div>
+                title={benefit.title}
+                description={benefit.description}
+                image={benefit.image}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
       <section className="py-20 px-4 bg-white/5">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
