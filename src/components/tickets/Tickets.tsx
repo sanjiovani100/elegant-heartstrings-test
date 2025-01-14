@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import TicketCard from "./TicketCard";
+import { TicketCard } from "./TicketCard";
 import CountdownTimer from "./CountdownTimer";
 
 const ticketOptions = [
