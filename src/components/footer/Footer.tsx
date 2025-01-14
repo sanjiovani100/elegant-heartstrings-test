@@ -15,7 +15,7 @@ const socialLinks = [
 const navigationLinks = [
   { label: "Home", href: "/" },
   { label: "Event Highlights", href: "#highlights" },
-  { label: "Lingerie Showcase", href: "#showcase" },
+  { label: "Designer Showcase", href: "/designer" },
   { label: "Tickets", href: "#tickets" },
   { label: "Sponsors", href: "/sponsors" },
   { label: "Contact", href: "#contact" },
