@@ -3,6 +3,7 @@ import Index from "@/pages/Index";
 import Models from "@/pages/Models";
 import Roadmap from "@/pages/Roadmap";
 import Changelog from "@/pages/Changelog";
+import Sponsors from "@/pages/Sponsors";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/models" element={<Models />} />
         <Route path="/roadmap" element={<Roadmap />} />
         <Route path="/changelog" element={<Changelog />} />
+        <Route path="/sponsors" element={<Sponsors />} />
       </Routes>
     </Router>
   );

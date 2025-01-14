@@ -17,7 +17,7 @@ const navigationLinks = [
   { label: "Event Highlights", href: "#highlights" },
   { label: "Lingerie Showcase", href: "#showcase" },
   { label: "Tickets", href: "#tickets" },
-  { label: "Sponsorship", href: "#sponsors" },
+  { label: "Sponsors", href: "/sponsors" },
   { label: "Contact", href: "#contact" },
 ];
 
