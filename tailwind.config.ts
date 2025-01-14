@@ -25,9 +25,9 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         fashionista: {
-          red: "#C00000",
+          red: "#800000",
           pink: "#FFC1C1",
-          grey: "#808080",
+          grey: "#F0F0F0",
           dark: "#000000",
         },
         primary: {
