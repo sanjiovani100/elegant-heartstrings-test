@@ -13,7 +13,6 @@ export function DashboardContent() {
           </div>
         </header>
         <main>
-          {/* Content will be added in subsequent implementations */}
           <p className="text-gray-600 font-inter">
             Welcome to the Fashionistas Dashboard
           </p>
