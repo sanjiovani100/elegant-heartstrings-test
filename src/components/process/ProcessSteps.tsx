@@ -6,30 +6,37 @@ interface Step {
   icon: React.ReactNode;
   title: string;
   description: string;
+  number: string;
 }
 
 const ProcessSteps = () => {
   const steps: Step[] = [
     {
-      icon: <FileText className="w-8 h-8" />,
+      icon: <FileText className="w-12 h-12 text-fashionista-pink" />,
       title: "Fill out the application",
-      description: "Complete our detailed model application form with your information and experience."
+      description: "Complete our detailed model application form with your information and experience.",
+      number: "01"
     },
     {
-      icon: <Image className="w-8 h-8" />,
+      icon: <Image className="w-12 h-12 text-fashionista-pink" />,
       title: "Submit photos or portfolio",
-      description: "Share your best professional photos or portfolio showcasing your modeling experience."
+      description: "Share your best professional photos or portfolio showcasing your modeling experience.",
+      number: "02"
     },
     {
-      icon: <UserCheck className="w-8 h-8" />,
+      icon: <UserCheck className="w-12 h-12 text-fashionista-pink" />,
       title: "Attend the selection process",
-      description: "Meet with our team for a professional evaluation and potential placement in our upcoming events."
+      description: "Meet with our team for a professional evaluation and potential placement in our upcoming events.",
+      number: "03"
     }
   ];
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="grid gap-12 md:gap-16">
+    <div className="max-w-6xl mx-auto relative">
+      {/* Vertical Line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-fashionista-red/20 hidden md:block" />
+      
+      <div className="space-y-32">
         {steps.map((step, index) => {
           const [ref, inView] = useInView({
             triggerOnce: true,
@@ -41,31 +48,40 @@ const ProcessSteps = () => {
               key={index}
               ref={ref}
               className={cn(
-                "flex flex-col md:flex-row items-center gap-8 opacity-0 translate-y-8",
-                inView && "animate-fade-up"
+                "grid md:grid-cols-2 gap-8 md:gap-16 items-center opacity-0 translate-y-8 relative",
+                inView && "animate-fade-up",
+                index % 2 === 0 ? "md:text-right" : "md:flex-row-reverse"
               )}
             >
               {/* Step Number */}
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-fashionista-red/10 flex items-center justify-center">
-                  {step.icon}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 hidden md:block">
+                <div className="w-16 h-16 rounded-full bg-fashionista-red flex items-center justify-center text-white font-montserrat text-xl">
+                  {step.number}
                 </div>
               </div>
 
               {/* Content */}
-              <div className="flex-grow text-center md:text-left">
-                <h3 className="text-2xl font-playfair mb-3 text-white">
+              <div className={cn(
+                "flex flex-col items-center md:items-end text-center md:text-right",
+                index % 2 !== 0 && "md:order-2 md:items-start md:text-left"
+              )}>
+                <h3 className="text-3xl font-playfair mb-4 text-white">
                   {step.title}
                 </h3>
-                <p className="text-gray-300 font-inter">
+                <p className="text-gray-300 font-inter max-w-md">
                   {step.description}
                 </p>
               </div>
 
-              {/* Connecting Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute left-8 h-24 w-px bg-fashionista-red/20 transform translate-y-full" />
-              )}
+              {/* Icon/Image Container */}
+              <div className={cn(
+                "flex justify-center",
+                index % 2 !== 0 && "md:order-1"
+              )}>
+                <div className="w-48 h-48 rounded-full bg-fashionista-red/10 flex items-center justify-center shadow-glow">
+                  {step.icon}
+                </div>
+              </div>
             </div>
           );
         })}
