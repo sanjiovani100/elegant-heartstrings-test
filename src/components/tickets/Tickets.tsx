@@ -1,50 +1,45 @@
 import { Heart } from "lucide-react";
-import { TicketCard } from "./TicketCard";
+import TicketCard from "./TicketCard";
 import CountdownTimer from "./CountdownTimer";
 
 const ticketOptions = [
   {
     title: "General Admission",
     price: 99,
-    description: "Standard access to the Fashionistas Valentine's Event",
-    features: [
-      "Standard seating",
-      "Welcome drink",
-      "Event program",
-      "Access to general areas",
-      "Basic networking opportunities"
+    perks: [
+      { text: "Standard seating", included: true },
+      { text: "Welcome drink", included: true },
+      { text: "Event program", included: true },
+      { text: "VIP access", included: false },
+      { text: "After-party entry", included: false },
     ],
-    isVip: false,
-    availability: "Limited Tickets Remaining"
+    availability: "Limited Tickets Remaining",
   },
   {
     title: "VIP Experience",
     price: 249,
-    description: "Premium access with exclusive perks and privileges",
-    features: [
-      "Front-row seating",
-      "Welcome champagne",
-      "VIP lounge access",
-      "Meet & Greet opportunities",
-      "After-party entry"
+    perks: [
+      { text: "Front-row seating", included: true },
+      { text: "Welcome champagne", included: true },
+      { text: "Event program", included: true },
+      { text: "VIP access", included: true },
+      { text: "After-party entry", included: true },
     ],
-    isVip: true,
-    availability: "Only 20 VIP Tickets Left"
+    isPopular: true,
+    availability: "Only 20 VIP Tickets Left",
   },
   {
     title: "Sponsor Package",
     price: 499,
-    description: "Ultimate experience with maximum visibility",
-    features: [
-      "Premium seating",
-      "Unlimited premium drinks",
-      "Private suite access",
-      "Brand visibility opportunities",
-      "Private after-party suite"
+    perks: [
+      { text: "Premium seating", included: true },
+      { text: "Unlimited premium drinks", included: true },
+      { text: "Event program", included: true },
+      { text: "VIP access", included: true },
+      { text: "Private after-party suite", included: true },
     ],
-    isVip: true,
-    availability: "5 Exclusive Spots Left"
-  }
+    availability: "5 Exclusive Spots Left",
+  },
 ];
 
 const Tickets = () => {
