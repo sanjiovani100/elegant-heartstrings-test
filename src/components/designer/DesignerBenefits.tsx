@@ -1,4 +1,4 @@
-import { HighlightCard } from "@/components/highlights/HighlightCard";
+import HighlightCard from "@/components/highlights/HighlightCard";
 
 const benefits = [
   {
