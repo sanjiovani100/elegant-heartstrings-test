@@ -38,7 +38,7 @@ const Hero = () => {
         <div className="text-center px-4 space-y-8 max-w-4xl mx-auto">
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair text-white mb-6 animate-fade-up drop-shadow-lg leading-tight">
-            Fashionistas: A Night of Glamour & Elegance
+            Fashionistas: A Night of Glamour & Fashion
           </h1>
 
           {/* Tagline */}
@@ -50,14 +50,14 @@ const Hero = () => {
           <div className="space-x-6 animate-fade-up delay-200">
             <Button 
               size="lg" 
-              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:shadow-glow"
+              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:shadow-glow font-inter"
             >
               Get Tickets
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-[#F0F0F0] text-black hover:bg-white px-8 py-6 text-lg transition-all duration-300"
+              className="bg-[#F0F0F0] text-black hover:bg-white px-8 py-6 text-lg transition-all duration-300 font-inter"
             >
               Sign Up Now
             </Button>
