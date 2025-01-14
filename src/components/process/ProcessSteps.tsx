@@ -1,5 +1,5 @@
 import { useInView } from "react-intersection-observer";
-import { FileText, Image, UserCheck } from "lucide-react";
+import { FileText, Image, UserCheck, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Step {
@@ -9,8 +9,17 @@ interface Step {
   number: string;
 }
 
-const ProcessSteps = () => {
-  const steps: Step[] = [
+interface ProcessStepsProps {
+  title?: string;
+  steps?: Array<{
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+}
+
+const ProcessSteps = ({ title, steps: customSteps }: ProcessStepsProps) => {
+  const defaultSteps: Step[] = [
     {
       icon: <FileText className="w-12 h-12 text-fashionista-pink" />,
       title: "Fill out the application",
@@ -31,13 +40,25 @@ const ProcessSteps = () => {
     }
   ];
 
+  const stepsToRender = customSteps ? customSteps.map((step, index) => ({
+    ...step,
+    number: `0${index + 1}`,
+    icon: <FileText className="w-12 h-12 text-fashionista-pink" /> // Default icon if not specified
+  })) : defaultSteps;
+
   return (
     <div className="max-w-6xl mx-auto relative">
       {/* Vertical Line */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-fashionista-red/20 hidden md:block" />
       
+      {title && (
+        <h2 className="text-3xl md:text-4xl font-montserrat text-white text-center mb-16">
+          {title}
+        </h2>
+      )}
+
       <div className="space-y-32">
-        {steps.map((step, index) => {
+        {stepsToRender.map((step, index) => {
           const [ref, inView] = useInView({
             triggerOnce: true,
             threshold: 0.2,
