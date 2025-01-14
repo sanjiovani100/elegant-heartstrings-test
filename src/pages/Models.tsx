@@ -14,19 +14,19 @@ const Models = () => {
       icon: <Star className="w-8 h-8 text-fashionista-red" />,
       title: "Industry Exposure",
       description: "Connect with top designers, brands, and industry leaders.",
-      image: "/hero1.jpg"
+      image: "/lovable-uploads/c073624c-5bbf-4b28-a98a-e16d7aa2b8cf.png"
     },
     {
       icon: <Camera className="w-8 h-8 text-fashionista-red" />,
       title: "Professional Portfolio",
       description: "Get professional runway and photoshoot opportunities.",
-      image: "/hero2.jpg"
+      image: "/lovable-uploads/5e0ecc00-218e-40df-9160-ea06d3a9627c.png"
     },
     {
       icon: <Users className="w-8 h-8 text-fashionista-red" />,
       title: "Networking",
       description: "Build valuable connections within the fashion industry.",
-      image: "/hero3.jpg"
+      image: "/lovable-uploads/a957025d-25d4-4b39-9e9f-15c9f20394c6.png"
     },
   ];
 
