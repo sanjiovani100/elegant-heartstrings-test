@@ -24,9 +24,11 @@ const formSchema = z.object({
   }).optional(),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
 const ModelSignUpForm = () => {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
@@ -37,7 +39,7 @@ const ModelSignUpForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: FormValues) {
     console.log(values);
     toast({
       title: "Application Submitted!",

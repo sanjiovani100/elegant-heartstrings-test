@@ -4,14 +4,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { UseFormReturn } from "react-hook-form";
 import * as z from "zod";
 
+const formSchema = z.object({
+  fullName: z.string(),
+  email: z.string(),
+  phone: z.string(),
+  experience: z.string(),
+  portfolioLink: z.string().optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 interface ModelFormFieldsProps {
-  form: UseFormReturn<{
-    fullName: string;
-    email: string;
-    phone: string;
-    experience: string;
-    portfolioLink?: string;
-  }>;
+  form: UseFormReturn<FormValues>;
 }
 
 const ModelFormFields = ({ form }: ModelFormFieldsProps) => {
