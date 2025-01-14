@@ -17,16 +17,18 @@ export default function Dashboard() {
         <DashboardSidebar />
         <div className="flex-1 flex flex-col">
           <DashboardTopbar />
-          <div className="flex-1 p-4 md:p-6">
-            <Routes>
-              <Route path="/" element={<DashboardOverview />} />
-              <Route path="events" element={<EventManagement />} />
-              <Route path="tickets" element={<TicketManagement />} />
-              <Route path="stakeholders" element={<StakeholderManagement />} />
-              <Route path="communication" element={<Communication />} />
-              <Route path="content" element={<ContentManagement />} />
-              <Route path="settings" element={<Settings />} />
-            </Routes>
+          <div className="flex-1 overflow-auto">
+            <div className="container mx-auto p-4 md:p-6 lg:p-8">
+              <Routes>
+                <Route path="/" element={<DashboardOverview />} />
+                <Route path="events" element={<EventManagement />} />
+                <Route path="tickets" element={<TicketManagement />} />
+                <Route path="stakeholders" element={<StakeholderManagement />} />
+                <Route path="communication" element={<Communication />} />
+                <Route path="content" element={<ContentManagement />} />
+                <Route path="settings" element={<Settings />} />
+              </Routes>
+            </div>
           </div>
         </div>
       </div>

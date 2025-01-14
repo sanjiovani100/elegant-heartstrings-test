@@ -17,21 +17,22 @@ const MetricCard = ({
   trendValue: string
   trendLabel: string
 }) => (
-  <Card className="hover:shadow-lg transition-shadow">
+  <Card className="hover:shadow-lg transition-shadow duration-200">
     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
       <CardTitle className="text-sm font-medium font-montserrat">{title}</CardTitle>
       <Icon className="h-4 w-4 text-fashionista-red" />
     </CardHeader>
     <CardContent>
       <div className="text-2xl font-bold">{value}</div>
-      <p className="text-xs text-gray-600">
+      <p className="text-xs text-gray-600 mt-1">
         <span className={cn(
-          "inline-flex items-center",
+          "inline-flex items-center gap-1",
           trend === "up" ? "text-green-500" : "text-red-500"
         )}>
           {trend === "up" ? <ArrowUpRight className="h-4 w-4" /> : <ArrowDownRight className="h-4 w-4" />}
           {trendValue}
-        </span>{" "}
+        </span>
+        {" "}
         {trendLabel}
       </p>
     </CardContent>
@@ -49,7 +50,7 @@ const SocialCard = ({
   trend: "up" | "down"
   trendValue: string
 }) => (
-  <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+  <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
     <div className="flex items-center gap-3">
       <img 
         src={`/lovable-uploads/97aba5d9-e46c-417e-b2ea-8d25683f6fd4.png`} 
@@ -72,17 +73,15 @@ const SocialCard = ({
 
 export function DashboardOverview() {
   return (
-    <div className="flex-1 space-y-6 p-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight font-montserrat text-gray-900">Overview</h2>
-          <p className="text-gray-500 text-sm mt-1">Let's see an overview of your event metrics</p>
-        </div>
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-3xl font-bold tracking-tight font-montserrat text-gray-900">Overview</h2>
+        <p className="text-gray-500 text-sm mt-1">Welcome back to your event dashboard</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="User Engagement"
+          title="Total Engagement"
           value="6,650"
           icon={Users}
           trend="up"
@@ -90,7 +89,7 @@ export function DashboardOverview() {
           trendLabel="vs last month"
         />
         <MetricCard
-          title="Total Revenue"
+          title="Revenue"
           value="$45,231"
           icon={DollarSign}
           trend="up"
@@ -98,7 +97,7 @@ export function DashboardOverview() {
           trendLabel="vs last month"
         />
         <MetricCard
-          title="Total Tickets"
+          title="Tickets Sold"
           value="3,147"
           icon={Ticket}
           trend="down"
@@ -131,8 +130,8 @@ export function DashboardOverview() {
           <CardHeader>
             <CardTitle className="text-lg font-montserrat">Social Media Audience</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between mb-4">
+          <CardContent>
+            <div className="flex items-center justify-between mb-6">
               <span className="text-lg font-semibold">Total Audience</span>
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-bold">20,453</span>

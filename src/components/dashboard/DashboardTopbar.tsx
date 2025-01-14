@@ -12,7 +12,7 @@ import {
 
 export function DashboardTopbar() {
   return (
-    <div className="border-b bg-white">
+    <div className="border-b bg-white sticky top-0 z-10">
       <div className="flex h-16 items-center px-4 gap-4">
         <div className="flex-1 flex items-center gap-4 md:gap-8">
           <form className="flex-1 hidden md:flex max-w-sm">
