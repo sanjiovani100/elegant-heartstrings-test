@@ -1,10 +1,10 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -28,7 +28,6 @@ const Navbar = () => {
             <a href="#highlights" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Highlights</a>
             <a href="#schedule" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Schedule</a>
             <a href="#tickets" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Tickets</a>
-            <Link to="/dashboard" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Dashboard</Link>
           </div>
           <button className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-6 py-2 rounded transition-all duration-300 hover:shadow-glow">
             Get Tickets
