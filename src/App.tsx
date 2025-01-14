@@ -5,9 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Index from "./pages/Index";
+import Models from "./pages/Models";
 
 const App = () => {
-  // Use useState to ensure stable reference
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -28,6 +28,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/models" element={<Models />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
