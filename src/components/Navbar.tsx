@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import * as React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
