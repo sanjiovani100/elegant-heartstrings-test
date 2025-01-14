@@ -35,7 +35,7 @@ const SponsorShowcase = () => {
     <section className="w-full py-20 bg-gradient-to-b from-black to-[#2B0000]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 opacity-0 animate-fade-up">
-          <h2 className="text-3xl md:text-4xl font-playfair text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-montserrat text-white mb-4">
             Our Esteemed Sponsors
           </h2>
           <p className="text-lg text-fashionista-pink font-montserrat">

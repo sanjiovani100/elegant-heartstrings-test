@@ -30,7 +30,7 @@ const SignUpSection = () => {
   return (
     <section className="w-full py-20 bg-black" id="signup">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-playfair text-white text-center mb-4">
+        <h2 className="text-4xl font-montserrat text-white text-center mb-4">
           Join the Fashionistas Experience!
         </h2>
         <p className="text-lg text-gray-300 text-center mb-12 font-montserrat">

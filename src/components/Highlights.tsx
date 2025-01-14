@@ -46,7 +46,7 @@ const Highlights = () => {
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-black via-black/90 to-fashionista-red/20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-playfair text-white text-center mb-4 animate-fade-up">
+        <h2 className="text-4xl md:text-5xl font-montserrat text-white text-center mb-4 animate-fade-up">
           Event Highlights
         </h2>
         <p className="text-lg text-[#F0F0F0] text-center mb-12 max-w-2xl mx-auto animate-fade-up font-montserrat">

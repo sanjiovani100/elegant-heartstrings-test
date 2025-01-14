@@ -61,7 +61,7 @@ const Tickets = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-playfair text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-montserrat text-white mb-4">
             Choose Your Perfect Ticket
           </h2>
           <p className="text-white/90 font-montserrat mb-3">
