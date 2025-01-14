@@ -1,19 +1,15 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer/Footer";
 import TicketHero from "@/components/tickets/TicketHero";
 import TicketTiers from "@/components/tickets/TicketTiers";
 import BenefitsSection from "@/components/tickets/BenefitsSection";
-import PricingAvailability from "@/components/tickets/PricingAvailability";
 import ProcessSteps from "@/components/process/ProcessSteps";
-import CheckoutProcess from "@/components/tickets/CheckoutProcess";
-import TicketFAQ from "@/components/tickets/TicketFAQ";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 const Tickets = () => {
   const [showStickyCTA, setShowStickyCTA] = useState(false);
 
-  // Handle scroll for sticky CTA
   useEffect(() => {
     const handleScroll = () => {
       setShowStickyCTA(window.scrollY > 500);
@@ -28,7 +24,6 @@ const Tickets = () => {
       <TicketHero />
       <TicketTiers />
       <BenefitsSection />
-      <PricingAvailability />
       <ProcessSteps
         title="How to Purchase Tickets"
         steps={[
@@ -49,11 +44,8 @@ const Tickets = () => {
           }
         ]}
       />
-      <CheckoutProcess />
-      <TicketFAQ />
       <Footer />
       
-      {/* Sticky CTA for mobile */}
       {showStickyCTA && (
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/90 backdrop-blur-sm border-t border-fashionista-grey/20 md:hidden z-50">
           <Button 

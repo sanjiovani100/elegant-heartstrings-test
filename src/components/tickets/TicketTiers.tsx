@@ -5,12 +5,12 @@ const ticketTiers = [
     title: "General Admission",
     description: "Access to all activities and general seating",
     price: 75,
-    features: [
-      "Standard seating",
-      "Welcome drink",
-      "Event program",
-      "Access to main showcase",
-      "Networking opportunities"
+    perks: [
+      { text: "Standard seating", included: true },
+      { text: "Welcome drink", included: true },
+      { text: "Event program", included: true },
+      { text: "Access to main showcase", included: true },
+      { text: "Networking opportunities", included: true }
     ],
     isVip: false,
     availability: "Limited Tickets Remaining"
@@ -19,12 +19,12 @@ const ticketTiers = [
     title: "VIP Experience",
     description: "Exclusive front-row seating, complimentary drinks, and backstage access",
     price: 200,
-    features: [
-      "Front-row seating",
-      "Unlimited premium drinks",
-      "VIP lounge access",
-      "Backstage tour",
-      "Meet & greet with designers"
+    perks: [
+      { text: "Front-row seating", included: true },
+      { text: "Unlimited premium drinks", included: true },
+      { text: "VIP lounge access", included: true },
+      { text: "Backstage tour", included: true },
+      { text: "Meet & greet with designers", included: true }
     ],
     isVip: true,
     availability: "Only 20 VIP Tickets Left"
