@@ -12,7 +12,7 @@ export function DashboardContent() {
             </h1>
           </div>
         </header>
-        <main>
+        <main className="max-w-7xl mx-auto">
           <p className="text-gray-600 font-inter">
             Welcome to the Fashionistas Dashboard
           </p>

@@ -12,18 +12,20 @@ import { Settings } from "@/components/dashboard/sections/Settings"
 
 export default function Dashboard() {
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-white">
+    <SidebarProvider defaultOpen>
+      <div className="flex min-h-screen bg-gray-50">
         <DashboardSidebar />
-        <Routes>
-          <Route index element={<DashboardOverview />} />
-          <Route path="events" element={<EventManagement />} />
-          <Route path="tickets" element={<TicketManagement />} />
-          <Route path="stakeholders" element={<StakeholderManagement />} />
-          <Route path="communication" element={<Communication />} />
-          <Route path="content" element={<ContentManagement />} />
-          <Route path="settings" element={<Settings />} />
-        </Routes>
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<DashboardOverview />} />
+            <Route path="events" element={<EventManagement />} />
+            <Route path="tickets" element={<TicketManagement />} />
+            <Route path="stakeholders" element={<StakeholderManagement />} />
+            <Route path="communication" element={<Communication />} />
+            <Route path="content" element={<ContentManagement />} />
+            <Route path="settings" element={<Settings />} />
+          </Routes>
+        </div>
       </div>
     </SidebarProvider>
   )

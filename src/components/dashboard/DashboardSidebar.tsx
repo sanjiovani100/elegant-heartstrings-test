@@ -17,6 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useLocation, useNavigate } from "react-router-dom"
 
 const menuItems = [
   {
@@ -57,6 +58,9 @@ const menuItems = [
 ]
 
 export function DashboardSidebar() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -71,6 +75,8 @@ export function DashboardSidebar() {
                   <SidebarMenuButton
                     tooltip={item.title}
                     className="text-gray-700 hover:text-fashionista-red hover:bg-fashionista-pink/10"
+                    data-active={location.pathname === item.url}
+                    onClick={() => navigate(item.url)}
                   >
                     <item.icon className="w-5 h-5" />
                     <span className="font-inter">{item.title}</span>
