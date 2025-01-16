@@ -58,10 +58,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        purple: {
-          50: "#f5f3ff",
-          600: "#7C3AED",
-        },
       },
       fontFamily: {
         playfair: ["Playfair Display", "serif"],
