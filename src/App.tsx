@@ -7,6 +7,7 @@ import Events from "./pages/Events";
 import Tickets from "./pages/Tickets";
 import Roadmap from "./pages/Roadmap";
 import Changelog from "./pages/Changelog";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/tickets" element={<Tickets />} />
       <Route path="/roadmap" element={<Roadmap />} />
       <Route path="/changelog" element={<Changelog />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }
