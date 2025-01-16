@@ -1,132 +1,64 @@
-import React from 'react';
-import { ArrowDown, ArrowUp, Calendar, DollarSign, Users } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar, DollarSign, Users } from "lucide-react";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/dashboard/AppSidebar";
+import { MetricCard } from "@/components/dashboard/MetricCard";
 
 // Mock data - In a real app, this would come from an API
 const metrics = [
   {
     title: "Total Tickets Sold",
-    value: "1,234",
-    trend: "+12.5%",
-    isPositive: true,
-    icon: Calendar
+    value: "1,250",
+    trend: { value: "↑ 12%", isPositive: true },
+    icon: Calendar,
   },
   {
     title: "Revenue Generated",
-    value: "$45,678",
-    trend: "+8.2%",
-    isPositive: true,
-    icon: DollarSign
+    value: "$37,500",
+    trend: { value: "↑ 15%", isPositive: true },
+    icon: DollarSign,
   },
   {
-    title: "Total Participants",
-    value: "789",
-    trend: "-3.1%",
-    isPositive: false,
-    icon: Users
+    title: "Active Users",
+    value: "68 Total",
+    trend: { value: "45 Models, 15 Designers, 8 Sponsors", isPositive: true },
+    icon: Users,
   },
   {
     title: "Event Countdown",
-    value: "14 days",
-    trend: "Next Event",
-    isPositive: true,
-    icon: Calendar
-  }
+    value: "10 Days, 4 Hours",
+    icon: Calendar,
+  },
 ];
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen bg-[#F9FAFB] dark:bg-background">
-      {/* Header */}
-      <header className="h-16 border-b bg-white dark:bg-background px-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Dashboard</h1>
-      </header>
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full bg-[#F9FAFB] dark:bg-background">
+        <AppSidebar />
+        <main className="flex-1 p-6 lg:pl-[calc(260px+1.5rem)]">
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Dashboard
+            </h1>
+          </div>
 
-      {/* Main Content */}
-      <main className="p-6">
-        {/* Hero Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {metrics.map((metric) => (
-            <Card key={metric.title} className="hover:shadow-lg transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  {metric.title}
-                </CardTitle>
-                <metric.icon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{metric.value}</div>
-                <div className={`flex items-center text-sm ${
-                  metric.isPositive ? 'text-green-600' : 'text-red-600'
-                }`}>
-                  {metric.isPositive ? (
-                    <ArrowUp className="h-4 w-4 mr-1" />
-                  ) : (
-                    <ArrowDown className="h-4 w-4 mr-1" />
-                  )}
-                  {metric.trend}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+          {/* Hero Metrics */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {metrics.map((metric) => (
+              <MetricCard
+                key={metric.title}
+                title={metric.title}
+                value={metric.value}
+                icon={metric.icon}
+                trend={metric.trend}
+              />
+            ))}
+          </div>
 
-        {/* Stakeholder Management Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Stakeholder Management</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* Placeholder for stakeholder management content */}
-              <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-                Stakeholder Management Content
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Schedule Management Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Schedule Management</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* Placeholder for schedule management content */}
-              <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-                Schedule Management Content
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Ticket Sales and Financial Analytics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Ticket Sales</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* Placeholder for ticket sales content */}
-              <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-                Ticket Sales Content
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Financial Analytics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* Placeholder for financial analytics content */}
-              <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-                Financial Analytics Content
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </main>
-    </div>
+          {/* Additional sections will be added here */}
+        </main>
+      </div>
+    </SidebarProvider>
   );
 };
 
