@@ -7,11 +7,11 @@ import Dashboard from "@/components/dashboard/Dashboard";
 const Index = () => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
         <Navbar />
         <div className="flex pt-16">
           <DashboardSidebar />
-          <main className="flex-1 px-6 pt-6 pb-8 lg:pl-[276px]">
+          <main className="flex-1 px-8 py-6 lg:pl-[276px]">
             <Dashboard />
           </main>
         </div>
