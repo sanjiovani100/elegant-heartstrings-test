@@ -39,15 +39,17 @@ const metrics = [
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-black">
+    <div className="min-h-screen flex flex-col bg-[#F9FAFB]">
       <Navbar />
       
-      <div className="flex-1 flex mt-16"> {/* mt-16 to account for fixed navbar */}
+      <div className="flex-1 flex mt-16">
         <SidebarProvider>
           <div className="flex w-full">
-            <DashboardSidebar />
+            <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-[260px] bg-white border-r border-gray-200">
+              <DashboardSidebar />
+            </aside>
             
-            <main className="flex-1 bg-[#F9FAFB] min-h-[calc(100vh-4rem)] w-[calc(100%-260px)] ml-[260px]">
+            <main className="flex-1 ml-[260px] min-h-[calc(100vh-4rem-80px)] bg-[#F9FAFB]">
               <div className="max-w-[1180px] mx-auto px-6 py-8">
                 {/* Header */}
                 <header className="mb-8">
@@ -136,7 +138,9 @@ const Dashboard = () => {
         </SidebarProvider>
       </div>
       
-      <Footer />
+      <footer className="w-full relative">
+        <Footer />
+      </footer>
     </div>
   );
 };
