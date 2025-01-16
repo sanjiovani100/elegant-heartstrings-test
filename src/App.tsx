@@ -5,9 +5,8 @@ import Designer from "./pages/Designer";
 import Sponsors from "./pages/Sponsors";
 import Events from "./pages/Events";
 import Tickets from "./pages/Tickets";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Dashboard from "./pages/Dashboard";
+import Roadmap from "./pages/Roadmap";
+import Changelog from "./pages/Changelog";
 
 function App() {
   return (
@@ -18,9 +17,8 @@ function App() {
       <Route path="/sponsors" element={<Sponsors />} />
       <Route path="/events" element={<Events />} />
       <Route path="/tickets" element={<Tickets />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/roadmap" element={<Roadmap />} />
+      <Route path="/changelog" element={<Changelog />} />
     </Routes>
   );
 }

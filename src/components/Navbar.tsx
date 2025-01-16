@@ -1,71 +1,37 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
-  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/196663b0-0dd0-4f0e-a715-b7ce52470ba9.png" 
-              alt="Fashionistas Logo" 
-              className="h-8 w-auto"
+        <div className="flex justify-between items-center">
+          <Link to="/" className="group px-3">
+            <img
+              src="/lovable-uploads/196663b0-0dd0-4f0e-a715-b7ce52470ba9.png"
+              alt="Fashionistas Logo - High-Fashion Event Branding"
+              className="w-[120px] md:w-[140px] h-auto transition-transform duration-300 group-hover:scale-105 hover:filter hover:brightness-125"
             />
-            <span className="text-white font-playfair text-2xl">Fashionistas</span>
           </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsPartnersOpen(true)}
-              onMouseLeave={() => setIsPartnersOpen(false)}
-            >
-              <button 
-                className="nav-link flex items-center gap-1"
-              >
-                Partners
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              
-              {isPartnersOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-black bg-opacity-90 backdrop-blur-sm rounded-md shadow-lg py-2">
-                  <Link 
-                    to="/sponsors" 
-                    className="block px-4 py-2 text-white hover:bg-white/10 transition-colors"
-                  >
-                    Sponsors
-                  </Link>
-                  <Link 
-                    to="/models" 
-                    className="block px-4 py-2 text-white hover:bg-white/10 transition-colors"
-                  >
-                    Models
-                  </Link>
-                  <Link 
-                    to="/designer" 
-                    className="block px-4 py-2 text-white hover:bg-white/10 transition-colors"
-                  >
-                    Designers
-                  </Link>
-                </div>
-              )}
-            </div>
-            <Link to="/about" className="nav-link">
-              About
-            </Link>
-            <Link to="/events" className="nav-link">
-              Events
-            </Link>
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
-            <Link to="/tickets" className="nav-link">
-              Tickets
-            </Link>
+          <div className="hidden md:flex space-x-8">
+            <a href="#about" className="nav-link text-[#F0F0F0] hover:text-white text-lg">About</a>
+            <a href="#highlights" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Highlights</a>
+            <a href="#schedule" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Schedule</a>
+            <a href="#tickets" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Tickets</a>
           </div>
+          <button className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-6 py-2 rounded transition-all duration-300 hover:shadow-glow">
+            Get Tickets
+          </button>
         </div>
       </div>
     </nav>
