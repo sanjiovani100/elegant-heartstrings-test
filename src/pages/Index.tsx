@@ -1,24 +1,25 @@
+import { SidebarProvider } from "@/components/ui/sidebar";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Highlights from "@/components/Highlights";
-import LingerieShowcase from "@/components/LingerieShowcase";
-import Tickets from "@/components/tickets/Tickets";
-import SignUpSection from "@/components/signup/SignUpSection";
-import SponsorShowcase from "@/components/sponsors/SponsorShowcase";
 import Footer from "@/components/footer/Footer";
+import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
+import Dashboard from "@/components/dashboard/Dashboard";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-black">
-      <Navbar />
-      <Hero />
-      <Highlights />
-      <LingerieShowcase />
-      <Tickets />
-      <SignUpSection />
-      <SponsorShowcase />
-      <Footer />
-    </main>
+    <SidebarProvider>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-1 pt-[80px]">
+          <div className="flex">
+            <DashboardSidebar />
+            <main className="flex-1 lg:ml-[260px]">
+              <Dashboard />
+            </main>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </SidebarProvider>
   );
 };
 
