@@ -24,14 +24,14 @@ const Navbar = () => {
             />
           </Link>
           <div className="hidden md:flex space-x-8">
+            <Link to="/events" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Events</Link>
+            <Link to="/tickets" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Tickets</Link>
             <a href="#about" className="nav-link text-[#F0F0F0] hover:text-white text-lg">About</a>
-            <a href="#highlights" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Highlights</a>
-            <a href="#schedule" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Schedule</a>
-            <a href="#tickets" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Tickets</a>
+            <a href="#contact" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Contact</a>
           </div>
-          <button className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-6 py-2 rounded transition-all duration-300 hover:shadow-glow">
+          <Link to="/tickets" className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-6 py-2 rounded transition-all duration-300 hover:shadow-glow">
             Get Tickets
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,61 +1,55 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer/Footer";
 import TicketHero from "@/components/tickets/TicketHero";
 import TicketTiers from "@/components/tickets/TicketTiers";
-import BenefitsSection from "@/components/tickets/BenefitsSection";
-import ProcessSteps from "@/components/process/ProcessSteps";
+import CheckoutProcess from "@/components/tickets/CheckoutProcess";
+import FAQSection from "@/components/tickets/FAQSection";
 import { Button } from "@/components/ui/button";
+import { ArrowUp } from "lucide-react";
 
 const Tickets = () => {
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowStickyCTA(window.scrollY > 500);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const handleScroll = () => {
+    setShowScrollTop(window.scrollY > 400);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-white">
       <Navbar />
       <TicketHero />
       <TicketTiers />
-      <BenefitsSection />
-      <ProcessSteps
-        title="How to Purchase Tickets"
-        steps={[
-          {
-            title: "Select Your Experience",
-            description: "Choose General Admission or VIP access.",
-            icon: "Ticket"
-          },
-          {
-            title: "Add Your Details",
-            description: "Provide attendee information for a seamless experience.",
-            icon: "Form"
-          },
-          {
-            title: "Secure Payment",
-            description: "Use Stripe for secure payments. Instant confirmation included.",
-            icon: "CreditCard"
-          }
-        ]}
-      />
-      <Footer />
+      <CheckoutProcess />
+      <FAQSection />
       
-      {showStickyCTA && (
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/90 backdrop-blur-sm border-t border-fashionista-grey/20 md:hidden z-50">
-          <Button 
-            className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-all duration-300"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            Get Tickets
-          </Button>
-        </div>
-      )}
+      {/* Mobile Sticky CTA */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg md:hidden">
+        <Button 
+          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white"
+          onClick={() => document.getElementById('ticket-tiers')?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          Get Tickets
+        </Button>
+      </div>
+
+      {/* Scroll to Top Button */}
+      <Button
+        variant="outline"
+        size="icon"
+        className={`fixed bottom-20 right-4 bg-white shadow-lg transition-opacity duration-300 md:bottom-4 ${
+          showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={scrollToTop}
+      >
+        <ArrowUp className="h-4 w-4" />
+      </Button>
+      
+      <Footer />
     </main>
   );
 };

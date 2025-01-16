@@ -1,45 +1,50 @@
 import { Heart } from "lucide-react";
-import TicketCard from "./TicketCard";
+import { TicketCard } from "./TicketCard";
 import CountdownTimer from "./CountdownTimer";
 
 const ticketOptions = [
   {
     title: "General Admission",
     price: 99,
-    perks: [
-      { text: "Standard seating", included: true },
-      { text: "Welcome drink", included: true },
-      { text: "Event program", included: true },
-      { text: "VIP access", included: false },
-      { text: "After-party entry", included: false },
+    description: "Standard access to the Fashionistas Valentine's Event",
+    features: [
+      "Standard seating",
+      "Welcome drink",
+      "Event program",
+      "Access to general areas",
+      "Basic networking opportunities"
     ],
-    availability: "Limited Tickets Remaining",
+    isVip: false,
+    availability: "Limited Tickets Remaining"
   },
   {
     title: "VIP Experience",
     price: 249,
-    perks: [
-      { text: "Front-row seating", included: true },
-      { text: "Welcome champagne", included: true },
-      { text: "Event program", included: true },
-      { text: "VIP access", included: true },
-      { text: "After-party entry", included: true },
+    description: "Premium access with exclusive perks and privileges",
+    features: [
+      "Front-row seating",
+      "Welcome champagne",
+      "VIP lounge access",
+      "Meet & Greet opportunities",
+      "After-party entry"
     ],
-    isPopular: true,
-    availability: "Only 20 VIP Tickets Left",
+    isVip: true,
+    availability: "Only 20 VIP Tickets Left"
   },
   {
     title: "Sponsor Package",
     price: 499,
-    perks: [
-      { text: "Premium seating", included: true },
-      { text: "Unlimited premium drinks", included: true },
-      { text: "Event program", included: true },
-      { text: "VIP access", included: true },
-      { text: "Private after-party suite", included: true },
+    description: "Ultimate experience with maximum visibility",
+    features: [
+      "Premium seating",
+      "Unlimited premium drinks",
+      "Private suite access",
+      "Brand visibility opportunities",
+      "Private after-party suite"
     ],
-    availability: "5 Exclusive Spots Left",
-  },
+    isVip: true,
+    availability: "5 Exclusive Spots Left"
+  }
 ];
 
 const Tickets = () => {

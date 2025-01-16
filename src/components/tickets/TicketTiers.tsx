@@ -1,49 +1,46 @@
-import TicketCard from "./TicketCard";
-
-const ticketTiers = [
-  {
-    title: "General Admission",
-    description: "Access to all activities and general seating",
-    price: 75,
-    perks: [
-      { text: "Standard seating", included: true },
-      { text: "Welcome drink", included: true },
-      { text: "Event program", included: true },
-      { text: "Access to main showcase", included: true },
-      { text: "Networking opportunities", included: true }
-    ],
-    isVip: false,
-    availability: "Limited Tickets Remaining"
-  },
-  {
-    title: "VIP Experience",
-    description: "Exclusive front-row seating, complimentary drinks, and backstage access",
-    price: 200,
-    perks: [
-      { text: "Front-row seating", included: true },
-      { text: "Unlimited premium drinks", included: true },
-      { text: "VIP lounge access", included: true },
-      { text: "Backstage tour", included: true },
-      { text: "Meet & greet with designers", included: true }
-    ],
-    isVip: true,
-    availability: "Only 20 VIP Tickets Left"
-  }
-];
+import { TicketCard } from "@/components/tickets/TicketCard";
 
 const TicketTiers = () => {
+  const tiers = [
+    {
+      title: "General Admission",
+      price: 149,
+      description: "Experience the glamour of Fashionistas Valentine's Event",
+      features: [
+        "Access to all fashion shows",
+        "Standard seating",
+        "Event program",
+        "Access to general networking areas"
+      ],
+      isVip: false,
+      availability: "Limited seats available"
+    },
+    {
+      title: "VIP Experience",
+      price: 299,
+      description: "Elevate your evening with exclusive VIP benefits",
+      features: [
+        "Premium front-row seating",
+        "Complimentary drinks",
+        "VIP lounge access",
+        "Meet & Greet with designers",
+        "Exclusive gift bag",
+        "Priority check-in"
+      ],
+      isVip: true,
+      availability: "Very limited availability"
+    }
+  ];
+
   return (
-    <section id="ticket-tiers" className="py-20 bg-black">
+    <section id="ticket-tiers" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-playfair text-white text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
           Choose Your Experience
         </h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {ticketTiers.map((tier, index) => (
-            <TicketCard
-              key={index}
-              {...tier}
-            />
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {tiers.map((tier, index) => (
+            <TicketCard key={index} {...tier} />
           ))}
         </div>
       </div>
