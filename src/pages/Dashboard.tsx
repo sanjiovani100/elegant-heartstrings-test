@@ -42,13 +42,13 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex mt-16"> {/* Added mt-16 for navbar spacing */}
+      <div className="flex-1 flex mt-16"> {/* Dashboard content wrapper */}
         <SidebarProvider>
-          <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-[260px] bg-white border-r border-gray-200">
+          <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-[260px] bg-white border-r border-gray-200 z-20">
             <DashboardSidebar />
           </aside>
           
-          <main className="flex-1 ml-[260px] p-6 bg-[#F9FAFB] min-h-[calc(100vh-4rem)]">
+          <main className="flex-1 ml-[260px] p-6 bg-[#F9FAFB]">
             <div className="max-w-[1180px] mx-auto">
               <header className="mb-8">
                 <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
