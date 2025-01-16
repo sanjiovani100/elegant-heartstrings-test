@@ -22,29 +22,31 @@ const menuItems = [
 
 export function DashboardSidebar() {
   return (
-    <Sidebar className="bg-white border-r border-gray-200">
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-gray-500">Dashboard</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a 
-                      href={item.url}
-                      className="text-gray-900 hover:bg-gray-100"
-                    >
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+    <div className="h-[calc(100vh-4rem)] overflow-y-auto">
+      <Sidebar className="bg-white">
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel className="text-gray-500">Dashboard</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {menuItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <a 
+                        href={item.url}
+                        className="text-gray-900 hover:bg-gray-100"
+                      >
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+    </div>
   );
 }
