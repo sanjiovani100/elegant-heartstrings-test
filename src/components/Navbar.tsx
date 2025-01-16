@@ -9,8 +9,13 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-white font-playfair text-2xl">
-            Fashionistas
+          <Link to="/" className="flex items-center space-x-2">
+            <img 
+              src="/lovable-uploads/196663b0-0dd0-4f0e-a715-b7ce52470ba9.png" 
+              alt="Fashionistas Logo" 
+              className="h-8 w-auto"
+            />
+            <span className="text-white font-playfair text-2xl">Fashionistas</span>
           </Link>
           <div className="hidden md:flex items-center space-x-8">
             <div 
