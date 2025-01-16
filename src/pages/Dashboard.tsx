@@ -39,16 +39,16 @@ const metrics = [
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F9FAFB]">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="flex pt-16"> {/* Added pt-16 for navbar spacing */}
+      <div className="flex-1 flex mt-16"> {/* Added mt-16 for navbar spacing */}
         <SidebarProvider>
           <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-[260px] bg-white border-r border-gray-200">
             <DashboardSidebar />
           </aside>
           
-          <main className="flex-1 ml-[260px] p-6">
+          <main className="flex-1 ml-[260px] p-6 bg-[#F9FAFB] min-h-[calc(100vh-4rem)]">
             <div className="max-w-[1180px] mx-auto">
               <header className="mb-8">
                 <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
@@ -84,49 +84,49 @@ const Dashboard = () => {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  <Card className="bg-white shadow-sm border border-gray-200">
-                    <CardHeader>
-                      <CardTitle className="text-gray-900">Stakeholder Management</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="h-[300px] flex items-center justify-center text-gray-600">
-                        Stakeholder Management Content
-                      </div>
-                    </CardContent>
-                  </Card>
+                <Card className="bg-white shadow-sm border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-gray-900">Stakeholder Management</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[300px] flex items-center justify-center text-gray-600">
+                      Stakeholder Management Content
+                    </div>
+                  </CardContent>
+                </Card>
 
-                  <Card className="bg-white shadow-sm border border-gray-200">
-                    <CardHeader>
-                      <CardTitle className="text-gray-900">Schedule Management</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="h-[300px] flex items-center justify-center text-gray-600">
-                        Schedule Management Content
-                      </div>
-                    </CardContent>
-                  </Card>
+                <Card className="bg-white shadow-sm border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-gray-900">Schedule Management</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[300px] flex items-center justify-center text-gray-600">
+                      Schedule Management Content
+                    </div>
+                  </CardContent>
+                </Card>
 
-                  <Card className="bg-white shadow-sm border border-gray-200">
-                    <CardHeader>
-                      <CardTitle className="text-gray-900">Ticket Sales</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="h-[300px] flex items-center justify-center text-gray-600">
-                        Ticket Sales Content
-                      </div>
-                    </CardContent>
-                  </Card>
+                <Card className="bg-white shadow-sm border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-gray-900">Ticket Sales</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[300px] flex items-center justify-center text-gray-600">
+                      Ticket Sales Content
+                    </div>
+                  </CardContent>
+                </Card>
 
-                  <Card className="bg-white shadow-sm border border-gray-200">
-                    <CardHeader>
-                      <CardTitle className="text-gray-900">Financial Analytics</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="h-[300px] flex items-center justify-center text-gray-600">
-                        Financial Analytics Content
-                      </div>
-                    </CardContent>
-                  </Card>
+                <Card className="bg-white shadow-sm border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-gray-900">Financial Analytics</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[300px] flex items-center justify-center text-gray-600">
+                      Financial Analytics Content
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </main>
