@@ -1,4 +1,4 @@
-import { Home, Users, Calendar, BarChart3, Settings, Menu } from "lucide-react";
+import { Home, Users, Calendar, BarChart3, Settings } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +20,7 @@ const menuItems = [
 
 const DashboardSidebar = () => {
   return (
-    <Sidebar className="w-[260px] border-r border-gray-200">
+    <Sidebar className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-[260px] border-r border-gray-200 bg-white">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
