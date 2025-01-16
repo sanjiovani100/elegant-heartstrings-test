@@ -42,9 +42,9 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex mt-16"> {/* Dashboard content wrapper */}
+      <div className="flex-1 flex relative pt-16">
         <SidebarProvider>
-          <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-[260px] bg-white border-r border-gray-200 z-20">
+          <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-[260px] bg-white border-r border-gray-200 z-30">
             <DashboardSidebar />
           </aside>
           
