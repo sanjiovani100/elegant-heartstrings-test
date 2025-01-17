@@ -5,10 +5,12 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { SponsorshipFormData } from "../sponsorshipFormSchema";
+import { SponsorshipFormData } from "../types";
+import { FileUpload } from "../FileUpload";
 
 interface BrandingStepProps {
   form: UseFormReturn<SponsorshipFormData>;
@@ -18,6 +20,9 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Branding and Deliverables</h2>
+      <p className="text-muted-foreground">
+        Upload your brand assets and specify your branding requirements.
+      </p>
 
       <FormField
         control={form.control}
@@ -25,11 +30,17 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Company Logo</FormLabel>
+            <FormDescription>
+              Upload a high-resolution logo (PNG or SVG preferred)
+            </FormDescription>
             <FormControl>
-              <Input
-                type="file"
-                accept="image/*"
-                onChange={(e) => field.onChange(e.target.files?.[0])}
+              <FileUpload
+                accept={{
+                  'image/*': ['.png', '.jpg', '.jpeg', '.svg']
+                }}
+                maxSize={5 * 1024 * 1024} // 5MB
+                value={field.value ? [field.value] : []}
+                onChange={(files) => field.onChange(files[0])}
               />
             </FormControl>
             <FormMessage />
@@ -43,15 +54,20 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Promotional Materials</FormLabel>
+            <FormDescription>
+              Upload any additional branding materials (images, documents, videos)
+            </FormDescription>
             <FormControl>
-              <Input
-                type="file"
-                multiple
-                accept="image/*,video/*,.pdf"
-                onChange={(e) => {
-                  const files = Array.from(e.target.files || []);
-                  field.onChange(files);
+              <FileUpload
+                accept={{
+                  'image/*': ['.png', '.jpg', '.jpeg'],
+                  'application/pdf': ['.pdf'],
+                  'video/*': ['.mp4', '.mov']
                 }}
+                maxFiles={5}
+                maxSize={20 * 1024 * 1024} // 20MB
+                value={field.value || []}
+                onChange={field.onChange}
               />
             </FormControl>
             <FormMessage />
@@ -61,13 +77,17 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
 
       <FormField
         control={form.control}
-        name="branding.customBrandingRequests"
+        name="branding.brandingRequests"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Custom Branding Requests</FormLabel>
+            <FormDescription>
+              Specify any special requirements for your brand's representation
+            </FormDescription>
             <FormControl>
               <Textarea
-                placeholder="Describe any specific branding requirements or requests"
+                placeholder="Enter any specific branding guidelines or requests"
+                className="min-h-[100px]"
                 {...field}
               />
             </FormControl>
@@ -82,11 +102,11 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Company Tagline</FormLabel>
+            <FormDescription>
+              A short, memorable phrase that represents your brand
+            </FormDescription>
             <FormControl>
-              <Input
-                placeholder="Enter your company's tagline or key message"
-                {...field}
-              />
+              <Input placeholder="Enter your company's tagline" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
