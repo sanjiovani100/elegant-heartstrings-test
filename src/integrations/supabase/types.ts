@@ -119,6 +119,7 @@ export type Database = {
       events: {
         Row: {
           capacity: number | null
+          category: Database["public"]["Enums"]["event_category"] | null
           cover_image: string | null
           created_at: string | null
           created_by: string
@@ -128,12 +129,14 @@ export type Database = {
           id: string
           is_deleted: boolean | null
           location: string
+          metadata: Json | null
           status: Database["public"]["Enums"]["event_status"] | null
           title: string
           updated_at: string | null
         }
         Insert: {
           capacity?: number | null
+          category?: Database["public"]["Enums"]["event_category"] | null
           cover_image?: string | null
           created_at?: string | null
           created_by: string
@@ -143,12 +146,14 @@ export type Database = {
           id?: string
           is_deleted?: boolean | null
           location: string
+          metadata?: Json | null
           status?: Database["public"]["Enums"]["event_status"] | null
           title: string
           updated_at?: string | null
         }
         Update: {
           capacity?: number | null
+          category?: Database["public"]["Enums"]["event_category"] | null
           cover_image?: string | null
           created_at?: string | null
           created_by?: string
@@ -158,6 +163,7 @@ export type Database = {
           id?: string
           is_deleted?: boolean | null
           location?: string
+          metadata?: Json | null
           status?: Database["public"]["Enums"]["event_status"] | null
           title?: string
           updated_at?: string | null
@@ -885,6 +891,13 @@ export type Database = {
     }
     Enums: {
       audit_action: "INSERT" | "UPDATE" | "DELETE" | "SOFT_DELETE"
+      event_category:
+        | "Fashion Show"
+        | "Gala"
+        | "Workshop"
+        | "Exhibition"
+        | "Conference"
+        | "Networking"
       event_status: "draft" | "published" | "completed" | "cancelled"
       media_status: "draft" | "published"
       media_type: "gallery" | "highlights" | "promotional"
