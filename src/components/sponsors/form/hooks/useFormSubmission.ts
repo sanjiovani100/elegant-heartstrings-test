@@ -68,10 +68,10 @@ export const useFormSubmission = (form: UseFormReturn<SponsorshipFormData>) => {
           : []
       });
 
-      // Prepare application data
+      // Prepare application data with the correct status type
       const applicationData = {
         sponsor_id: sponsorId,
-        status: 'submitted',
+        status: 'submitted' as const, // Explicitly type as application_status
         industry: data.sponsorInfo.industry,
         contact_name: data.sponsorInfo.contactName,
         contact_email: data.sponsorInfo.contactEmail,
