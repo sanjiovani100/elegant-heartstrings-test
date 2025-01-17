@@ -60,7 +60,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-sponsor-bg-header/90 py-4' : 'bg-sponsor-bg-header py-6'}`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="group px-3">
@@ -81,7 +81,7 @@ const Navbar = () => {
                 Partners
                 <ChevronDown className="w-4 h-4 ml-1" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black/90 border border-white/10">
+              <DropdownMenuContent className="bg-sponsor-bg-header/90 border border-white/10">
                 <DropdownMenuItem className="focus:bg-white/10">
                   <Link to="/sponsors" className="text-white w-full">Sponsors</Link>
                 </DropdownMenuItem>
