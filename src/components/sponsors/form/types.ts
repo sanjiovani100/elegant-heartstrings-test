@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export type SponsorshipType = "physical" | "digital" | "hybrid";
+
 export const websiteLinkSchema = z.object({
   url: z.string().url("Please enter a valid URL"),
   type: z.enum(["website", "linkedin", "twitter", "instagram", "other"]),
@@ -34,6 +36,7 @@ export const sponsorInfoSchema = z.object({
 });
 
 export const sponsorshipPreferencesSchema = z.object({
+  type: z.enum(["physical", "digital", "hybrid"]).default("physical"),
   eventSegments: z.array(z.string()).min(1, "Select at least one event segment"),
   goals: z.array(z.string()).min(1, "Select at least one goal"),
   otherGoal: z.string().optional(),

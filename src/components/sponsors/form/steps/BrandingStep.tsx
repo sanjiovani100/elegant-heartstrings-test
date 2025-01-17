@@ -1,9 +1,8 @@
-import { UseFormReturn } from "react-hook-form";
-import { SponsorshipFormData } from "../types";
 import { useState } from "react";
+import { UseFormReturn } from "react-hook-form";
+import { SponsorshipFormData, SponsorshipType } from "../types";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { SponsorshipType } from "../types/formTypes";
 import { LogoUpload } from "./branding/LogoUpload";
 import { PromotionalMaterials } from "./branding/PromotionalMaterials";
 import { BrandingFields } from "./branding/BrandingFields";
@@ -16,8 +15,9 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const { toast } = useToast();
   
-  // Fix the type conversion by properly accessing the preferences type
-  const sponsorshipType = form.watch("preferences.type") as SponsorshipType || "physical";
+  // Get the sponsorship type from form values with proper type assertion
+  const preferences = form.watch("preferences");
+  const sponsorshipType = (preferences?.type || "physical") as SponsorshipType;
 
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
@@ -119,5 +119,3 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
     </div>
   );
 };
-
-export default BrandingStep;
