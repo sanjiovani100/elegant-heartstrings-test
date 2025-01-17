@@ -30,21 +30,30 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
       const fileName = `${crypto.randomUUID()}.${fileExt}`;
       const filePath = `${field}/${fileName}`;
 
-      const { error: uploadError, data } = await supabase.storage
+      // Simulate upload progress since Supabase doesn't provide progress
+      const progressInterval = setInterval(() => {
+        setUploadProgress(prev => ({
+          ...prev,
+          [field]: Math.min((prev[field] || 0) + 10, 90)
+        }));
+      }, 100);
+
+      const { data, error: uploadError } = await supabase.storage
         .from('sponsorship-assets')
         .upload(filePath, file, {
           cacheControl: '3600',
-          upsert: false,
-          onUploadProgress: (progress) => {
-            const percent = (progress.loaded / progress.total) * 100;
-            setUploadProgress(prev => ({
-              ...prev,
-              [field]: percent
-            }));
-          },
+          upsert: false
         });
 
-      if (uploadError) throw uploadError;
+      clearInterval(progressInterval);
+      setUploadProgress(prev => ({
+        ...prev,
+        [field]: 100
+      }));
+
+      if (uploadError) {
+        throw uploadError;
+      }
 
       const { data: { publicUrl } } = supabase.storage
         .from('sponsorship-assets')
@@ -62,18 +71,26 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
         title: "File uploaded successfully",
         description: `${file.name} has been uploaded.`,
       });
+
+      // Reset progress after a short delay
+      setTimeout(() => {
+        setUploadProgress(prev => ({
+          ...prev,
+          [field]: 0
+        }));
+      }, 1000);
+
     } catch (error) {
       console.error("Upload error:", error);
+      setUploadProgress(prev => ({
+        ...prev,
+        [field]: 0
+      }));
       toast({
         title: "Upload failed",
         description: "There was an error uploading your file.",
         variant: "destructive",
       });
-    } finally {
-      setUploadProgress(prev => ({
-        ...prev,
-        [field]: 0
-      }));
     }
   };
 
