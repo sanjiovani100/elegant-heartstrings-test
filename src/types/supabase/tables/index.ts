@@ -28,4 +28,24 @@ export interface Tables {
 export interface TablesInsert extends Tables {}
 export interface TablesUpdate extends Tables {}
 
-export * from '../enums';
+// Export all enums
+export interface Enums {
+  event_status: 'draft' | 'published' | 'completed' | 'cancelled';
+  event_category: 'fashion_show' | 'workshop' | 'networking' | 'exhibition' | 'other';
+  media_status: 'draft' | 'published';
+  media_type: 'gallery' | 'highlights' | 'promotional';
+  message_status: 'sent' | 'delivered' | 'read';
+  notification_category: 'events' | 'tickets' | 'messages' | 'marketing';
+  notification_type: 'event_update' | 'ticket_purchase' | 'message' | 'system';
+  payment_status: 'pending' | 'completed' | 'failed' | 'refunded';
+  profile_status: 'incomplete' | 'complete';
+  sponsor_status: 'active' | 'inactive';
+  sponsorship_status: 'pending' | 'approved' | 'active' | 'completed';
+  sponsorship_type: 'physical' | 'digital' | 'hybrid';
+  ticket_status: 'available' | 'reserved' | 'purchased' | 'cancelled';
+  ticket_tier: 'general' | 'vip';
+  ticket_type_status: 'active' | 'inactive' | 'sold_out';
+  user_role: 'admin' | 'model' | 'designer' | 'sponsor' | 'visitor';
+  application_status: 'draft' | 'submitted' | 'under_review' | 'approved' | 'declined';
+  audit_action: 'INSERT' | 'UPDATE' | 'DELETE' | 'SOFT_DELETE';
+}
