@@ -9,6 +9,45 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      application_reviews: {
+        Row: {
+          application_id: string | null
+          comment: string
+          created_at: string | null
+          id: string
+          reviewer_id: string | null
+        }
+        Insert: {
+          application_id?: string | null
+          comment: string
+          created_at?: string | null
+          id?: string
+          reviewer_id?: string | null
+        }
+        Update: {
+          application_id?: string | null
+          comment?: string
+          created_at?: string | null
+          id?: string
+          reviewer_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "application_reviews_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "sponsorship_applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "application_reviews_reviewer_id_fkey"
+            columns: ["reviewer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       audit_logs: {
         Row: {
           action_type: Database["public"]["Enums"]["audit_action"]
@@ -613,6 +652,87 @@ export type Database = {
           },
         ]
       }
+      sponsorship_applications: {
+        Row: {
+          created_at: string | null
+          custom_requests: string | null
+          event_id: string | null
+          id: string
+          internal_notes: string | null
+          level_id: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          sponsor_id: string | null
+          status: Database["public"]["Enums"]["application_status"] | null
+          submitted_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          custom_requests?: string | null
+          event_id?: string | null
+          id?: string
+          internal_notes?: string | null
+          level_id?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sponsor_id?: string | null
+          status?: Database["public"]["Enums"]["application_status"] | null
+          submitted_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          custom_requests?: string | null
+          event_id?: string | null
+          id?: string
+          internal_notes?: string | null
+          level_id?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sponsor_id?: string | null
+          status?: Database["public"]["Enums"]["application_status"] | null
+          submitted_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sponsorship_applications_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "active_events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sponsorship_applications_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sponsorship_applications_level_id_fkey"
+            columns: ["level_id"]
+            isOneToOne: false
+            referencedRelation: "sponsorship_levels"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sponsorship_applications_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sponsorship_applications_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
+            referencedRelation: "sponsor_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       sponsorship_assets: {
         Row: {
           approval_date: string | null
@@ -681,6 +801,69 @@ export type Database = {
         }
         Relationships: []
       }
+      sponsorship_documents: {
+        Row: {
+          application_id: string | null
+          content_type: string
+          created_at: string | null
+          document_type: string
+          file_name: string
+          id: string
+          is_signed: boolean | null
+          signature_required: boolean | null
+          signed_at: string | null
+          signed_by: string | null
+          size: number
+          storage_path: string
+          updated_at: string | null
+        }
+        Insert: {
+          application_id?: string | null
+          content_type: string
+          created_at?: string | null
+          document_type: string
+          file_name: string
+          id?: string
+          is_signed?: boolean | null
+          signature_required?: boolean | null
+          signed_at?: string | null
+          signed_by?: string | null
+          size: number
+          storage_path: string
+          updated_at?: string | null
+        }
+        Update: {
+          application_id?: string | null
+          content_type?: string
+          created_at?: string | null
+          document_type?: string
+          file_name?: string
+          id?: string
+          is_signed?: boolean | null
+          signature_required?: boolean | null
+          signed_at?: string | null
+          signed_by?: string | null
+          size?: number
+          storage_path?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sponsorship_documents_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "sponsorship_applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sponsorship_documents_signed_by_fkey"
+            columns: ["signed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       sponsorship_levels: {
         Row: {
           benefits: Json | null
@@ -722,6 +905,56 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      sponsorship_payments: {
+        Row: {
+          amount: number
+          application_id: string | null
+          created_at: string | null
+          currency: string | null
+          id: string
+          invoice_number: string | null
+          payment_date: string | null
+          payment_method: string | null
+          status: string
+          stripe_payment_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          amount: number
+          application_id?: string | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          invoice_number?: string | null
+          payment_date?: string | null
+          payment_method?: string | null
+          status: string
+          stripe_payment_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number
+          application_id?: string | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          invoice_number?: string | null
+          payment_date?: string | null
+          payment_method?: string | null
+          status?: string
+          stripe_payment_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sponsorship_payments_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "sponsorship_applications"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       ticket_types: {
         Row: {
@@ -1120,6 +1353,12 @@ export type Database = {
       }
     }
     Enums: {
+      application_status:
+        | "draft"
+        | "submitted"
+        | "under_review"
+        | "approved"
+        | "declined"
       audit_action: "INSERT" | "UPDATE" | "DELETE" | "SOFT_DELETE"
       event_category:
         | "Fashion Show"
