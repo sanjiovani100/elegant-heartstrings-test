@@ -4,6 +4,7 @@ import { FileUploadProps } from "./types/fileUpload";
 import { DropZone } from "./upload/DropZone";
 import { FilePreviewList } from "./upload/FilePreview";
 import { UploadProgress } from "./upload/UploadProgress";
+import { useFileValidation } from "./hooks/useFileValidation";
 
 export const FileUpload = ({
   accept = {
@@ -25,64 +26,14 @@ export const FileUpload = ({
 }: FileUploadProps) => {
   const [isDragActive, setIsDragActive] = useState(false);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
-
-  const validateFile = async (file: File) => {
-    if (file.size > maxSize) {
-      return {
-        isValid: false,
-        message: `File size exceeds ${maxSize / (1024 * 1024)}MB limit`,
-      };
-    }
-
-    const fileType = file.type;
-    const isAcceptedType = Object.entries(accept).some(([type, extensions]) => {
-      if (fileType.match(type.replace('*', '.*'))) {
-        return true;
-      }
-      return extensions.some(ext => file.name.toLowerCase().endsWith(ext));
-    });
-
-    if (!isAcceptedType) {
-      return {
-        isValid: false,
-        message: "File type not accepted",
-      };
-    }
-
-    if (validateDimensions && file.type.startsWith('image/')) {
-      try {
-        const dimensions = await getImageDimensions(file);
-        if (dimensions.width < minWidth || dimensions.height < minHeight) {
-          return {
-            isValid: false,
-            message: `Image must be at least ${minWidth}x${minHeight} pixels`,
-          };
-        }
-      } catch (err) {
-        return {
-          isValid: false,
-          message: "Failed to validate image dimensions",
-        };
-      }
-    }
-
-    return { isValid: true };
-  };
-
-  const getImageDimensions = (file: File): Promise<{ width: number; height: number }> => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.src = URL.createObjectURL(file);
-      img.onload = () => {
-        URL.revokeObjectURL(img.src);
-        resolve({ width: img.width, height: img.height });
-      };
-      img.onerror = () => {
-        URL.revokeObjectURL(img.src);
-        reject(new Error("Failed to load image"));
-      };
-    });
-  };
+  
+  const { validateFile } = useFileValidation({
+    maxSize,
+    accept,
+    validateDimensions,
+    minWidth,
+    minHeight
+  });
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
@@ -102,7 +53,7 @@ export const FileUpload = ({
       const finalFiles = [...value, ...validFiles].slice(0, maxFiles);
       onChange(finalFiles);
     },
-    [onChange, maxSize, maxFiles, value, validateDimensions, minWidth, minHeight, accept]
+    [onChange, maxSize, maxFiles, value, validateDimensions, minWidth, minHeight, accept, validateFile]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
