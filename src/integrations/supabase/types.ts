@@ -18,6 +18,7 @@ export type Database = {
           id: string
           phone_number: string | null
           social_links: Json | null
+          status: Database["public"]["Enums"]["profile_status"] | null
           updated_at: string | null
           website_url: string | null
         }
@@ -29,6 +30,7 @@ export type Database = {
           id: string
           phone_number?: string | null
           social_links?: Json | null
+          status?: Database["public"]["Enums"]["profile_status"] | null
           updated_at?: string | null
           website_url?: string | null
         }
@@ -40,6 +42,7 @@ export type Database = {
           id?: string
           phone_number?: string | null
           social_links?: Json | null
+          status?: Database["public"]["Enums"]["profile_status"] | null
           updated_at?: string | null
           website_url?: string | null
         }
@@ -73,6 +76,7 @@ export type Database = {
     Enums: {
       event_status: "draft" | "published" | "completed" | "cancelled"
       payment_status: "pending" | "completed" | "failed" | "refunded"
+      profile_status: "incomplete" | "complete"
       sponsorship_level: "gold" | "silver" | "bronze"
       ticket_status: "available" | "reserved" | "purchased" | "cancelled"
       ticket_tier: "general" | "vip"

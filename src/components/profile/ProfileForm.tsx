@@ -9,8 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const ProfileForm = () => {
   const [loading, setLoading] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const { toast } = useToast();
 
@@ -69,8 +68,7 @@ const ProfileForm = () => {
       const { error } = await supabase
         .from("profiles")
         .update({
-          first_name: firstName,
-          last_name: lastName,
+          full_name: fullName,
         })
         .eq("id", user.id);
 
@@ -98,7 +96,7 @@ const ProfileForm = () => {
           <Avatar className="w-24 h-24">
             <AvatarImage src={avatarUrl || ""} />
             <AvatarFallback>
-              {firstName?.[0]?.toUpperCase() || "U"}
+              {fullName?.[0]?.toUpperCase() || "U"}
             </AvatarFallback>
           </Avatar>
           <div>
@@ -121,22 +119,13 @@ const ProfileForm = () => {
 
         <form onSubmit={handleProfileUpdate} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="firstName">First Name</Label>
+            <Label htmlFor="fullName">Full Name</Label>
             <Input
-              id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              id="fullName"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               disabled={loading}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="lastName">Last Name</Label>
-            <Input
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              disabled={loading}
+              placeholder="Enter your full name"
             />
           </div>
 
