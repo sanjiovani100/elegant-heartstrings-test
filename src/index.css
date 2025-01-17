@@ -108,3 +108,38 @@
 .hover-glow {
   @apply transition-all duration-300 hover:shadow-glow;
 }
+
+/* Sponsorship Form Specific Styles */
+.sponsorship-form {
+  @apply bg-white text-gray-900;
+}
+
+.sponsorship-form label {
+  @apply text-gray-700 font-medium;
+}
+
+.sponsorship-form input,
+.sponsorship-form select,
+.sponsorship-form textarea {
+  @apply bg-white border-gray-300 text-gray-900 focus:border-fashionista-red focus:ring-fashionista-red/10;
+}
+
+.sponsorship-form .error-message {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.sponsorship-form .helper-text {
+  @apply text-gray-500 text-sm mt-1;
+}
+
+.form-step-title {
+  @apply text-2xl font-montserrat text-gray-900 mb-6;
+}
+
+.form-section {
+  @apply space-y-6 p-6 bg-gray-50 rounded-lg border border-gray-100;
+}
+
+.form-field-group {
+  @apply space-y-4;
+}

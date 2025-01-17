@@ -21,13 +21,13 @@ export const FormNavigation = ({
   onSubmit,
 }: FormNavigationProps) => {
   return (
-    <div className="flex justify-between mt-8">
+    <div className="flex justify-between mt-8 pt-6 border-t border-gray-100">
       {currentStep > 1 && (
         <Button
           type="button"
           onClick={onPrevious}
           variant="outline"
-          className="w-32"
+          className="w-32 bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
           disabled={isSubmitting || isValidating}
         >
           <ChevronLeft className="mr-2 h-4 w-4" />
@@ -41,7 +41,7 @@ export const FormNavigation = ({
         <Button
           type="button"
           onClick={onNext}
-          className="w-32"
+          className="w-32 bg-fashionista-red hover:bg-fashionista-red/90 text-white"
           disabled={isSubmitting || isValidating}
         >
           {isValidating ? (
@@ -60,7 +60,7 @@ export const FormNavigation = ({
         <Button
           type="submit"
           disabled={isSubmitting || isValidating}
-          className="w-32"
+          className="w-32 bg-fashionista-red hover:bg-fashionista-red/90 text-white"
           onClick={onSubmit}
         >
           {isSubmitting ? (

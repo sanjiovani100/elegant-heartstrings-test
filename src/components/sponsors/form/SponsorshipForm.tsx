@@ -38,14 +38,14 @@ export const SponsorshipForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto">
       <FormProgress
         currentStep={currentStep}
         totalSteps={TOTAL_STEPS}
         stepTitles={STEP_TITLES}
       />
       
-      <Card className="p-6">
+      <Card className="mt-8 p-6 md:p-8 bg-white border border-gray-200 shadow-sm">
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormStep currentStep={currentStep} form={form} />
           

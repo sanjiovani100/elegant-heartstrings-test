@@ -1,22 +1,25 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer/Footer";
-import SponsorForm from "@/components/sponsors/SponsorForm";
+import { SponsorshipForm } from "@/components/sponsors/form/SponsorshipForm";
 
 const SponsorshipApplication = () => {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="container mx-auto px-4 py-20">
-        <h1 className="text-4xl font-bold text-center mb-8">
-          Sponsorship Application
-        </h1>
-        <div className="max-w-4xl mx-auto">
-          <SponsorForm />
+      <main className="flex-grow bg-white">
+        <div className="container mx-auto px-4 py-8 md:py-12">
+          <h1 className="text-4xl font-playfair text-gray-900 text-center mb-6">
+            Sponsorship Application
+          </h1>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Join us in creating unforgettable fashion experiences. Complete the form below to begin your sponsorship journey.
+          </p>
+          <SponsorshipForm />
         </div>
-      </div>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 
