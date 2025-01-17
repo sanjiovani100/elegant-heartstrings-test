@@ -1,11 +1,7 @@
 import { UseFormReturn } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-
-interface ProfileFormData {
-  fullName: string;
-  phoneNumber: string;
-}
+import { ProfileFormData } from "./useProfileForm";
 
 interface ProfileFormFieldsProps {
   form: UseFormReturn<ProfileFormData>;
