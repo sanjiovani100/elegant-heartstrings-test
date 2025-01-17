@@ -1,41 +1,25 @@
 import { UseFormReturn } from "react-hook-form";
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-  FormDescription,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { SponsorshipFormData } from "../types";
-import { FileUpload } from "../FileUpload";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  SponsorshipType,
-  ValidationRules,
-  validationRulesByType,
-  UploadProgress
-} from "../types/formTypes";
+import { SponsorshipType } from "../types/formTypes";
+import { LogoUpload } from "./branding/LogoUpload";
+import { PromotionalMaterials } from "./branding/PromotionalMaterials";
+import { BrandingFields } from "./branding/BrandingFields";
 
 interface BrandingStepProps {
   form: UseFormReturn<SponsorshipFormData>;
 }
 
 export const BrandingStep = ({ form }: BrandingStepProps) => {
-  const [uploadProgress, setUploadProgress] = useState<UploadProgress>({});
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const { toast } = useToast();
   
-  // Get the sponsorship type from the form
   const sponsorshipType = form.watch("preferences.type") as SponsorshipType || "physical";
-  const validationRules = validationRulesByType[sponsorshipType];
 
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
-      const rules = validationRules[field];
       const file = files[0];
       
       if (!file) {
@@ -117,109 +101,20 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
         Upload your brand assets and specify your branding requirements.
       </p>
 
-      <FormField
-        control={form.control}
-        name="branding.logo"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Company Logo</FormLabel>
-            <FormDescription>
-              {sponsorshipType === "digital" 
-                ? "Upload a high-resolution vector logo (SVG format required for digital sponsorships)"
-                : "Upload a high-resolution logo (PNG or SVG preferred)"}
-            </FormDescription>
-            <FormControl>
-              <FileUpload
-                accept={
-                  sponsorshipType === "digital"
-                    ? { 'image/svg+xml': ['.svg'] }
-                    : { 'image/*': ['.png', '.jpg', '.jpeg', '.svg'] }
-                }
-                maxSize={5 * 1024 * 1024} // 5MB
-                value={field.value ? [new File([], field.value)] : []}
-                onChange={(files) => handleFileUpload(files, "logo")}
-                progress={uploadProgress["logo"]}
-                required
-                validateDimensions={sponsorshipType !== "digital"}
-                minWidth={1000}
-                minHeight={1000}
-                helperText={`Maximum file size: 5MB. ${
-                  sponsorshipType === "digital"
-                    ? "SVG format required."
-                    : "Supported formats: PNG, JPG, SVG. Minimum dimensions: 1000x1000px"
-                }`}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
+      <LogoUpload
+        form={form}
+        sponsorshipType={sponsorshipType}
+        onFileUpload={handleFileUpload}
+        uploadProgress={uploadProgress}
       />
 
-      <FormField
-        control={form.control}
-        name="branding.promotionalMaterials"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Promotional Materials</FormLabel>
-            <FormDescription>
-              Upload any additional branding materials (images, documents, videos)
-            </FormDescription>
-            <FormControl>
-              <FileUpload
-                accept={{
-                  'image/*': ['.png', '.jpg', '.jpeg'],
-                  'application/pdf': ['.pdf']
-                }}
-                maxFiles={5}
-                maxSize={10 * 1024 * 1024} // 10MB
-                value={field.value ? field.value.map(url => new File([], url)) : []}
-                onChange={(files) => handleFileUpload(files, "promotionalMaterials")}
-                progress={uploadProgress["promotionalMaterials"]}
-                helperText="Maximum file size: 10MB per file. Up to 5 files. Supported formats: PNG, JPG, PDF"
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
+      <PromotionalMaterials
+        form={form}
+        onFileUpload={handleFileUpload}
+        uploadProgress={uploadProgress}
       />
 
-      <FormField
-        control={form.control}
-        name="branding.brandingRequests"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Custom Branding Requests</FormLabel>
-            <FormDescription>
-              Specify any special requirements for your brand's representation
-            </FormDescription>
-            <FormControl>
-              <Textarea
-                placeholder="Enter any specific branding guidelines or requests"
-                className="min-h-[100px]"
-                {...field}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={form.control}
-        name="branding.companyTagline"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Company Tagline</FormLabel>
-            <FormDescription>
-              A short, memorable phrase that represents your brand
-            </FormDescription>
-            <FormControl>
-              <Input placeholder="Enter your company's tagline" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      <BrandingFields form={form} />
     </div>
   );
 };
