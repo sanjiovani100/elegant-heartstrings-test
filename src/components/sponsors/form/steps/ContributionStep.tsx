@@ -5,6 +5,7 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,7 +23,7 @@ export const ContributionStep = ({ form }: ContributionStepProps) => {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Contribution Details</h2>
-
+      
       <FormField
         control={form.control}
         name="contribution.type"

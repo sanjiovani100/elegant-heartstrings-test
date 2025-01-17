@@ -5,10 +5,11 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { SponsorshipFormData } from "../sponsorshipFormSchema";
+import { SponsorshipFormData } from "../types";
 
 interface AgreementStepProps {
   form: UseFormReturn<SponsorshipFormData>;
@@ -54,6 +55,9 @@ export const AgreementStep = ({ form }: AgreementStepProps) => {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Electronic Signature</FormLabel>
+            <FormDescription>
+              Type your full name as signature
+            </FormDescription>
             <FormControl>
               <Input
                 placeholder="Type your full name as signature"
