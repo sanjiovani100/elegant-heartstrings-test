@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { SponsorshipFormData } from "../sponsorshipFormSchema";
+import { SponsorshipFormData } from "../types";
 
 interface ContributionStepProps {
   form: UseFormReturn<SponsorshipFormData>;
@@ -76,7 +76,7 @@ export const ContributionStep = ({ form }: ContributionStepProps) => {
       <div className="space-y-4">
         <FormField
           control={form.control}
-          name="contribution.contributionRange.min"
+          name="contribution.amount.min"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Minimum Contribution Amount ($)</FormLabel>
@@ -95,7 +95,7 @@ export const ContributionStep = ({ form }: ContributionStepProps) => {
 
         <FormField
           control={form.control}
-          name="contribution.contributionRange.max"
+          name="contribution.amount.max"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Maximum Contribution Amount ($)</FormLabel>

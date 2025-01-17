@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { SponsorshipFormData } from "../sponsorshipFormSchema";
+import { SponsorshipFormData } from "../types";
 
 interface AdditionalInfoStepProps {
   form: UseFormReturn<SponsorshipFormData>;
@@ -99,7 +99,7 @@ export const AdditionalInfoStep = ({ form }: AdditionalInfoStepProps) => {
         <div className="space-y-4">
           <FormField
             control={form.control}
-            name="additionalInfo.participationDetails.attendeeCount"
+            name="additionalInfo.attendeeCount"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Number of Attendees</FormLabel>
@@ -118,7 +118,7 @@ export const AdditionalInfoStep = ({ form }: AdditionalInfoStepProps) => {
 
           <FormField
             control={form.control}
-            name="additionalInfo.participationDetails.vipRequirements"
+            name="additionalInfo.vipRequirements"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>VIP Requirements</FormLabel>
