@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer/Footer";
 import EventCard from "@/components/events/EventCard";
 import EventFilters from "@/components/events/EventFilters";
+import EventCTA from "@/components/events/EventCTA";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const EventsListing = () => {
@@ -186,6 +187,9 @@ const EventsListing = () => {
           </div>
         </div>
       </section>
+
+      {/* Add EventCTA above Footer */}
+      <EventCTA />
       
       <Footer />
     </div>
