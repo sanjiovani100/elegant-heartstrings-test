@@ -2,12 +2,13 @@ import { UseFormReturn } from "react-hook-form";
 import { SponsorshipFormData } from "../types";
 import { supabase } from "@/integrations/supabase/client";
 import { type ToastProps } from "@/components/ui/toast";
+import { FileUploadHandlers } from "../types/fileUpload";
 
 export const useFileUpload = (
   form: UseFormReturn<SponsorshipFormData>,
   setUploadProgress: React.Dispatch<React.SetStateAction<Record<string, number>>>,
   toast: (props: ToastProps) => void
-) => {
+): FileUploadHandlers => {
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
       const file = files[0];
@@ -59,6 +60,7 @@ export const useFileUpload = (
       toast({
         title: "File uploaded successfully",
         description: `${file.name} has been uploaded.`,
+        variant: "default"
       });
 
       // Reset progress after a short delay
@@ -78,7 +80,7 @@ export const useFileUpload = (
       toast({
         title: "Upload failed",
         description: "There was an error uploading your file.",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };

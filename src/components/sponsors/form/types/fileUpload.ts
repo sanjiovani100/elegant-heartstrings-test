@@ -1,5 +1,11 @@
+import { type ToastProps } from "@/components/ui/toast";
+
 export type FileType = 'image' | 'document' | 'logo';
-export type ValidationResult = { isValid: boolean; message?: string };
+
+export interface ValidationResult {
+  isValid: boolean;
+  message?: string;
+}
 
 export interface FileValidationOptions {
   maxSize: number;
@@ -49,3 +55,9 @@ export interface FileUploadProps {
   minWidth?: number;
   minHeight?: number;
 }
+
+export interface FileUploadHandlers {
+  handleFileUpload: (files: File[], field: "logo" | "promotionalMaterials") => Promise<void>;
+}
+
+export type ToastFunction = (props: ToastProps) => void;
