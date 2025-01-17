@@ -29,14 +29,7 @@ function App() {
         <Route path="/roadmap" element={<Roadmap />} />
         <Route path="/changelog" element={<Changelog />} />
         <Route path="/sponsors" element={<Sponsors />} />
-        <Route 
-          path="/sponsors/apply" 
-          element={
-            <ProtectedRoute>
-              <SponsorshipApplication />
-            </ProtectedRoute>
-          } 
-        />
+        <Route path="/sponsors/apply" element={<SponsorshipApplication />} />
         <Route
           path="/profile"
           element={
