@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
-import { Search, Filter, Calendar, MapPin, ChevronLeft, ChevronRight, ZoomIn, Ticket } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer/Footer";
-import EventCard from "@/components/events/EventCard";
 import EventFilters from "@/components/events/EventFilters";
 import EventCTA from "@/components/events/EventCTA";
+import EventsHero from "@/components/events/EventsHero";
+import EventsGrid from "@/components/events/EventsGrid";
+import EventsMosaic from "@/components/events/EventsMosaic";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Event } from "@/types/events";
 
 const EventsListing = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState("all");
 
   // Simulated events data - in production, fetch from Supabase
   const events = [
@@ -61,20 +63,7 @@ const EventsListing = () => {
   return (
     <div className="min-h-screen bg-black">
       <Navbar />
-      
-      {/* Hero Section */}
-      <div className="relative h-[70vh] bg-cover bg-center" style={{ backgroundImage: 'url("/hero1.jpg")' }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90">
-          <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-            <h1 className="text-4xl md:text-6xl font-playfair text-white mb-6 animate-fade-up">
-              Upcoming Fashion Events
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl animate-fade-up delay-100">
-              Join us for Medellín's most exclusive fashion experiences
-            </p>
-          </div>
-        </div>
-      </div>
+      <EventsHero />
 
       {/* Category Tabs and Event Listings */}
       <section className="py-12 bg-black">
@@ -86,6 +75,7 @@ const EventsListing = () => {
               <TabsTrigger value="showcase" className="flex-1">Showcases</TabsTrigger>
               <TabsTrigger value="party" className="flex-1">Launch Parties</TabsTrigger>
             </TabsList>
+
             <TabsContent value="all" className="mt-8">
               {/* Main Content */}
               <div className="flex flex-col md:flex-row gap-8">
@@ -114,79 +104,23 @@ const EventsListing = () => {
 
                 {/* Events Grid */}
                 <div className="flex-1">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {isLoading ? (
-                      // Loading skeleton cards
-                      [...Array(6)].map((_, index) => (
-                        <div
-                          key={index}
-                          className="bg-white/5 border border-white/10 rounded-lg h-[400px] animate-pulse"
-                        />
-                      ))
-                    ) : (
-                      events.map((event) => (
-                        <EventCard key={event.id} event={event} />
-                      ))
-                    )}
-                  </div>
+                  <EventsGrid events={events} isLoading={isLoading} />
                 </div>
               </div>
             </TabsContent>
+
             <TabsContent value="fashion">
-              {/* Fashion Shows Content */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {events
-                  .filter(event => event.category === "Fashion Show")
-                  .map(event => (
-                    <EventCard key={event.id} event={event} />
-                  ))}
-              </div>
+              <EventsGrid 
+                events={events.filter(event => event.category === "Fashion Show")} 
+                isLoading={isLoading} 
+              />
             </TabsContent>
-            {/* Add similar TabsContent for other categories */}
           </Tabs>
         </div>
       </section>
 
       {/* Featured Events Mosaic */}
-      <section className="py-16 bg-black/95">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-playfair text-white mb-8">Featured Events</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {events.map((event, index) => (
-              <div 
-                key={event.id}
-                className={cn(
-                  "group relative overflow-hidden rounded-lg transition-all duration-500",
-                  index === 0 ? "md:col-span-2 md:row-span-2" : ""
-                )}
-              >
-                <div className="aspect-square w-full">
-                  <img
-                    src={event.imageUrl}
-                    alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-montserrat text-white mb-2">{event.title}</h3>
-                    <div className="flex items-center gap-2 text-gray-200 mb-4">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-sm">{new Date(event.date).toLocaleDateString()}</span>
-                    </div>
-                    <Button 
-                      variant="outline"
-                      className="w-full bg-white/10 hover:bg-white/20 border-white/20 text-white"
-                    >
-                      View Details
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <EventsMosaic events={events} />
 
       {/* Add EventCTA above Footer */}
       <EventCTA />
