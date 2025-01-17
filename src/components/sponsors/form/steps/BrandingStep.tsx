@@ -16,6 +16,7 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const { toast } = useToast();
   
+  // Fix the type conversion by properly accessing the preferences type
   const sponsorshipType = form.watch("preferences.type") as SponsorshipType || "physical";
 
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {

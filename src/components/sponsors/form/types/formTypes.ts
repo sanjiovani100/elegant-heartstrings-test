@@ -1,6 +1,3 @@
-import { z } from "zod";
-import { SponsorshipFormData } from "../types";
-
 export type SponsorshipType = "physical" | "digital" | "hybrid";
 
 export interface ValidationRules {
