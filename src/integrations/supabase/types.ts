@@ -654,46 +654,103 @@ export type Database = {
       }
       sponsorship_applications: {
         Row: {
+          company_background: string | null
+          company_tagline: string | null
+          contact_email: string | null
+          contact_name: string | null
+          contact_phone: string | null
+          contribution_details: string | null
+          contribution_range: Json | null
+          contribution_type: string | null
           created_at: string | null
+          custom_branding_requests: string | null
           custom_requests: string | null
           event_id: string | null
+          event_participation: Json | null
+          event_segments: string[] | null
           id: string
+          industry: string | null
           internal_notes: string | null
           level_id: string | null
+          previous_sponsorships: Json | null
           reviewed_at: string | null
           reviewed_by: string | null
+          signature_data: Json | null
           sponsor_id: string | null
+          sponsorship_goals: string[] | null
           status: Database["public"]["Enums"]["application_status"] | null
           submitted_at: string | null
+          target_audience: Json | null
+          terms_accepted: boolean | null
           updated_at: string | null
+          version: number | null
+          website_links: Json | null
         }
         Insert: {
+          company_background?: string | null
+          company_tagline?: string | null
+          contact_email?: string | null
+          contact_name?: string | null
+          contact_phone?: string | null
+          contribution_details?: string | null
+          contribution_range?: Json | null
+          contribution_type?: string | null
           created_at?: string | null
+          custom_branding_requests?: string | null
           custom_requests?: string | null
           event_id?: string | null
+          event_participation?: Json | null
+          event_segments?: string[] | null
           id?: string
+          industry?: string | null
           internal_notes?: string | null
           level_id?: string | null
+          previous_sponsorships?: Json | null
           reviewed_at?: string | null
           reviewed_by?: string | null
+          signature_data?: Json | null
           sponsor_id?: string | null
+          sponsorship_goals?: string[] | null
           status?: Database["public"]["Enums"]["application_status"] | null
           submitted_at?: string | null
+          target_audience?: Json | null
+          terms_accepted?: boolean | null
           updated_at?: string | null
+          version?: number | null
+          website_links?: Json | null
         }
         Update: {
+          company_background?: string | null
+          company_tagline?: string | null
+          contact_email?: string | null
+          contact_name?: string | null
+          contact_phone?: string | null
+          contribution_details?: string | null
+          contribution_range?: Json | null
+          contribution_type?: string | null
           created_at?: string | null
+          custom_branding_requests?: string | null
           custom_requests?: string | null
           event_id?: string | null
+          event_participation?: Json | null
+          event_segments?: string[] | null
           id?: string
+          industry?: string | null
           internal_notes?: string | null
           level_id?: string | null
+          previous_sponsorships?: Json | null
           reviewed_at?: string | null
           reviewed_by?: string | null
+          signature_data?: Json | null
           sponsor_id?: string | null
+          sponsorship_goals?: string[] | null
           status?: Database["public"]["Enums"]["application_status"] | null
           submitted_at?: string | null
+          target_audience?: Json | null
+          terms_accepted?: boolean | null
           updated_at?: string | null
+          version?: number | null
+          website_links?: Json | null
         }
         Relationships: [
           {
@@ -1360,6 +1417,7 @@ export type Database = {
         | "approved"
         | "declined"
       audit_action: "INSERT" | "UPDATE" | "DELETE" | "SOFT_DELETE"
+      contribution_type: "financial" | "in_kind" | "combination"
       event_category:
         | "Fashion Show"
         | "Gala"
@@ -1387,6 +1445,16 @@ export type Database = {
         | "system"
       payment_status: "pending" | "completed" | "failed" | "refunded"
       profile_status: "incomplete" | "complete"
+      sponsor_industry:
+        | "fashion"
+        | "technology"
+        | "beauty"
+        | "lifestyle"
+        | "food_and_beverage"
+        | "media"
+        | "retail"
+        | "luxury"
+        | "other"
       sponsor_status: "active" | "inactive"
       sponsorship_level: "gold" | "silver" | "bronze"
       sponsorship_status: "pending" | "approved" | "active" | "completed"
