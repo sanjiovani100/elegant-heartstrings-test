@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer/Footer";
-import CountdownTimer from "@/components/tickets/CountdownTimer";
 import EventCard from "@/components/events/EventCard";
 import EventFilters from "@/components/events/EventFilters";
 
@@ -61,7 +60,7 @@ const EventsListing = () => {
     <div className="min-h-screen bg-black">
       <Navbar />
       
-      {/* Hero Section with Countdown */}
+      {/* Hero Section */}
       <div className="relative h-[70vh] bg-cover bg-center" style={{ backgroundImage: 'url("/hero1.jpg")' }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90">
           <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
@@ -71,25 +70,6 @@ const EventsListing = () => {
             <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl animate-fade-up delay-100">
               Join us for Medellín's most exclusive fashion experiences
             </p>
-            
-            {/* Countdown Timer */}
-            <div className="w-full max-w-4xl mb-8 animate-fade-up delay-200">
-              <CountdownTimer />
-            </div>
-
-            {/* Search Bar */}
-            <div className="w-full max-w-2xl animate-fade-up delay-300">
-              <div className="relative">
-                <Input
-                  type="search"
-                  placeholder="Search events..."
-                  className="w-full h-12 pl-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -116,6 +96,19 @@ const EventsListing = () => {
               isFiltersOpen ? "block" : "hidden md:block"
             )}
           >
+            {/* Search Bar */}
+            <div className="mb-6">
+              <div className="relative">
+                <Input
+                  type="search"
+                  placeholder="Search events..."
+                  className="w-full h-12 pl-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+              </div>
+            </div>
             <EventFilters />
           </aside>
 
