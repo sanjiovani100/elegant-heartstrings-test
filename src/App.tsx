@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Index from "@/pages/Index";
 import Models from "@/pages/Models";
 import Designer from "@/pages/Designer";
-import Events from "@/pages/Events";
+import EventsListing from "@/pages/events/EventsListing";
 import Tickets from "@/pages/Tickets";
 import Roadmap from "@/pages/Roadmap";
 import Changelog from "@/pages/Changelog";
@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/models" element={<Models />} />
         <Route path="/designer" element={<Designer />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/events" element={<EventsListing />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/roadmap" element={<Roadmap />} />
         <Route path="/changelog" element={<Changelog />} />
