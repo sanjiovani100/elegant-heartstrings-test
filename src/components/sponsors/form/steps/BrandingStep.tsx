@@ -22,6 +22,7 @@ interface BrandingStepProps {
 export const BrandingStep = ({ form }: BrandingStepProps) => {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const { toast } = useToast();
+  const sponsorshipType = form.watch("preferences.type");
 
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
@@ -30,7 +31,7 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
       const fileName = `${crypto.randomUUID()}.${fileExt}`;
       const filePath = `${field}/${fileName}`;
 
-      // Simulate upload progress since Supabase doesn't provide progress
+      // Simulate upload progress
       const progressInterval = setInterval(() => {
         setUploadProgress(prev => ({
           ...prev,
@@ -108,18 +109,30 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
           <FormItem>
             <FormLabel>Company Logo</FormLabel>
             <FormDescription>
-              Upload a high-resolution logo (PNG or SVG preferred)
+              {sponsorshipType === "digital" 
+                ? "Upload a high-resolution vector logo (SVG format required for digital sponsorships)"
+                : "Upload a high-resolution logo (PNG or SVG preferred)"}
             </FormDescription>
             <FormControl>
               <FileUpload
-                accept={{
-                  'image/*': ['.png', '.jpg', '.jpeg', '.svg']
-                }}
+                accept={
+                  sponsorshipType === "digital"
+                    ? { 'image/svg+xml': ['.svg'] }
+                    : { 'image/*': ['.png', '.jpg', '.jpeg', '.svg'] }
+                }
                 maxSize={5 * 1024 * 1024} // 5MB
                 value={field.value ? [new File([], field.value)] : []}
                 onChange={(files) => handleFileUpload(files, "logo")}
                 progress={uploadProgress["logo"]}
-                helperText="Maximum file size: 5MB. Supported formats: PNG, JPG, SVG"
+                required
+                validateDimensions={sponsorshipType !== "digital"}
+                minWidth={1000}
+                minHeight={1000}
+                helperText={`Maximum file size: 5MB. ${
+                  sponsorshipType === "digital"
+                    ? "SVG format required."
+                    : "Supported formats: PNG, JPG, SVG. Minimum dimensions: 1000x1000px"
+                }`}
               />
             </FormControl>
             <FormMessage />
@@ -140,15 +153,14 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
               <FileUpload
                 accept={{
                   'image/*': ['.png', '.jpg', '.jpeg'],
-                  'application/pdf': ['.pdf'],
-                  'video/*': ['.mp4', '.mov']
+                  'application/pdf': ['.pdf']
                 }}
                 maxFiles={5}
-                maxSize={20 * 1024 * 1024} // 20MB
+                maxSize={10 * 1024 * 1024} // 10MB
                 value={field.value ? field.value.map(url => new File([], url)) : []}
                 onChange={(files) => handleFileUpload(files, "promotionalMaterials")}
                 progress={uploadProgress["promotionalMaterials"]}
-                helperText="Maximum file size: 20MB per file. Up to 5 files."
+                helperText="Maximum file size: 10MB per file. Up to 5 files. Supported formats: PNG, JPG, PDF"
               />
             </FormControl>
             <FormMessage />

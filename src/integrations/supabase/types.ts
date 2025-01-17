@@ -797,10 +797,13 @@ export type Database = {
           asset_type: string
           asset_url: string
           created_at: string | null
+          file_metadata: Json | null
           id: string
           sponsor_id: string | null
           status: string | null
           updated_at: string | null
+          validation_errors: string[] | null
+          validation_status: string | null
         }
         Insert: {
           approval_date?: string | null
@@ -808,10 +811,13 @@ export type Database = {
           asset_type: string
           asset_url: string
           created_at?: string | null
+          file_metadata?: Json | null
           id?: string
           sponsor_id?: string | null
           status?: string | null
           updated_at?: string | null
+          validation_errors?: string[] | null
+          validation_status?: string | null
         }
         Update: {
           approval_date?: string | null
@@ -819,10 +825,13 @@ export type Database = {
           asset_type?: string
           asset_url?: string
           created_at?: string | null
+          file_metadata?: Json | null
           id?: string
           sponsor_id?: string | null
           status?: string | null
           updated_at?: string | null
+          validation_errors?: string[] | null
+          validation_status?: string | null
         }
         Relationships: [
           {
