@@ -1,5 +1,5 @@
-import { Json } from '../database';
 import { ApplicationStatus, SponsorStatus, SponsorshipStatus, SponsorshipType } from '../enums';
+import type { Json } from '../database';
 
 export interface SponsorProfile {
   id: string;
@@ -20,32 +20,32 @@ export interface SponsorshipApplication {
   event_id: string | null;
   level_id: string | null;
   status: ApplicationStatus | null;
-  company_background: string | null;
-  company_tagline: string | null;
-  contact_email: string | null;
-  contact_name: string | null;
-  contact_phone: string | null;
-  contribution_details: string | null;
-  contribution_range: Json | null;
-  contribution_type: string | null;
-  created_at: string | null;
-  custom_branding_requests: string | null;
   custom_requests: string | null;
-  event_participation: Json | null;
-  event_segments: string[] | null;
-  industry: string | null;
   internal_notes: string | null;
-  previous_sponsorships: Json | null;
+  submitted_at: string | null;
   reviewed_at: string | null;
   reviewed_by: string | null;
-  signature_data: Json | null;
-  sponsorship_goals: string[] | null;
-  submitted_at: string | null;
-  target_audience: Json | null;
-  terms_accepted: boolean | null;
+  created_at: string | null;
   updated_at: string | null;
-  version: number | null;
+  industry: string | null;
+  contact_name: string | null;
+  contact_email: string | null;
+  contact_phone: string | null;
   website_links: Json | null;
+  event_segments: string[] | null;
+  sponsorship_goals: string[] | null;
+  target_audience: Json | null;
+  custom_branding_requests: string | null;
+  company_tagline: string | null;
+  contribution_type: string | null;
+  contribution_details: string | null;
+  contribution_range: Json | null;
+  company_background: string | null;
+  previous_sponsorships: Json | null;
+  event_participation: Json | null;
+  terms_accepted: boolean | null;
+  signature_data: Json | null;
+  version: number | null;
 }
 
 export interface SponsorshipLevel {
@@ -60,38 +60,4 @@ export interface SponsorshipLevel {
   is_active: boolean | null;
   created_at: string | null;
   updated_at: string | null;
-}
-
-export interface EventSponsorship {
-  id: string;
-  event_id: string | null;
-  sponsor_id: string | null;
-  level_id: string | null;
-  status: SponsorshipStatus | null;
-  contribution_amount: number | null;
-  agreement_details: Json | null;
-  start_date: string | null;
-  end_date: string | null;
-  created_at: string | null;
-  updated_at: string | null;
-}
-
-export interface SponsorshipAsset {
-  id: string;
-  sponsor_id: string | null;
-  asset_type: string;
-  asset_url: string;
-  status: string | null;
-  approval_date: string | null;
-  approved_by: string | null;
-  created_at: string | null;
-  updated_at: string | null;
-}
-
-export interface SponsorshipAnalytics {
-  id: string;
-  sponsor_id: string | null;
-  metric_type: string;
-  metric_value: Json;
-  measured_at: string | null;
 }

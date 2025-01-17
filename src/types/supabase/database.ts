@@ -1,4 +1,7 @@
-import { Tables, TablesInsert, TablesUpdate, Enums } from './tables';
+import { Tables, TablesInsert, TablesUpdate } from './tables';
+import * as Enums from './enums';
+
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export type Database = {
   public: {
@@ -29,8 +32,9 @@ export type Database = {
         Returns: void;
       };
     };
-    Enums: Enums;
+    Enums: typeof Enums;
   };
 };
 
-export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+export type { Tables, TablesInsert, TablesUpdate };
+export { Enums };
