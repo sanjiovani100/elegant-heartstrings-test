@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { SponsorInfoStep } from "./steps/SponsorInfoStep";
 import { PreferencesStep } from "./steps/PreferencesStep";
@@ -71,6 +71,7 @@ export const SponsorshipForm = () => {
                 onClick={previousStep}
                 variant="outline"
                 className="w-32"
+                disabled={isSubmitting}
               >
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Previous
@@ -84,7 +85,7 @@ export const SponsorshipForm = () => {
                 type="button"
                 onClick={nextStep}
                 className="w-32"
-                disabled={!isStepValid(currentStep)}
+                disabled={isSubmitting || !isStepValid(currentStep)}
               >
                 Next
                 <ChevronRight className="ml-2 h-4 w-4" />
@@ -95,7 +96,14 @@ export const SponsorshipForm = () => {
                 disabled={isSubmitting || !isStepValid(currentStep)}
                 className="w-32"
               >
-                {isSubmitting ? "Submitting..." : "Submit"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit'
+                )}
               </Button>
             )}
           </div>

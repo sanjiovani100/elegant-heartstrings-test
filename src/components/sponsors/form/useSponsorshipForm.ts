@@ -1,14 +1,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
 import { SponsorshipFormData, sponsorshipFormSchema } from "./types";
-import { supabase } from "@/integrations/supabase/client";
+import { useFormSubmission } from "./hooks/useFormSubmission";
 
 export const useSponsorshipForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
 
   const form = useForm<SponsorshipFormData>({
     resolver: zodResolver(sponsorshipFormSchema),
@@ -49,16 +46,12 @@ export const useSponsorshipForm = () => {
     },
   });
 
+  const { isSubmitting, onSubmit } = useFormSubmission(form);
+
   const nextStep = async () => {
     const isValid = await isStepValid(currentStep);
     if (isValid) {
       setCurrentStep((prev) => Math.min(prev + 1, 6));
-    } else {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields correctly.",
-        variant: "destructive",
-      });
     }
   };
 
@@ -94,39 +87,6 @@ export const useSponsorshipForm = () => {
 
     const result = await form.trigger(fieldsToValidate as any);
     return result;
-  };
-
-  const onSubmit = async (data: SponsorshipFormData) => {
-    try {
-      setIsSubmitting(true);
-      
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error("No authenticated user found");
-
-      const { error } = await supabase
-        .from('sponsorship_applications')
-        .insert({
-          sponsor_id: user.id,
-          status: 'draft',
-          ...data,
-        });
-
-      if (error) throw error;
-
-      toast({
-        title: "Success",
-        description: "Your sponsorship application has been submitted successfully.",
-      });
-    } catch (error) {
-      console.error('Submission error:', error);
-      toast({
-        title: "Error",
-        description: "Failed to submit sponsorship application. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   return {
