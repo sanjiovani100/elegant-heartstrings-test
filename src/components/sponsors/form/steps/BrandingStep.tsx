@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { SponsorshipFormData, SponsorshipType } from "../types";
-import { useToast } from "@/hooks/use-toast";
 import { LogoUpload } from "./branding/LogoUpload";
 import { PromotionalMaterials } from "./branding/PromotionalMaterials";
 import { BrandingFields } from "./branding/BrandingFields";
@@ -13,8 +12,7 @@ interface BrandingStepProps {
 
 export const BrandingStep = ({ form }: BrandingStepProps) => {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
-  const { toast } = useToast();
-  const { handleFileUpload } = useFileUpload(form, setUploadProgress, toast);
+  const { handleFileUpload } = useFileUpload(form, setUploadProgress);
   
   const preferences = form.watch("preferences");
   const sponsorshipType = (preferences?.type || "physical") as SponsorshipType;
