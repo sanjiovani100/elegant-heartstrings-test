@@ -12,20 +12,27 @@ import { Textarea } from "@/components/ui/textarea";
 import { SponsorshipFormData } from "../types";
 import { FileUpload } from "../FileUpload";
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import {
+  ValidationRules,
+  validationRulesByType,
+  SponsorshipType,
+  UploadProgress
+} from "../types/fileUpload";
 
 interface BrandingStepProps {
   form: UseFormReturn<SponsorshipFormData>;
 }
 
 export const BrandingStep = ({ form }: BrandingStepProps) => {
-  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
+  const [uploadProgress, setUploadProgress] = useState<UploadProgress>({});
   const { toast } = useToast();
-  const sponsorshipType = form.watch("preferences.type");
+  const sponsorshipType = form.watch("preferences.type") as SponsorshipType;
+  const validationRules = validationRulesByType[sponsorshipType] || validationRulesByType.physical;
 
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
+      const rules = validationRules[field];
       const file = files[0];
       const fileExt = file.name.split('.').pop();
       const fileName = `${crypto.randomUUID()}.${fileExt}`;

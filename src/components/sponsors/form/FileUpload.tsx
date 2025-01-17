@@ -2,25 +2,15 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { X, Upload, FileImage, FileText } from "lucide-react";
+import { X, Upload, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-
-interface FileUploadProps {
-  accept?: Record<string, string[]>;
-  maxFiles?: number;
-  maxSize?: number;
-  value?: File[];
-  onChange: (files: File[]) => void;
-  onRemove?: (index: number) => void;
-  progress?: number;
-  error?: string;
-  helperText?: string;
-  required?: boolean;
-  validateDimensions?: boolean;
-  minWidth?: number;
-  minHeight?: number;
-}
+import {
+  FileUploadProps,
+  FileValidationError,
+  FilePreview,
+  ValidationResult
+} from "./types/fileUpload";
 
 export const FileUpload = ({
   accept = {
@@ -28,7 +18,7 @@ export const FileUpload = ({
     'application/pdf': ['.pdf'],
   },
   maxFiles = 1,
-  maxSize = 5 * 1024 * 1024, // 5MB
+  maxSize = 5 * 1024 * 1024,
   value = [],
   onChange,
   onRemove,
@@ -43,13 +33,14 @@ export const FileUpload = ({
   const [isDragActive, setIsDragActive] = useState(false);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
 
-  const validateFile = async (file: File): Promise<string | null> => {
-    // Check file size
+  const validateFile = async (file: File): Promise<ValidationResult> => {
     if (file.size > maxSize) {
-      return `File size exceeds ${maxSize / (1024 * 1024)}MB limit`;
+      return {
+        isValid: false,
+        message: `File size exceeds ${maxSize / (1024 * 1024)}MB limit`,
+      };
     }
 
-    // Check file type
     const fileType = file.type;
     const isAcceptedType = Object.entries(accept).some(([type, extensions]) => {
       if (fileType.match(type.replace('*', '.*'))) {
@@ -59,22 +50,30 @@ export const FileUpload = ({
     });
 
     if (!isAcceptedType) {
-      return "File type not accepted";
+      return {
+        isValid: false,
+        message: "File type not accepted",
+      };
     }
 
-    // Check image dimensions if required
     if (validateDimensions && file.type.startsWith('image/')) {
       try {
         const dimensions = await getImageDimensions(file);
         if (dimensions.width < minWidth || dimensions.height < minHeight) {
-          return `Image must be at least ${minWidth}x${minHeight} pixels`;
+          return {
+            isValid: false,
+            message: `Image must be at least ${minWidth}x${minHeight} pixels`,
+          };
         }
       } catch (err) {
-        return "Failed to validate image dimensions";
+        return {
+          isValid: false,
+          message: "Failed to validate image dimensions",
+        };
       }
     }
 
-    return null;
+    return { isValid: true };
   };
 
   const getImageDimensions = (file: File): Promise<{ width: number; height: number }> => {
@@ -95,29 +94,33 @@ export const FileUpload = ({
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       const validatedFiles: File[] = [];
-      const errors: string[] = [];
+      const errors: FileValidationError[] = [];
 
       for (const file of acceptedFiles) {
-        const error = await validateFile(file);
-        if (error) {
-          errors.push(`${file.name}: ${error}`);
+        const validation = await validateFile(file);
+        if (!validation.isValid) {
+          errors.push({
+            code: 'type',
+            message: validation.message || 'Invalid file',
+            file: file.name,
+          });
         } else {
           validatedFiles.push(file);
         }
       }
 
       if (errors.length > 0) {
-        errors.forEach(error => toast.error(error));
+        errors.forEach(error => 
+          toast.error(`${error.file}: ${error.message}`)
+        );
         return;
       }
 
-      // Update preview URLs
       const newPreviewUrls = validatedFiles.map(file => 
         file.type.startsWith('image/') ? URL.createObjectURL(file) : ''
       );
       setPreviewUrls(prev => [...prev, ...newPreviewUrls]);
 
-      // Limit number of files
       const finalFiles = [...value, ...validatedFiles].slice(0, maxFiles);
       onChange(finalFiles);
     },
