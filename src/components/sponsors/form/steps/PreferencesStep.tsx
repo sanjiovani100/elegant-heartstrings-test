@@ -37,9 +37,6 @@ export const PreferencesStep = ({ form }: PreferencesStepProps) => {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Sponsorship Preferences</h2>
-      <p className="text-muted-foreground">
-        Select your preferred event segments and sponsorship goals.
-      </p>
 
       <FormField
         control={form.control}

@@ -5,7 +5,6 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -26,7 +25,10 @@ interface SponsorInfoStepProps {
 export const SponsorInfoStep = ({ form }: SponsorInfoStepProps) => {
   const addWebsiteLink = () => {
     const currentLinks = form.getValues("sponsorInfo.websiteLinks");
-    form.setValue("sponsorInfo.websiteLinks", [...currentLinks, { type: "website", url: "", label: "" }]);
+    form.setValue("sponsorInfo.websiteLinks", [
+      ...currentLinks,
+      { type: "website", url: "" },
+    ]);
   };
 
   const removeWebsiteLink = (index: number) => {
@@ -40,9 +42,6 @@ export const SponsorInfoStep = ({ form }: SponsorInfoStepProps) => {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Sponsor Information</h2>
-      <p className="text-muted-foreground">
-        Please provide your company's basic information and contact details.
-      </p>
 
       <FormField
         control={form.control}
@@ -53,9 +52,6 @@ export const SponsorInfoStep = ({ form }: SponsorInfoStepProps) => {
             <FormControl>
               <Input placeholder="Enter company name" {...field} />
             </FormControl>
-            <FormDescription>
-              The official registered name of your company
-            </FormDescription>
             <FormMessage />
           </FormItem>
         )}
