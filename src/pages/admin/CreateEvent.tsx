@@ -24,7 +24,7 @@ const eventSchema = z.object({
   description: z.string().min(1, "Description is required"),
   date: z.string().min(1, "Date is required"),
   location: z.string().min(1, "Location is required"),
-  capacity: z.string().transform((val) => parseInt(val, 10)),
+  capacity: z.coerce.number().min(1, "Capacity must be at least 1"),
 });
 
 type EventFormValues = z.infer<typeof eventSchema>;
@@ -41,23 +41,27 @@ const CreateEvent = () => {
       description: "",
       date: "",
       location: "",
-      capacity: "",
+      capacity: 0,
     },
   });
 
   const onSubmit = async (data: EventFormValues) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("events").insert([
-        {
-          title: data.title,
-          description: data.description,
-          date: new Date(data.date).toISOString(),
-          location: data.location,
-          capacity: data.capacity,
-          status: "draft",
-        },
-      ]);
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) {
+        throw new Error("No authenticated user found");
+      }
+
+      const { error } = await supabase.from("events").insert({
+        title: data.title,
+        description: data.description,
+        date: new Date(data.date).toISOString(),
+        location: data.location,
+        capacity: data.capacity,
+        status: "draft",
+        created_by: session.user.id,
+      });
 
       if (error) throw error;
 
