@@ -1,7 +1,8 @@
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Ticket } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 interface EventCardProps {
   event: {
@@ -13,10 +14,13 @@ interface EventCardProps {
     category: string;
     price: string;
     status: string;
+    capacity?: number;
   };
 }
 
 const EventCard = ({ event }: EventCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <Card className="bg-white/5 border-white/10 overflow-hidden group hover:border-fashionista-pink/50 transition-all duration-300">
       <div className="relative aspect-[4/3]">
@@ -47,6 +51,12 @@ const EventCard = ({ event }: EventCardProps) => {
             <MapPin className="w-4 h-4 text-fashionista-pink" />
             <span className="text-sm">{event.location}</span>
           </div>
+          <div className="flex items-center gap-2">
+            <Ticket className="w-4 h-4 text-fashionista-pink" />
+            <span className="text-sm">
+              {event.capacity ? `${event.capacity} tickets available` : event.price}
+            </span>
+          </div>
         </div>
 
         <div className="flex items-center justify-between">
@@ -54,8 +64,9 @@ const EventCard = ({ event }: EventCardProps) => {
           <Button 
             variant="outline"
             className="border-fashionista-pink text-fashionista-pink hover:bg-fashionista-pink hover:text-white"
+            onClick={() => navigate(`/tickets/${event.id}`)}
           >
-            View Details
+            Get Tickets
           </Button>
         </div>
       </div>
