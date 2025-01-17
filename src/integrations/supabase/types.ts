@@ -485,35 +485,144 @@ export type Database = {
           },
         ]
       }
+      sponsorship_analytics: {
+        Row: {
+          id: string
+          measured_at: string | null
+          metric_type: string
+          metric_value: Json
+          sponsor_id: string | null
+        }
+        Insert: {
+          id?: string
+          measured_at?: string | null
+          metric_type: string
+          metric_value: Json
+          sponsor_id?: string | null
+        }
+        Update: {
+          id?: string
+          measured_at?: string | null
+          metric_type?: string
+          metric_value?: Json
+          sponsor_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sponsorship_analytics_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
+            referencedRelation: "sponsor_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sponsorship_assets: {
+        Row: {
+          approval_date: string | null
+          approved_by: string | null
+          asset_type: string
+          asset_url: string
+          created_at: string | null
+          id: string
+          sponsor_id: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          approval_date?: string | null
+          approved_by?: string | null
+          asset_type: string
+          asset_url: string
+          created_at?: string | null
+          id?: string
+          sponsor_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          approval_date?: string | null
+          approved_by?: string | null
+          asset_type?: string
+          asset_url?: string
+          created_at?: string | null
+          id?: string
+          sponsor_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sponsorship_assets_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
+            referencedRelation: "sponsor_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sponsorship_categories: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          is_digital: boolean | null
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_digital?: boolean | null
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_digital?: boolean | null
+          name?: string
+        }
+        Relationships: []
+      }
       sponsorship_levels: {
         Row: {
           benefits: Json | null
           created_at: string | null
           description: string | null
+          digital_assets: Json | null
           id: string
+          is_active: boolean | null
           max_sponsors: number | null
           name: string
-          price_range: string | null
+          price_range: Json | null
+          type: Database["public"]["Enums"]["sponsorship_type"] | null
           updated_at: string | null
         }
         Insert: {
           benefits?: Json | null
           created_at?: string | null
           description?: string | null
+          digital_assets?: Json | null
           id?: string
+          is_active?: boolean | null
           max_sponsors?: number | null
           name: string
-          price_range?: string | null
+          price_range?: Json | null
+          type?: Database["public"]["Enums"]["sponsorship_type"] | null
           updated_at?: string | null
         }
         Update: {
           benefits?: Json | null
           created_at?: string | null
           description?: string | null
+          digital_assets?: Json | null
           id?: string
+          is_active?: boolean | null
           max_sponsors?: number | null
           name?: string
-          price_range?: string | null
+          price_range?: Json | null
+          type?: Database["public"]["Enums"]["sponsorship_type"] | null
           updated_at?: string | null
         }
         Relationships: []
@@ -887,7 +996,20 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      check_sponsorship_availability: {
+        Args: {
+          level_id: string
+        }
+        Returns: boolean
+      }
+      track_sponsor_engagement: {
+        Args: {
+          sponsor_id: string
+          engagement_type: string
+          engagement_data: Json
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       audit_action: "INSERT" | "UPDATE" | "DELETE" | "SOFT_DELETE"
@@ -913,6 +1035,7 @@ export type Database = {
       sponsor_status: "active" | "inactive"
       sponsorship_level: "gold" | "silver" | "bronze"
       sponsorship_status: "pending" | "approved" | "active" | "completed"
+      sponsorship_type: "physical" | "digital" | "hybrid"
       ticket_status: "available" | "reserved" | "purchased" | "cancelled"
       ticket_tier: "general" | "vip"
       ticket_type_status: "active" | "inactive" | "sold_out"
