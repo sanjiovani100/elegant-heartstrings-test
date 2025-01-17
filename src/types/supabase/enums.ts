@@ -2,6 +2,7 @@ export type ApplicationStatus = 'draft' | 'submitted' | 'under_review' | 'approv
 export type AuditAction = 'INSERT' | 'UPDATE' | 'DELETE' | 'SOFT_DELETE';
 export type ContributionType = 'financial' | 'in_kind' | 'combination';
 export type EventStatus = 'draft' | 'published' | 'completed' | 'cancelled';
+export type EventCategory = 'fashion_show' | 'workshop' | 'networking' | 'exhibition' | 'other';
 export type MediaStatus = 'draft' | 'published';
 export type MediaType = 'gallery' | 'highlights' | 'promotional';
 export type MessageStatus = 'sent' | 'delivered' | 'read';

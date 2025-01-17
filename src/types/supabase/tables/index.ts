@@ -27,3 +27,5 @@ export interface Tables {
 
 export interface TablesInsert extends Tables {}
 export interface TablesUpdate extends Tables {}
+
+export * from '../enums';
