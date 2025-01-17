@@ -9,6 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      audit_logs: {
+        Row: {
+          action_type: Database["public"]["Enums"]["audit_action"]
+          changes: Json | null
+          created_at: string | null
+          id: string
+          ip_address: unknown | null
+          record_id: string
+          table_name: string
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action_type: Database["public"]["Enums"]["audit_action"]
+          changes?: Json | null
+          created_at?: string | null
+          id?: string
+          ip_address?: unknown | null
+          record_id: string
+          table_name: string
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action_type?: Database["public"]["Enums"]["audit_action"]
+          changes?: Json | null
+          created_at?: string | null
+          id?: string
+          ip_address?: unknown | null
+          record_id?: string
+          table_name?: string
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           capacity: number | null
@@ -16,8 +52,10 @@ export type Database = {
           created_at: string | null
           created_by: string
           date: string
+          deleted_at: string | null
           description: string | null
           id: string
+          is_deleted: boolean | null
           location: string
           status: Database["public"]["Enums"]["event_status"] | null
           title: string
@@ -29,8 +67,10 @@ export type Database = {
           created_at?: string | null
           created_by: string
           date: string
+          deleted_at?: string | null
           description?: string | null
           id?: string
+          is_deleted?: boolean | null
           location: string
           status?: Database["public"]["Enums"]["event_status"] | null
           title: string
@@ -42,8 +82,10 @@ export type Database = {
           created_at?: string | null
           created_by?: string
           date?: string
+          deleted_at?: string | null
           description?: string | null
           id?: string
+          is_deleted?: boolean | null
           location?: string
           status?: Database["public"]["Enums"]["event_status"] | null
           title?: string
@@ -110,12 +152,60 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      active_events: {
+        Row: {
+          capacity: number | null
+          cover_image: string | null
+          created_at: string | null
+          created_by: string | null
+          date: string | null
+          deleted_at: string | null
+          description: string | null
+          id: string | null
+          is_deleted: boolean | null
+          location: string | null
+          status: Database["public"]["Enums"]["event_status"] | null
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          capacity?: number | null
+          cover_image?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          date?: string | null
+          deleted_at?: string | null
+          description?: string | null
+          id?: string | null
+          is_deleted?: boolean | null
+          location?: string | null
+          status?: Database["public"]["Enums"]["event_status"] | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          capacity?: number | null
+          cover_image?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          date?: string | null
+          deleted_at?: string | null
+          description?: string | null
+          id?: string | null
+          is_deleted?: boolean | null
+          location?: string | null
+          status?: Database["public"]["Enums"]["event_status"] | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
     }
     Enums: {
+      audit_action: "INSERT" | "UPDATE" | "DELETE" | "SOFT_DELETE"
       event_status: "draft" | "published" | "completed" | "cancelled"
       payment_status: "pending" | "completed" | "failed" | "refunded"
       profile_status: "incomplete" | "complete"
