@@ -7,7 +7,7 @@ const SponsorshipApplication = () => {
   return (
     <div className="min-h-screen flex flex-col bg-sponsor-bg-primary">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-24 md:pt-28"> {/* Added padding-top */}
         <div className="container mx-auto px-4 py-8 md:py-12">
           <h1 className="text-4xl font-playfair text-sponsor-text-primary text-center mb-6">
             Sponsorship Application
