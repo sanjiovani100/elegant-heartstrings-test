@@ -7,6 +7,7 @@ import Tickets from "@/pages/Tickets";
 import Roadmap from "@/pages/Roadmap";
 import Changelog from "@/pages/Changelog";
 import Sponsors from "@/pages/Sponsors";
+import ProfilePage from "@/components/profile/ProfilePage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/roadmap" element={<Roadmap />} />
       <Route path="/changelog" element={<Changelog />} />
       <Route path="/sponsors" element={<Sponsors />} />
+      <Route path="/profile" element={<ProfilePage />} />
     </Routes>
   );
 }
