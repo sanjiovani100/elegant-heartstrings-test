@@ -517,42 +517,63 @@ export type Database = {
           benefits: Json | null
           capacity: number | null
           created_at: string | null
+          currency: string | null
           description: string | null
           event_id: string | null
           id: string
+          is_active_in_stripe: boolean | null
+          is_recurring: boolean | null
           name: string
           price: number
+          recurring_interval: string | null
           sale_end_date: string | null
           sale_start_date: string | null
           status: Database["public"]["Enums"]["ticket_type_status"] | null
+          stripe_metadata: Json | null
+          stripe_price_id: string | null
+          stripe_product_id: string | null
           updated_at: string | null
         }
         Insert: {
           benefits?: Json | null
           capacity?: number | null
           created_at?: string | null
+          currency?: string | null
           description?: string | null
           event_id?: string | null
           id?: string
+          is_active_in_stripe?: boolean | null
+          is_recurring?: boolean | null
           name: string
           price: number
+          recurring_interval?: string | null
           sale_end_date?: string | null
           sale_start_date?: string | null
           status?: Database["public"]["Enums"]["ticket_type_status"] | null
+          stripe_metadata?: Json | null
+          stripe_price_id?: string | null
+          stripe_product_id?: string | null
           updated_at?: string | null
         }
         Update: {
           benefits?: Json | null
           capacity?: number | null
           created_at?: string | null
+          currency?: string | null
           description?: string | null
           event_id?: string | null
           id?: string
+          is_active_in_stripe?: boolean | null
+          is_recurring?: boolean | null
           name?: string
           price?: number
+          recurring_interval?: string | null
           sale_end_date?: string | null
           sale_start_date?: string | null
           status?: Database["public"]["Enums"]["ticket_type_status"] | null
+          stripe_metadata?: Json | null
+          stripe_price_id?: string | null
+          stripe_product_id?: string | null
           updated_at?: string | null
         }
         Relationships: [
