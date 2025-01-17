@@ -7,6 +7,7 @@ import Tickets from "@/pages/Tickets";
 import Roadmap from "@/pages/Roadmap";
 import Changelog from "@/pages/Changelog";
 import Sponsors from "@/pages/Sponsors";
+import SponsorshipApplication from "@/pages/sponsors/SponsorshipApplication";
 import ProfilePage from "@/components/profile/ProfilePage";
 import Login from "@/pages/auth/Login";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
@@ -28,6 +29,14 @@ function App() {
         <Route path="/roadmap" element={<Roadmap />} />
         <Route path="/changelog" element={<Changelog />} />
         <Route path="/sponsors" element={<Sponsors />} />
+        <Route 
+          path="/sponsors/apply" 
+          element={
+            <ProtectedRoute>
+              <SponsorshipApplication />
+            </ProtectedRoute>
+          } 
+        />
         <Route
           path="/profile"
           element={
