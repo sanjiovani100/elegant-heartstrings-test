@@ -13,12 +13,13 @@ import { SponsorshipFormData } from "../types";
 import { FileUpload } from "../FileUpload";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import {
+  SponsorshipType,
   ValidationRules,
   validationRulesByType,
-  SponsorshipType,
   UploadProgress
-} from "../types/fileUpload";
+} from "../types/formTypes";
 
 interface BrandingStepProps {
   form: UseFormReturn<SponsorshipFormData>;
@@ -27,13 +28,20 @@ interface BrandingStepProps {
 export const BrandingStep = ({ form }: BrandingStepProps) => {
   const [uploadProgress, setUploadProgress] = useState<UploadProgress>({});
   const { toast } = useToast();
-  const sponsorshipType = form.watch("preferences.type") as SponsorshipType;
-  const validationRules = validationRulesByType[sponsorshipType] || validationRulesByType.physical;
+  
+  // Get the sponsorship type from the form
+  const sponsorshipType = form.watch("preferences.type") as SponsorshipType || "physical";
+  const validationRules = validationRulesByType[sponsorshipType];
 
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
       const rules = validationRules[field];
       const file = files[0];
+      
+      if (!file) {
+        throw new Error("No file selected");
+      }
+
       const fileExt = file.name.split('.').pop();
       const fileName = `${crypto.randomUUID()}.${fileExt}`;
       const filePath = `${field}/${fileName}`;
@@ -215,3 +223,5 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
     </div>
   );
 };
+
+export default BrandingStep;
