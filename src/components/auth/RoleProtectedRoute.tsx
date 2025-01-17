@@ -39,12 +39,13 @@ const RoleProtectedRoute = ({
               .from("user_roles")
               .select("role")
               .eq("role", "admin")
-              .single();
+              .maybeSingle(); // Changed from .single() to .maybeSingle()
 
-            if (!adminRoles && !allowedRoles.includes("admin")) {
-              navigate("/");
-            } else {
+            // If no admin exists yet, allow access to create the first admin
+            if (!adminRoles && allowedRoles.includes("admin")) {
               setIsChecking(false);
+            } else {
+              navigate("/");
             }
           } else {
             navigate("/");
