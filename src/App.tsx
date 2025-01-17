@@ -10,6 +10,8 @@ import Sponsors from "@/pages/Sponsors";
 import ProfilePage from "@/components/profile/ProfilePage";
 import Login from "@/pages/auth/Login";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import RoleProtectedRoute from "@/components/auth/RoleProtectedRoute";
+import RoleManagement from "@/components/admin/RoleManagement";
 import { Toaster } from "@/components/ui/toaster";
 
 function App() {
@@ -31,6 +33,14 @@ function App() {
             <ProtectedRoute>
               <ProfilePage />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/roles"
+          element={
+            <RoleProtectedRoute allowedRoles={["admin"]}>
+              <RoleManagement />
+            </RoleProtectedRoute>
           }
         />
       </Routes>

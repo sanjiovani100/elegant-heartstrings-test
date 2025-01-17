@@ -4,12 +4,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { User } from "@supabase/supabase-js";
+import { useUserRole } from "@/hooks/use-user-role";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { role } = useUserRole();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,6 +68,11 @@ const Navbar = () => {
             <Link to="/tickets" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Tickets</Link>
             <a href="#about" className="nav-link text-[#F0F0F0] hover:text-white text-lg">About</a>
             <a href="#contact" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Contact</a>
+            {role === "admin" && (
+              <Link to="/admin/roles" className="nav-link text-[#F0F0F0] hover:text-white text-lg">
+                Manage Roles
+              </Link>
+            )}
           </div>
           <div className="flex items-center space-x-4">
             {user ? (
