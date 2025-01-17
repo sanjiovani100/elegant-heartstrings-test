@@ -11,11 +11,14 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import type { Database } from "@/integrations/supabase/types";
+
+type UserRole = Database["public"]["Enums"]["user_role"];
 
 type User = {
   id: string;
   email: string;
-  role?: string;
+  role?: UserRole;
 };
 
 const RoleManagement = () => {
@@ -40,7 +43,7 @@ const RoleManagement = () => {
       const usersWithRoles = users.map(user => ({
         id: user.id,
         email: user.email!,
-        role: roles.find(r => r.user_id === user.id)?.role
+        role: roles.find(r => r.user_id === user.id)?.role as UserRole | undefined
       }));
 
       setUsers(usersWithRoles);
@@ -56,7 +59,7 @@ const RoleManagement = () => {
     }
   };
 
-  const updateUserRole = async (userId: string, newRole: string) => {
+  const updateUserRole = async (userId: string, newRole: UserRole) => {
     try {
       const { error: deleteError } = await supabase
         .from("user_roles")
@@ -67,7 +70,10 @@ const RoleManagement = () => {
 
       const { error: insertError } = await supabase
         .from("user_roles")
-        .insert({ user_id: userId, role: newRole });
+        .insert({
+          user_id: userId,
+          role: newRole
+        });
 
       if (insertError) throw insertError;
 
@@ -110,7 +116,7 @@ const RoleManagement = () => {
               </div>
               <Select
                 value={user.role || ""}
-                onValueChange={(value) => updateUserRole(user.id, value)}
+                onValueChange={(value: UserRole) => updateUserRole(user.id, value)}
               >
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select role" />
