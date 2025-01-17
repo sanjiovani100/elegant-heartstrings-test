@@ -1,12 +1,12 @@
 import { UseFormReturn } from "react-hook-form";
 import { SponsorshipFormData } from "../types";
 import { supabase } from "@/integrations/supabase/client";
-import { Toast } from "@/hooks/use-toast";
+import { type ToastProps } from "@/components/ui/toast";
 
 export const useFileUpload = (
   form: UseFormReturn<SponsorshipFormData>,
   setUploadProgress: React.Dispatch<React.SetStateAction<Record<string, number>>>,
-  toast: Toast
+  toast: (props: ToastProps) => void
 ) => {
   const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
     try {
