@@ -118,6 +118,7 @@ export type Database = {
       }
       events: {
         Row: {
+          branding_guidelines: Json | null
           capacity: number | null
           category: Database["public"]["Enums"]["event_category"] | null
           cover_image: string | null
@@ -126,15 +127,24 @@ export type Database = {
           date: string
           deleted_at: string | null
           description: string | null
+          dress_code: string | null
+          featured_highlights: Json | null
           id: string
           is_deleted: boolean | null
           location: string
           metadata: Json | null
+          prerequisites: Json | null
+          registration_status: string | null
+          rich_description: string | null
+          schedule_timeline: Json | null
+          setup_completion_status: Json | null
           status: Database["public"]["Enums"]["event_status"] | null
           title: string
           updated_at: string | null
+          venue_details: Json | null
         }
         Insert: {
+          branding_guidelines?: Json | null
           capacity?: number | null
           category?: Database["public"]["Enums"]["event_category"] | null
           cover_image?: string | null
@@ -143,15 +153,24 @@ export type Database = {
           date: string
           deleted_at?: string | null
           description?: string | null
+          dress_code?: string | null
+          featured_highlights?: Json | null
           id?: string
           is_deleted?: boolean | null
           location: string
           metadata?: Json | null
+          prerequisites?: Json | null
+          registration_status?: string | null
+          rich_description?: string | null
+          schedule_timeline?: Json | null
+          setup_completion_status?: Json | null
           status?: Database["public"]["Enums"]["event_status"] | null
           title: string
           updated_at?: string | null
+          venue_details?: Json | null
         }
         Update: {
+          branding_guidelines?: Json | null
           capacity?: number | null
           category?: Database["public"]["Enums"]["event_category"] | null
           cover_image?: string | null
@@ -160,13 +179,21 @@ export type Database = {
           date?: string
           deleted_at?: string | null
           description?: string | null
+          dress_code?: string | null
+          featured_highlights?: Json | null
           id?: string
           is_deleted?: boolean | null
           location?: string
           metadata?: Json | null
+          prerequisites?: Json | null
+          registration_status?: string | null
+          rich_description?: string | null
+          schedule_timeline?: Json | null
+          setup_completion_status?: Json | null
           status?: Database["public"]["Enums"]["event_status"] | null
           title?: string
           updated_at?: string | null
+          venue_details?: Json | null
         }
         Relationships: []
       }
@@ -1020,6 +1047,14 @@ export type Database = {
         | "Exhibition"
         | "Conference"
         | "Networking"
+        | "Awards_Ceremony"
+        | "Runway_Show"
+        | "Masterclass"
+        | "Pop_Up_Shop"
+        | "VIP_Reception"
+        | "Industry_Mixer"
+        | "Designer_Showcase"
+        | "Trend_Presentation"
       event_status: "draft" | "published" | "completed" | "cancelled"
       media_status: "draft" | "published"
       media_type: "gallery" | "highlights" | "promotional"
