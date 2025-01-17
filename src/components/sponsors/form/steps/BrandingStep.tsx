@@ -11,12 +11,72 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SponsorshipFormData } from "../types";
 import { FileUpload } from "../FileUpload";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface BrandingStepProps {
   form: UseFormReturn<SponsorshipFormData>;
 }
 
 export const BrandingStep = ({ form }: BrandingStepProps) => {
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
+  const { toast } = useToast();
+
+  const handleFileUpload = async (files: File[], field: "logo" | "promotionalMaterials") => {
+    try {
+      const file = files[0];
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${crypto.randomUUID()}.${fileExt}`;
+      const filePath = `${field}/${fileName}`;
+
+      const { error: uploadError, data } = await supabase.storage
+        .from('sponsorship-assets')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false,
+          onUploadProgress: (progress) => {
+            const percent = (progress.loaded / progress.total) * 100;
+            setUploadProgress(prev => ({
+              ...prev,
+              [field]: percent
+            }));
+          },
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('sponsorship-assets')
+        .getPublicUrl(filePath);
+
+      // Update form with the file URL
+      if (field === "logo") {
+        form.setValue("branding.logo", publicUrl);
+      } else {
+        const currentUrls = form.getValues("branding.promotionalMaterials") || [];
+        form.setValue("branding.promotionalMaterials", [...currentUrls, publicUrl]);
+      }
+
+      toast({
+        title: "File uploaded successfully",
+        description: `${file.name} has been uploaded.`,
+      });
+    } catch (error) {
+      console.error("Upload error:", error);
+      toast({
+        title: "Upload failed",
+        description: "There was an error uploading your file.",
+        variant: "destructive",
+      });
+    } finally {
+      setUploadProgress(prev => ({
+        ...prev,
+        [field]: 0
+      }));
+    }
+  };
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Branding and Deliverables</h2>
@@ -39,8 +99,10 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
                   'image/*': ['.png', '.jpg', '.jpeg', '.svg']
                 }}
                 maxSize={5 * 1024 * 1024} // 5MB
-                value={field.value ? [field.value] : []}
-                onChange={(files) => field.onChange(files[0])}
+                value={field.value ? [new File([], field.value)] : []}
+                onChange={(files) => handleFileUpload(files, "logo")}
+                progress={uploadProgress["logo"]}
+                helperText="Maximum file size: 5MB. Supported formats: PNG, JPG, SVG"
               />
             </FormControl>
             <FormMessage />
@@ -66,8 +128,10 @@ export const BrandingStep = ({ form }: BrandingStepProps) => {
                 }}
                 maxFiles={5}
                 maxSize={20 * 1024 * 1024} // 20MB
-                value={field.value || []}
-                onChange={field.onChange}
+                value={field.value ? field.value.map(url => new File([], url)) : []}
+                onChange={(files) => handleFileUpload(files, "promotionalMaterials")}
+                progress={uploadProgress["promotionalMaterials"]}
+                helperText="Maximum file size: 20MB per file. Up to 5 files."
               />
             </FormControl>
             <FormMessage />
