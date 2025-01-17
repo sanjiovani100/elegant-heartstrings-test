@@ -1,45 +1,53 @@
 import * as z from "zod";
 
+const websiteLinkSchema = z.object({
+  url: z.string().url("Please enter a valid URL"),
+  type: z.enum(["website", "linkedin", "twitter", "instagram", "other"]),
+  label: z.string().optional(),
+});
+
+const targetAudienceSchema = z.object({
+  ageRange: z.object({
+    min: z.number().min(0).max(100),
+    max: z.number().min(0).max(100),
+  }),
+  location: z.string().min(2, "Location must be at least 2 characters"),
+  profession: z.string().min(2, "Profession must be at least 2 characters"),
+  interests: z.array(z.string()).min(1, "Select at least one interest"),
+});
+
 export const sponsorshipFormSchema = z.object({
   // Step 1: Sponsor Information
-  companyInfo: z.object({
+  sponsorInfo: z.object({
     companyName: z.string().min(2, "Company name must be at least 2 characters"),
     industry: z.enum([
       "fashion",
-      "technology",
       "beauty",
+      "technology",
       "lifestyle",
-      "food_and_beverage",
       "media",
       "retail",
-      "luxury",
       "other"
     ]),
+    websiteLinks: z.array(websiteLinkSchema).min(1, "At least one website link is required"),
     contactName: z.string().min(2, "Contact name is required"),
-    email: z.string().email("Invalid email address"),
-    phone: z.string().min(10, "Phone number is required"),
-    websiteLinks: z.array(z.string().url("Invalid URL")).min(1, "At least one website link is required"),
+    contactEmail: z.string().email("Invalid email address"),
+    contactPhone: z.string().min(10, "Phone number is required"),
   }),
 
   // Step 2: Sponsorship Preferences
-  sponsorshipPreferences: z.object({
-    level: z.enum(["platinum", "gold", "silver", "bronze", "custom"]),
+  preferences: z.object({
     eventSegments: z.array(z.string()).min(1, "Select at least one event segment"),
     goals: z.array(z.string()).min(1, "Select at least one goal"),
     otherGoal: z.string().optional(),
-    targetAudience: z.object({
-      ageRange: z.string(),
-      location: z.string(),
-      profession: z.string(),
-      interests: z.array(z.string()),
-    }),
+    targetAudience: targetAudienceSchema,
   }),
 
   // Step 3: Branding
   branding: z.object({
     logo: z.any(), // Will be handled by file upload
     promotionalMaterials: z.array(z.any()), // Will be handled by file upload
-    customBrandingRequests: z.string(),
+    brandingRequests: z.string(),
     companyTagline: z.string(),
   }),
 
@@ -47,10 +55,11 @@ export const sponsorshipFormSchema = z.object({
   contribution: z.object({
     type: z.enum(["financial", "in_kind", "combination"]),
     inKindDetails: z.string().optional(),
-    contributionRange: z.object({
-      min: z.number(),
-      max: z.number(),
+    amount: z.object({
+      min: z.number().min(0),
+      max: z.number().min(0),
     }),
+    currency: z.string().default("USD"),
   }),
 
   // Step 5: Additional Info
@@ -59,10 +68,8 @@ export const sponsorshipFormSchema = z.object({
     hasPreviousSponsorship: z.boolean(),
     previousSponsorshipDetails: z.string().optional(),
     willParticipate: z.boolean(),
-    participationDetails: z.object({
-      attendeeCount: z.number().optional(),
-      vipRequirements: z.string().optional(),
-    }),
+    attendeeCount: z.number().optional(),
+    vipRequirements: z.string().optional(),
     specialRequests: z.string(),
   }),
 
