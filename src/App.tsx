@@ -39,12 +39,19 @@ function App() {
         <Route
           path="/admin/roles"
           element={
-            <RoleProtectedRoute allowedRoles={["admin"]}>
+            <RoleProtectedRoute allowedRoles={["admin"]} requireAuth={false}>
               <RoleManagement />
             </RoleProtectedRoute>
           }
         />
-        <Route path="/admin/events/create" element={<CreateEvent />} />
+        <Route
+          path="/admin/events/create"
+          element={
+            <RoleProtectedRoute allowedRoles={["admin"]} requireAuth={false}>
+              <CreateEvent />
+            </RoleProtectedRoute>
+          }
+        />
       </Routes>
       <Toaster />
     </>
