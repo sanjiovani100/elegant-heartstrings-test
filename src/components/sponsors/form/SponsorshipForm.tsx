@@ -4,6 +4,7 @@ import { FormNavigation } from "./components/FormNavigation";
 import { FormStep } from "./components/FormStep";
 import { useSponsorshipForm } from "./useSponsorshipForm";
 import { useState } from "react";
+import { FormProvider } from "react-hook-form";
 
 const TOTAL_STEPS = 6;
 const STEP_TITLES = [
@@ -46,18 +47,20 @@ export const SponsorshipForm = () => {
       />
       
       <Card className="mt-8 p-6 md:p-8 bg-white border border-gray-200 shadow-sm">
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormStep currentStep={currentStep} form={form} />
-          
-          <FormNavigation
-            currentStep={currentStep}
-            totalSteps={TOTAL_STEPS}
-            isSubmitting={isSubmitting}
-            isValidating={isValidating}
-            onPrevious={previousStep}
-            onNext={handleNextStep}
-          />
-        </form>
+        <FormProvider {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormStep currentStep={currentStep} form={form} />
+            
+            <FormNavigation
+              currentStep={currentStep}
+              totalSteps={TOTAL_STEPS}
+              isSubmitting={isSubmitting}
+              isValidating={isValidating}
+              onPrevious={previousStep}
+              onNext={handleNextStep}
+            />
+          </form>
+        </FormProvider>
       </Card>
     </div>
   );
