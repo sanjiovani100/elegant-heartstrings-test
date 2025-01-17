@@ -3,6 +3,8 @@ import { UseFormReturn } from "react-hook-form";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { SponsorshipFormData } from "../types";
+import { uploadFile, uploadFiles } from "./submission/useFileUpload";
+import { saveApplicationToDatabase } from "./submission/useDatabaseSubmission";
 
 export const useFormSubmission = (form: UseFormReturn<SponsorshipFormData>) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,78 +16,16 @@ export const useFormSubmission = (form: UseFormReturn<SponsorshipFormData>) => {
       const user = (await supabase.auth.getUser()).data.user;
       if (!user) throw new Error("No user found");
 
-      // Upload logo
-      const logoFile = data.branding.logo;
+      // Upload logo and promotional materials
       let logoUrl = null;
-      if (logoFile) {
-        const fileExt = logoFile.name.split(".").pop();
-        const filePath = `${user.id}/logo.${fileExt}`;
-        const { error: uploadError } = await supabase.storage
-          .from("sponsorship-assets")
-          .upload(filePath, logoFile);
-
-        if (uploadError) throw uploadError;
-
-        const { data: { publicUrl } } = supabase.storage
-          .from("sponsorship-assets")
-          .getPublicUrl(filePath);
-        
-        logoUrl = publicUrl;
+      if (data.branding.logo) {
+        logoUrl = await uploadFile(data.branding.logo, user.id, 'logo');
       }
 
-      // Upload promotional materials
-      const promotionalUrls = await Promise.all(
-        data.branding.promotionalMaterials.map(async (file, index) => {
-          const fileExt = file.name.split(".").pop();
-          const filePath = `${user.id}/promo-${index}.${fileExt}`;
-          await supabase.storage
-            .from("sponsorship-assets")
-            .upload(filePath, file);
-
-          const { data: { publicUrl } } = supabase.storage
-            .from("sponsorship-assets")
-            .getPublicUrl(filePath);
-          
-          return publicUrl;
-        })
-      );
+      const promoUrls = await uploadFiles(data.branding.promotionalMaterials, user.id, 'promo');
 
       // Save application to database
-      const { error: dbError } = await supabase
-        .from("sponsorship_applications")
-        .insert({
-          sponsor_id: user.id,
-          status: "submitted",
-          contact_name: data.sponsorInfo.contactName,
-          contact_email: data.sponsorInfo.contactEmail,
-          contact_phone: data.sponsorInfo.contactPhone,
-          website_links: data.sponsorInfo.websiteLinks,
-          event_segments: data.preferences.eventSegments,
-          sponsorship_goals: data.preferences.goals,
-          target_audience: data.preferences.targetAudience,
-          company_tagline: data.branding.companyTagline,
-          custom_branding_requests: data.branding.brandingRequests,
-          contribution_type: data.contribution.type,
-          contribution_details: data.contribution.inKindDetails,
-          contribution_range: data.contribution.amount,
-          company_background: data.additionalInfo.companyBackground,
-          previous_sponsorships: {
-            has_previous: data.additionalInfo.hasPreviousSponsorship,
-            details: data.additionalInfo.previousSponsorshipDetails,
-          },
-          event_participation: {
-            will_participate: data.additionalInfo.willParticipate,
-            attendee_count: data.additionalInfo.attendeeCount,
-            vip_requirements: data.additionalInfo.vipRequirements,
-          },
-          terms_accepted: data.agreement.termsAccepted,
-          signature_data: {
-            signature: data.agreement.signature,
-            signed_at: new Date().toISOString(),
-          },
-        });
-
-      if (dbError) throw dbError;
+      await saveApplicationToDatabase(data, user.id, logoUrl, promoUrls);
 
       toast({
         title: "Success",
