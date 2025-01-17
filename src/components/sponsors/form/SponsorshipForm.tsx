@@ -1,13 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { SponsorInfoStep } from "./steps/SponsorInfoStep";
-import { PreferencesStep } from "./steps/PreferencesStep";
-import { BrandingStep } from "./steps/BrandingStep";
-import { ContributionStep } from "./steps/ContributionStep";
-import { AdditionalInfoStep } from "./steps/AdditionalInfoStep";
-import { AgreementStep } from "./steps/AgreementStep";
+import { FormProgress } from "./components/FormProgress";
+import { FormNavigation } from "./components/FormNavigation";
+import { FormStep } from "./components/FormStep";
 import { useSponsorshipForm } from "./useSponsorshipForm";
 
 const TOTAL_STEPS = 6;
@@ -31,82 +25,26 @@ export const SponsorshipForm = () => {
     isStepValid,
   } = useSponsorshipForm();
 
-  const renderStep = () => {
-    switch (currentStep) {
-      case 1:
-        return <SponsorInfoStep form={form} />;
-      case 2:
-        return <PreferencesStep form={form} />;
-      case 3:
-        return <BrandingStep form={form} />;
-      case 4:
-        return <ContributionStep form={form} />;
-      case 5:
-        return <AdditionalInfoStep form={form} />;
-      case 6:
-        return <AgreementStep form={form} />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <div className="mb-8 space-y-4">
-        <Progress value={(currentStep / TOTAL_STEPS) * 100} className="h-2" />
-        <div className="flex justify-between text-sm text-muted-foreground">
-          <span>Step {currentStep} of {TOTAL_STEPS}</span>
-          <span>{STEP_TITLES[currentStep - 1]}</span>
-        </div>
-      </div>
+      <FormProgress
+        currentStep={currentStep}
+        totalSteps={TOTAL_STEPS}
+        stepTitles={STEP_TITLES}
+      />
       
       <Card className="p-6">
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          {renderStep()}
+          <FormStep currentStep={currentStep} form={form} />
           
-          <div className="flex justify-between mt-8">
-            {currentStep > 1 && (
-              <Button
-                type="button"
-                onClick={previousStep}
-                variant="outline"
-                className="w-32"
-                disabled={isSubmitting}
-              >
-                <ChevronLeft className="mr-2 h-4 w-4" />
-                Previous
-              </Button>
-            )}
-            
-            <div className="flex-1" />
-            
-            {currentStep < TOTAL_STEPS ? (
-              <Button
-                type="button"
-                onClick={nextStep}
-                className="w-32"
-                disabled={isSubmitting || !isStepValid(currentStep)}
-              >
-                Next
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                disabled={isSubmitting || !isStepValid(currentStep)}
-                className="w-32"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  'Submit'
-                )}
-              </Button>
-            )}
-          </div>
+          <FormNavigation
+            currentStep={currentStep}
+            totalSteps={TOTAL_STEPS}
+            isSubmitting={isSubmitting}
+            isStepValid={isStepValid(currentStep)}
+            onPrevious={previousStep}
+            onNext={nextStep}
+          />
         </form>
       </Card>
     </div>
