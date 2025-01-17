@@ -12,30 +12,54 @@ export type Database = {
       profiles: {
         Row: {
           avatar_url: string | null
-          created_at: string
-          first_name: string | null
+          bio: string | null
+          created_at: string | null
+          full_name: string | null
           id: string
-          last_name: string | null
-          role: string | null
-          updated_at: string
+          phone_number: string | null
+          social_links: Json | null
+          updated_at: string | null
+          website_url: string | null
         }
         Insert: {
           avatar_url?: string | null
-          created_at?: string
-          first_name?: string | null
+          bio?: string | null
+          created_at?: string | null
+          full_name?: string | null
           id: string
-          last_name?: string | null
-          role?: string | null
-          updated_at?: string
+          phone_number?: string | null
+          social_links?: Json | null
+          updated_at?: string | null
+          website_url?: string | null
         }
         Update: {
           avatar_url?: string | null
-          created_at?: string
-          first_name?: string | null
+          bio?: string | null
+          created_at?: string | null
+          full_name?: string | null
           id?: string
-          last_name?: string | null
-          role?: string | null
-          updated_at?: string
+          phone_number?: string | null
+          social_links?: Json | null
+          updated_at?: string | null
+          website_url?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          role?: Database["public"]["Enums"]["user_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -47,7 +71,12 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      user_role: "admin" | "user" | "model" | "designer" | "sponsor"
+      event_status: "draft" | "published" | "completed" | "cancelled"
+      payment_status: "pending" | "completed" | "failed" | "refunded"
+      sponsorship_level: "gold" | "silver" | "bronze"
+      ticket_status: "available" | "reserved" | "purchased" | "cancelled"
+      ticket_tier: "general" | "vip"
+      user_role: "admin" | "model" | "designer" | "sponsor" | "visitor"
     }
     CompositeTypes: {
       [_ in never]: never
