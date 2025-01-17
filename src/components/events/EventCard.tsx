@@ -3,17 +3,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
+import { Event } from "@/types/events";
 
 interface EventCardProps {
-  event: {
-    id: number;
-    title: string;
-    date: string;
-    location: string;
-    imageUrl: string;
-    category: string;
-    price: string;
-    status: string;
+  event: Event & {
     capacity?: number;
   };
 }
