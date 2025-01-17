@@ -465,6 +465,75 @@ export type Database = {
         }
         Relationships: []
       }
+      promotional_codes: {
+        Row: {
+          applicable_ticket_types: string[] | null
+          code: string
+          created_at: string | null
+          created_by: string | null
+          discount_type: string
+          discount_value: number
+          event_id: string | null
+          id: string
+          is_active: boolean | null
+          metadata: Json | null
+          times_used: number | null
+          updated_at: string | null
+          usage_limit: number | null
+          valid_from: string | null
+          valid_until: string | null
+        }
+        Insert: {
+          applicable_ticket_types?: string[] | null
+          code: string
+          created_at?: string | null
+          created_by?: string | null
+          discount_type: string
+          discount_value: number
+          event_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          metadata?: Json | null
+          times_used?: number | null
+          updated_at?: string | null
+          usage_limit?: number | null
+          valid_from?: string | null
+          valid_until?: string | null
+        }
+        Update: {
+          applicable_ticket_types?: string[] | null
+          code?: string
+          created_at?: string | null
+          created_by?: string | null
+          discount_type?: string
+          discount_value?: number
+          event_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          metadata?: Json | null
+          times_used?: number | null
+          updated_at?: string | null
+          usage_limit?: number | null
+          valid_from?: string | null
+          valid_until?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "promotional_codes_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "active_events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "promotional_codes_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       sponsor_profiles: {
         Row: {
           company_name: string
@@ -1023,6 +1092,18 @@ export type Database = {
       }
     }
     Functions: {
+      check_and_update_promo_code: {
+        Args: {
+          p_code: string
+          p_event_id: string
+        }
+        Returns: {
+          is_valid: boolean
+          discount_type: string
+          discount_value: number
+          message: string
+        }[]
+      }
       check_sponsorship_availability: {
         Args: {
           level_id: string
