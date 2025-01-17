@@ -59,7 +59,7 @@ export const useSponsorshipForm = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
-  const isStepValid = async (step: number) => {
+  const isStepValid = async (step: number): Promise<boolean> => {
     let fieldsToValidate: string[] = [];
     
     switch (step) {
