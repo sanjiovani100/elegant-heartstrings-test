@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { SponsorInfoStep } from "./steps/SponsorInfoStep";
 import { PreferencesStep } from "./steps/PreferencesStep";
 import { BrandingStep } from "./steps/BrandingStep";
@@ -9,6 +11,14 @@ import { AgreementStep } from "./steps/AgreementStep";
 import { useSponsorshipForm } from "./useSponsorshipForm";
 
 const TOTAL_STEPS = 6;
+const STEP_TITLES = [
+  "Sponsor Information",
+  "Preferences",
+  "Branding",
+  "Contribution",
+  "Additional Info",
+  "Agreement",
+];
 
 export const SponsorshipForm = () => {
   const {
@@ -18,6 +28,7 @@ export const SponsorshipForm = () => {
     nextStep,
     previousStep,
     onSubmit,
+    isStepValid,
   } = useSponsorshipForm();
 
   const renderStep = () => {
@@ -41,29 +52,55 @@ export const SponsorshipForm = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <Progress value={(currentStep / TOTAL_STEPS) * 100} className="mb-6" />
-      
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {renderStep()}
-        
-        <div className="flex justify-between mt-8">
-          {currentStep > 1 && (
-            <Button type="button" onClick={previousStep} variant="outline">
-              Previous
-            </Button>
-          )}
-          
-          {currentStep < TOTAL_STEPS ? (
-            <Button type="button" onClick={nextStep}>
-              Next
-            </Button>
-          ) : (
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Submit Application"}
-            </Button>
-          )}
+      <div className="mb-8 space-y-4">
+        <Progress value={(currentStep / TOTAL_STEPS) * 100} className="h-2" />
+        <div className="flex justify-between text-sm text-muted-foreground">
+          <span>Step {currentStep} of {TOTAL_STEPS}</span>
+          <span>{STEP_TITLES[currentStep - 1]}</span>
         </div>
-      </form>
+      </div>
+      
+      <Card className="p-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          {renderStep()}
+          
+          <div className="flex justify-between mt-8">
+            {currentStep > 1 && (
+              <Button
+                type="button"
+                onClick={previousStep}
+                variant="outline"
+                className="w-32"
+              >
+                <ChevronLeft className="mr-2 h-4 w-4" />
+                Previous
+              </Button>
+            )}
+            
+            <div className="flex-1" />
+            
+            {currentStep < TOTAL_STEPS ? (
+              <Button
+                type="button"
+                onClick={nextStep}
+                className="w-32"
+                disabled={!isStepValid(currentStep)}
+              >
+                Next
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                disabled={isSubmitting || !isStepValid(currentStep)}
+                className="w-32"
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </Button>
+            )}
+          </div>
+        </form>
+      </Card>
     </div>
   );
 };
