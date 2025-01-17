@@ -12,6 +12,7 @@ import Login from "@/pages/auth/Login";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import RoleProtectedRoute from "@/components/auth/RoleProtectedRoute";
 import RoleManagement from "@/components/admin/RoleManagement";
+import CreateEvent from "@/pages/admin/CreateEvent";
 import { Toaster } from "@/components/ui/toaster";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
             </RoleProtectedRoute>
           }
         />
+        <Route path="/admin/events/create" element={<CreateEvent />} />
       </Routes>
       <Toaster />
     </>

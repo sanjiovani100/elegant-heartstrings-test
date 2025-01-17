@@ -69,9 +69,14 @@ const Navbar = () => {
             <a href="#about" className="nav-link text-[#F0F0F0] hover:text-white text-lg">About</a>
             <a href="#contact" className="nav-link text-[#F0F0F0] hover:text-white text-lg">Contact</a>
             {role === "admin" && (
-              <Link to="/admin/roles" className="nav-link text-[#F0F0F0] hover:text-white text-lg">
-                Manage Roles
-              </Link>
+              <>
+                <Link to="/admin/roles" className="nav-link text-[#F0F0F0] hover:text-white text-lg">
+                  Manage Roles
+                </Link>
+                <Link to="/admin/events/create" className="nav-link text-[#F0F0F0] hover:text-white text-lg">
+                  Create Event
+                </Link>
+              </>
             )}
           </div>
           <div className="flex items-center space-x-4">

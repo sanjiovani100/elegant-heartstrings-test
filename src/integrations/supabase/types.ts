@@ -9,6 +9,48 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      events: {
+        Row: {
+          capacity: number | null
+          cover_image: string | null
+          created_at: string | null
+          created_by: string
+          date: string
+          description: string | null
+          id: string
+          location: string
+          status: Database["public"]["Enums"]["event_status"] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          capacity?: number | null
+          cover_image?: string | null
+          created_at?: string | null
+          created_by: string
+          date: string
+          description?: string | null
+          id?: string
+          location: string
+          status?: Database["public"]["Enums"]["event_status"] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          capacity?: number | null
+          cover_image?: string | null
+          created_at?: string | null
+          created_by?: string
+          date?: string
+          description?: string | null
+          id?: string
+          location?: string
+          status?: Database["public"]["Enums"]["event_status"] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
