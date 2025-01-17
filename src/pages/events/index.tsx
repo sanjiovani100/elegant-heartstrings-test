@@ -10,36 +10,36 @@ const EventsPage = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Placeholder events data - in real app, fetch from Supabase
+  // Updated events data with new images
   const events = [
     {
       id: 1,
-      title: "Valentine's Fashion Extravaganza",
+      title: "Spring/Summer Fashion Gala",
       date: "2024-02-14T19:00:00",
       location: "Skybox Medellín",
-      imageUrl: "/hero1.jpg",
+      imageUrl: "/lovable-uploads/d8eb6844-0ce1-4dac-8af3-885d48bad984.png",
       category: "Fashion Show",
-      price: "From $99",
+      price: "From $199",
       status: "upcoming",
     },
     {
       id: 2,
-      title: "Designer Showcase 2024",
+      title: "Summer Collection Preview",
       date: "2024-02-20T18:00:00",
       location: "Fashion District",
-      imageUrl: "/hero2.jpg",
-      category: "Showcase",
+      imageUrl: "/lovable-uploads/23792608-ea98-47a2-9e5c-ac49c6228df3.png",
+      category: "Preview",
       price: "From $149",
       status: "upcoming",
     },
     {
       id: 3,
-      title: "Spring Collection Launch",
+      title: "Floral Couture Exhibition",
       date: "2024-03-01T20:00:00",
       location: "Metropolitan Gallery",
-      imageUrl: "/hero3.jpg",
-      category: "Launch Party",
-      price: "From $199",
+      imageUrl: "/lovable-uploads/f1b6c1ac-400c-4430-af0c-1f703ac936ab.png",
+      category: "Exhibition",
+      price: "From $299",
       status: "upcoming",
     },
   ];
@@ -47,7 +47,7 @@ const EventsPage = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <div className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: 'url("/hero1.jpg")' }}>
+      <div className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: 'url("/lovable-uploads/f1b6c1ac-400c-4430-af0c-1f703ac936ab.png")' }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/90">
           <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
             <h1 className="text-4xl md:text-6xl font-playfair text-white mb-6 animate-fade-up">
