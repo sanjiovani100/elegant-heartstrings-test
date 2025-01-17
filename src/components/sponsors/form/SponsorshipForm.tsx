@@ -1,87 +1,24 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { toast } from "sonner";
-import { SponsorshipFormData, sponsorshipFormSchema } from "./sponsorshipFormSchema";
 import { SponsorInfoStep } from "./steps/SponsorInfoStep";
 import { PreferencesStep } from "./steps/PreferencesStep";
 import { BrandingStep } from "./steps/BrandingStep";
 import { ContributionStep } from "./steps/ContributionStep";
 import { AdditionalInfoStep } from "./steps/AdditionalInfoStep";
 import { AgreementStep } from "./steps/AgreementStep";
-import { supabase } from "@/integrations/supabase/client";
+import { useSponsorshipForm } from "./useSponsorshipForm";
 
 const TOTAL_STEPS = 6;
 
 export const SponsorshipForm = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<SponsorshipFormData>({
-    resolver: zodResolver(sponsorshipFormSchema),
-    defaultValues: {
-      companyInfo: {
-        websiteLinks: [""],
-      },
-      sponsorshipPreferences: {
-        eventSegments: [],
-        goals: [],
-        targetAudience: {
-          interests: [],
-        },
-      },
-      branding: {
-        promotionalMaterials: [],
-      },
-      contribution: {
-        contributionRange: {
-          min: 0,
-          max: 0,
-        },
-      },
-      additionalInfo: {
-        hasPreviousSponsorship: false,
-        willParticipate: false,
-        participationDetails: {},
-      },
-      agreement: {
-        termsAccepted: false,
-        signature: "",
-      },
-    },
-  });
-
-  const onSubmit = async (data: SponsorshipFormData) => {
-    setIsSubmitting(true);
-    try {
-      const { error } = await supabase
-        .from("sponsorship_applications")
-        .insert({
-          ...data,
-          status: "submitted",
-          submitted_at: new Date().toISOString(),
-        });
-
-      if (error) throw error;
-
-      toast.success("Application submitted successfully!");
-    } catch (error) {
-      console.error("Error submitting application:", error);
-      toast.error("Failed to submit application. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const nextStep = () => {
-    setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS));
-  };
-
-  const previousStep = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
-  };
+  const {
+    form,
+    currentStep,
+    isSubmitting,
+    nextStep,
+    previousStep,
+    onSubmit,
+  } = useSponsorshipForm();
 
   const renderStep = () => {
     switch (currentStep) {
