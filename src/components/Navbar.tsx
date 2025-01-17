@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -17,8 +17,11 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
   const { role } = useUserRole();
+
+  const isSponsorsApplyPage = location.pathname === "/sponsors/apply";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,8 +62,15 @@ const Navbar = () => {
     }
   };
 
+  const getNavbarBackground = () => {
+    if (isSponsorsApplyPage) {
+      return 'bg-black/90';
+    }
+    return isScrolled ? 'bg-black/90' : 'bg-transparent';
+  };
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${getNavbarBackground()} py-4`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="group px-3">
