@@ -30,6 +30,45 @@ export default {
           grey: "#F0F0F0",
           dark: "#000000",
         },
+        sponsor: {
+          bg: {
+            primary: "#FFFFFF",
+            secondary: "#F8FAFC",
+            header: "#1A1F2C",
+            disabled: "#F1F5F9",
+          },
+          text: {
+            primary: "#1E293B",
+            secondary: "#64748B",
+            label: "#475569",
+          },
+          accent: {
+            success: "#10B981",
+            error: "#EF4444",
+            warning: "#F59E0B",
+            info: "#3B82F6",
+          },
+          border: {
+            input: "#E2E8F0",
+            focus: "#800000",
+          },
+          button: {
+            primary: "#800000",
+            "primary-hover": "#660000",
+            secondary: "#FFC1C1",
+            "secondary-hover": "#FFB1B1",
+          },
+          progress: {
+            completed: "#800000",
+            current: "#FFC1C1",
+            upcoming: "#E2E8F0",
+          },
+          shadow: {
+            card: "rgba(0, 0, 0, 0.05)",
+            modal: "rgba(0, 0, 0, 0.4)",
+            hover: "rgba(128, 0, 0, 0.1)",
+          },
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -66,6 +105,8 @@ export default {
       },
       boxShadow: {
         glow: "0 0 15px rgba(255, 193, 193, 0.5)",
+        "sponsor-card": "0 2px 4px rgba(0, 0, 0, 0.05)",
+        "sponsor-hover": "0 4px 6px rgba(128, 0, 0, 0.1)",
       },
       keyframes: {
         "accordion-down": {

@@ -44,14 +44,87 @@
   }
 }
 
+/* Sponsorship Form Specific Styles */
+.sponsorship-form {
+  @apply bg-sponsor-bg-primary text-sponsor-text-primary;
+}
+
+.sponsorship-form label {
+  @apply text-sponsor-text-label font-medium;
+}
+
+.sponsorship-form input,
+.sponsorship-form select,
+.sponsorship-form textarea {
+  @apply bg-sponsor-bg-primary border-sponsor-border-input text-sponsor-text-primary 
+         focus:border-sponsor-border-focus focus:ring-sponsor-border-focus/10
+         disabled:bg-sponsor-bg-disabled disabled:text-sponsor-text-secondary;
+}
+
+.sponsorship-form .error-message {
+  @apply text-sponsor-accent-error text-sm mt-1;
+}
+
+.sponsorship-form .helper-text {
+  @apply text-sponsor-text-secondary text-sm mt-1;
+}
+
+.form-step-title {
+  @apply text-2xl font-montserrat text-sponsor-text-primary mb-6;
+}
+
+.form-section {
+  @apply space-y-6 p-6 bg-sponsor-bg-secondary rounded-lg border border-sponsor-border-input;
+}
+
+.form-field-group {
+  @apply space-y-4;
+}
+
+/* Progress Indicator Styles */
+.progress-step {
+  @apply transition-all duration-300;
+}
+
+.progress-step.completed {
+  @apply text-sponsor-progress-completed;
+}
+
+.progress-step.current {
+  @apply text-sponsor-progress-current;
+}
+
+.progress-step.upcoming {
+  @apply text-sponsor-progress-upcoming;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-sponsor-button-primary hover:bg-sponsor-button-primary-hover text-white
+         transition-colors duration-300;
+}
+
+.btn-secondary {
+  @apply bg-sponsor-button-secondary hover:bg-sponsor-button-secondary-hover text-sponsor-text-primary
+         transition-colors duration-300;
+}
+
+/* Card Hover Effects */
+.sponsor-card {
+  @apply transition-all duration-300 hover:shadow-sponsor-hover;
+}
+
+/* Hero Gradient */
 .hero-gradient {
   background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
 }
 
+/* Card Hover */
 .card-hover {
   @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
 }
 
+/* Navigation Link */
 .nav-link {
   @apply relative text-white hover:text-fashionista-pink transition-colors duration-300;
 }
@@ -64,7 +137,7 @@
   @apply w-full;
 }
 
-/* New Ticket Page Specific Styles */
+/* Keep other existing styles */
 .ticket-hero {
   @apply relative min-h-[60vh] flex items-center justify-center;
   background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero2.jpg');
@@ -96,7 +169,6 @@
   @apply w-8 h-8 rounded-full bg-fashionista-red flex items-center justify-center text-white font-bold;
 }
 
-/* Animation Classes */
 .fade-up {
   @apply opacity-0 translate-y-4 transition-all duration-500;
 }
@@ -109,7 +181,6 @@
   @apply transition-all duration-300 hover:shadow-glow;
 }
 
-/* Sponsorship Form Specific Styles */
 .sponsorship-form {
   @apply bg-white text-gray-900;
 }
