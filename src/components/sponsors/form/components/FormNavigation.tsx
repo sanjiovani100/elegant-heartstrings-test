@@ -5,7 +5,7 @@ interface FormNavigationProps {
   currentStep: number;
   totalSteps: number;
   isSubmitting: boolean;
-  isStepValid: boolean;
+  isValidating: boolean;
   onPrevious: () => void;
   onNext: () => void;
   onSubmit?: () => void;
@@ -15,7 +15,7 @@ export const FormNavigation = ({
   currentStep,
   totalSteps,
   isSubmitting,
-  isStepValid,
+  isValidating,
   onPrevious,
   onNext,
   onSubmit,
@@ -28,7 +28,7 @@ export const FormNavigation = ({
           onClick={onPrevious}
           variant="outline"
           className="w-32"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isValidating}
         >
           <ChevronLeft className="mr-2 h-4 w-4" />
           Previous
@@ -42,15 +42,24 @@ export const FormNavigation = ({
           type="button"
           onClick={onNext}
           className="w-32"
-          disabled={isSubmitting || !isStepValid}
+          disabled={isSubmitting || isValidating}
         >
-          Next
-          <ChevronRight className="ml-2 h-4 w-4" />
+          {isValidating ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Validating...
+            </>
+          ) : (
+            <>
+              Next
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </>
+          )}
         </Button>
       ) : (
         <Button
           type="submit"
-          disabled={isSubmitting || !isStepValid}
+          disabled={isSubmitting || isValidating}
           className="w-32"
           onClick={onSubmit}
         >
