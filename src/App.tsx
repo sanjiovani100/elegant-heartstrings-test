@@ -7,14 +7,14 @@ import { RoleProtectedRoute } from "@/components/auth/RoleProtectedRoute";
 
 // Public Pages
 import HomePage from "@/pages/Index";
-import AboutPage from "@/pages/about/Index";
-import SchedulePage from "@/pages/schedule/Index";
+import AboutPage from "@/pages/about/index";
+import SchedulePage from "@/pages/schedule/index";
 import TicketsPage from "@/pages/tickets/index";
-import DesignersPage from "@/pages/designers/Index";
+import DesignersPage from "@/pages/designers/index";
 import SponsorsPage from "@/pages/sponsors/index";
 import ModelsPage from "@/pages/models/index";
-import ContactPage from "@/pages/contact/Index";
-import FAQPage from "@/pages/faqs/Index";
+import ContactPage from "@/pages/contact/index";
+import FAQPage from "@/pages/faqs/index";
 
 // Auth Pages
 import LoginPage from "@/pages/auth/Login";
@@ -22,14 +22,14 @@ import RegisterPage from "@/pages/auth/Register";
 import ProfilePage from "@/pages/profile/index";
 
 // Dashboard Pages
-import DashboardPage from "@/pages/dashboard/Index";
-import DashboardEventsPage from "@/pages/dashboard/events/Index";
-import DashboardTalentPage from "@/pages/dashboard/talent/Index";
-import DashboardSponsorsPage from "@/pages/dashboard/sponsors/Index";
-import DashboardTicketsPage from "@/pages/dashboard/tickets/Index";
-import DashboardAnalyticsPage from "@/pages/dashboard/analytics/Index";
-import DashboardSettingsPage from "@/pages/dashboard/settings/Index";
-import DashboardRolesPage from "@/pages/dashboard/settings/roles/Index";
+import DashboardPage from "@/pages/dashboard/index";
+import DashboardEventsPage from "@/pages/dashboard/events/index";
+import DashboardTalentPage from "@/pages/dashboard/talent/index";
+import DashboardSponsorsPage from "@/pages/dashboard/sponsors/index";
+import DashboardTicketsPage from "@/pages/dashboard/tickets/index";
+import DashboardAnalyticsPage from "@/pages/dashboard/analytics/index";
+import DashboardSettingsPage from "@/pages/dashboard/settings/index";
+import DashboardRolesPage from "@/pages/dashboard/settings/roles/index";
 import CreateEventPage from "@/pages/dashboard/events/Create";
 
 const router = createBrowserRouter([
