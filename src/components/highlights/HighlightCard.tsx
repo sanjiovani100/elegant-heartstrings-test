@@ -10,7 +10,7 @@ interface HighlightCardProps {
 const HighlightCard = ({ title, description, image }: HighlightCardProps) => {
   return (
     <Card 
-      className="bg-black/50 border border-fashionista-grey/20 overflow-hidden group transition-all duration-300 hover:shadow-glow animate-fade-up aspect-square"
+      className="bg-black/50 border border-fashionista-grey/20 overflow-hidden group transition-all duration-300 hover:shadow-glow aspect-square"
     >
       <div className="relative h-full">
         <img
