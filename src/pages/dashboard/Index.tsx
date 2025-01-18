@@ -1,6 +1,6 @@
 import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
 import { MetricsGrid } from "@/components/dashboard/metrics/MetricsGrid";
-import { RoleProtectedRoute } from "@/components/auth/RoleProtectedRoute";
+import RoleProtectedRoute from "@/components/auth/RoleProtectedRoute";
 
 const DashboardPage = () => {
   return (

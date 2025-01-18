@@ -1,5 +1,5 @@
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/footer/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer/Footer";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "../sidebar/DashboardSidebar";
 import { ErrorBoundary } from "../shared/ErrorBoundary";
