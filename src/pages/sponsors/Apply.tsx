@@ -1,26 +1,13 @@
-import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const SponsorshipApplicationPage = () => {
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <h1 className="text-3xl font-bold">Sponsorship Application</h1>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Application Form</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">
-              Application form coming soon. Please check back later.
-            </p>
-            <Button variant="outline">Back to Sponsors</Button>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">Apply for Sponsorship</h1>
+      <Card className="p-6">
+        <h2 className="text-xl font-semibold">Application Form</h2>
+      </Card>
+    </div>
   );
 };
 
