@@ -11,12 +11,12 @@ interface DashboardLayoutProps {
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-white text-gray-900">
+      <div className="min-h-screen flex flex-col w-full bg-sponsor-bg-primary">
         <Navbar />
-        <div className="flex-1 pt-16">
+        <div className="flex-1 pt-16"> {/* 64px navbar offset */}
           <div className="flex min-h-[calc(100vh-4rem)]">
             <DashboardSidebar />
-            <main className="flex-1 overflow-auto ml-64 bg-white">
+            <main className="flex-1 ml-64 bg-sponsor-bg-primary overflow-y-auto">
               <div className="container mx-auto px-6 py-8">
                 <div className="max-w-7xl mx-auto">
                   <ErrorBoundary>{children}</ErrorBoundary>
@@ -25,7 +25,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             </main>
           </div>
         </div>
-        <Footer />
+        <Footer className="mt-auto" />
       </div>
     </SidebarProvider>
   );
