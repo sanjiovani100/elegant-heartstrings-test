@@ -8,6 +8,7 @@ import RoleProtectedRoute from "@/components/auth/RoleProtectedRoute";
 // Public Pages
 import HomePage from "@/pages/index";
 import AboutPage from "@/pages/about/index";
+import EventsPage from "@/pages/events/index";
 import SchedulePage from "@/pages/schedule/index";
 import TicketsPage from "@/pages/tickets/index";
 import DesignersPage from "@/pages/designers/index";
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
+      { path: "events", element: <EventsPage /> },
       { path: "schedule", element: <SchedulePage /> },
       { path: "tickets", element: <TicketsPage /> },
       { path: "designers", element: <DesignersPage /> },
