@@ -4,6 +4,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  // During development, we'll bypass authentication checks
+  return <>{children}</>;
+
+  // Comment out the authentication logic for now
+  /*
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,6 +39,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   }
 
   return <>{children}</>;
+  */
 };
 
 export default ProtectedRoute;

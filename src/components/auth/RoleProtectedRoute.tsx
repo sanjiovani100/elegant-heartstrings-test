@@ -15,6 +15,11 @@ const RoleProtectedRoute = ({
   allowedRoles, 
   requireAuth = false 
 }: RoleProtectedRouteProps) => {
+  // During development, we'll bypass role checks
+  return <>{children}</>;
+
+  // Comment out the role checking logic for now
+  /*
   const navigate = useNavigate();
   const { role, loading: roleLoading } = useUserRole();
   const [isChecking, setIsChecking] = useState(true);
@@ -34,14 +39,12 @@ const RoleProtectedRoute = ({
           if (role && allowedRoles.includes(role)) {
             setIsChecking(false);
           } else if (!role) {
-            // Check for public admin access
             const { data: adminRoles } = await supabase
               .from("user_roles")
               .select("role")
               .eq("role", "admin")
-              .maybeSingle(); // Changed from .single() to .maybeSingle()
+              .maybeSingle();
 
-            // If no admin exists yet, allow access to create the first admin
             if (!adminRoles && allowedRoles.includes("admin")) {
               setIsChecking(false);
             } else {
@@ -69,6 +72,7 @@ const RoleProtectedRoute = ({
   }
 
   return <>{children}</>;
+  */
 };
 
 export default RoleProtectedRoute;
