@@ -15,6 +15,7 @@ import SponsorsPage from "@/pages/sponsors/index";
 import ModelsPage from "@/pages/models/index";
 import ContactPage from "@/pages/contact/index";
 import FAQPage from "@/pages/faqs/index";
+import SponsorshipApplicationPage from "@/pages/sponsors/Apply";
 
 // Auth Pages
 import LoginPage from "@/pages/auth/Login";
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { path: "tickets", element: <TicketsPage /> },
       { path: "designers", element: <DesignersPage /> },
       { path: "sponsors", element: <SponsorsPage /> },
+      { path: "sponsors/apply", element: <SponsorshipApplicationPage /> },
       { path: "models", element: <ModelsPage /> },
       { path: "contact", element: <ContactPage /> },
       { path: "faqs", element: <FAQPage /> },

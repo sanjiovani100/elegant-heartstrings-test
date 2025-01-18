@@ -1,64 +1,48 @@
-import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import SponsorHero from "@/components/sponsors/SponsorHero";
+import SponsorBenefits from "@/components/sponsors/SponsorBenefits";
+import SponsorLevels from "@/components/sponsors/SponsorLevels";
+import ProcessSteps from "@/components/process/ProcessSteps";
+import SponsorForm from "@/components/sponsors/SponsorForm";
 import { Button } from "@/components/ui/button";
-import { Building2, DollarSign, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const SponsorsPage = () => {
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Sponsor Management</h1>
-          <Button className="bg-fashionista-red hover:bg-fashionista-red/90">
-            Add New Sponsor
-          </Button>
+    <div className="min-h-screen bg-black text-white">
+      <SponsorHero />
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <Link to="/sponsors/apply">
+            <Button className="bg-fashionista-red hover:bg-fashionista-red/90 text-white text-lg px-8 py-6">
+              Apply to Become a Sponsor
+            </Button>
+          </Link>
         </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Active Sponsors</CardTitle>
-              <Building2 className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">48</div>
-              <p className="text-xs text-muted-foreground">Across all events</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Total Contributions</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">$128,500</div>
-              <p className="text-xs text-muted-foreground">This year</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Pending Applications</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">Awaiting review</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Current Sponsors</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">Sponsor list coming soon.</p>
-          </CardContent>
-        </Card>
       </div>
-    </DashboardLayout>
+      <SponsorBenefits />
+      <SponsorLevels />
+      <ProcessSteps
+        title="How to Become a Sponsor"
+        steps={[
+          {
+            title: "Choose Your Level",
+            description: "Select the sponsorship tier that best aligns with your brand's goals and budget.",
+            icon: "Sparkles"
+          },
+          {
+            title: "Submit Details",
+            description: "Provide your company information and branding assets through our simple form.",
+            icon: "ClipboardList"
+          },
+          {
+            title: "Finalize Partnership",
+            description: "Our team will work with you to customize and perfect your sponsorship package.",
+            icon: "Handshake"
+          }
+        ]}
+      />
+      <SponsorForm />
+    </div>
   );
 };
 

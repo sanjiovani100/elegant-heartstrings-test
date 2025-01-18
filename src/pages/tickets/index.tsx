@@ -1,64 +1,56 @@
-import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import TicketHero from "@/components/tickets/TicketHero";
+import TicketTiers from "@/components/tickets/TicketTiers";
+import CheckoutProcess from "@/components/tickets/CheckoutProcess";
+import FAQSection from "@/components/tickets/FAQSection";
 import { Button } from "@/components/ui/button";
-import { Ticket, Users, DollarSign } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const TicketsPage = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Ticket Management</h1>
-          <Button className="bg-fashionista-red hover:bg-fashionista-red/90">
-            Create Ticket Type
-          </Button>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Total Tickets Sold</CardTitle>
-              <Ticket className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">1,234</div>
-              <p className="text-xs text-muted-foreground">+12% from last month</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">$45,231</div>
-              <p className="text-xs text-muted-foreground">+8% from last month</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Active Users</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">892</div>
-              <p className="text-xs text-muted-foreground">Active ticket holders</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Ticket Sales</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">Ticket sales list coming soon.</p>
-          </CardContent>
-        </Card>
+    <div className="min-h-screen bg-black">
+      <TicketHero />
+      <TicketTiers />
+      <CheckoutProcess />
+      <FAQSection />
+      
+      {/* Mobile Sticky CTA */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-black border-t border-white/10 shadow-lg md:hidden z-50">
+        <Button 
+          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white"
+          onClick={() => document.getElementById('ticket-tiers')?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          Get Tickets
+        </Button>
       </div>
-    </DashboardLayout>
+
+      {/* Scroll to Top Button */}
+      <Button
+        variant="outline"
+        size="icon"
+        className={`fixed bottom-20 right-4 bg-black/50 backdrop-blur-sm border-white/10 text-white hover:bg-white/20 transition-opacity duration-300 md:bottom-4 z-50 ${
+          showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={scrollToTop}
+      >
+        <ArrowUp className="h-4 w-4" />
+      </Button>
+    </div>
   );
 };
 
