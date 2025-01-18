@@ -7,7 +7,7 @@ import SignUpSection from "@/components/signup/SignUpSection";
 import SponsorShowcase from "@/components/sponsors/SponsorShowcase";
 import Footer from "@/components/footer/Footer";
 
-const HomePage = () => {
+const Index = () => {
   return (
     <main className="min-h-screen bg-black">
       <Navbar />
@@ -22,4 +22,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Index;

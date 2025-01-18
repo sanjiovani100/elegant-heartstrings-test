@@ -1,13 +1,26 @@
-import { Card } from "@/components/ui/card";
+import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const ProfilePage = () => {
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Profile</h1>
-      <Card className="p-6">
-        <h2 className="text-xl font-semibold">User Profile</h2>
-      </Card>
-    </div>
+    <DashboardLayout>
+      <div className="space-y-6">
+        <h1 className="text-3xl font-bold">Profile Settings</h1>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Personal Information</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground mb-4">
+              Profile settings coming soon.
+            </p>
+            <Button variant="outline">Edit Profile</Button>
+          </CardContent>
+        </Card>
+      </div>
+    </DashboardLayout>
   );
 };
 

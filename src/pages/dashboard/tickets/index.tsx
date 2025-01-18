@@ -1,7 +1,7 @@
 const DashboardTicketsPage = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">Tickets Management</h1>
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold">Ticket Management</h1>
     </div>
   );
 };
