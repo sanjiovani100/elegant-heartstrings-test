@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PublicLayout } from "@/components/layouts/PublicLayout";
 import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
 import { AuthLayout } from "@/components/layouts/AuthLayout";
-import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
-import { RoleProtectedRoute } from "@/components/auth/RoleProtectedRoute";
+import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import RoleProtectedRoute from "@/components/auth/RoleProtectedRoute";
 
 // Public Pages
 import HomePage from "@/pages/index";
@@ -67,7 +67,9 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: (
       <ProtectedRoute>
-        <DashboardLayout />
+        <DashboardLayout>
+          <Outlet />
+        </DashboardLayout>
       </ProtectedRoute>
     ),
     children: [
