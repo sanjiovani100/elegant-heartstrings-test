@@ -6,7 +6,7 @@ import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { RoleProtectedRoute } from "@/components/auth/RoleProtectedRoute";
 
 // Public Pages
-import HomePage from "@/pages/Index";
+import HomePage from "@/pages/index";
 import AboutPage from "@/pages/about/index";
 import SchedulePage from "@/pages/schedule/index";
 import TicketsPage from "@/pages/tickets/index";
