@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { PublicLayout } from "@/components/layouts/PublicLayout";
 import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
 import { AuthLayout } from "@/components/layouts/AuthLayout";
