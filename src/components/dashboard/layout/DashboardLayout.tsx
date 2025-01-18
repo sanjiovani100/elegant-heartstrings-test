@@ -3,9 +3,10 @@ import Footer from "@/components/footer/Footer";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "../sidebar/DashboardSidebar";
 import { ErrorBoundary } from "../shared/ErrorBoundary";
+import { Outlet } from "react-router-dom";
 
 interface DashboardLayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
@@ -19,7 +20,9 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             <main className="flex-1 overflow-auto">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="max-w-7xl mx-auto">
-                  <ErrorBoundary>{children}</ErrorBoundary>
+                  <ErrorBoundary>
+                    {children || <Outlet />}
+                  </ErrorBoundary>
                 </div>
               </div>
             </main>
