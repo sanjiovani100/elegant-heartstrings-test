@@ -6,10 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
-interface FooterProps {
-  className?: string;
-}
-
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" },
@@ -25,7 +21,7 @@ const navigationLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Footer = ({ className }: FooterProps) => {
+const Footer = () => {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -35,7 +31,7 @@ const Footer = ({ className }: FooterProps) => {
   };
 
   return (
-    <footer className={cn("bg-black text-white pt-16 pb-8", className)}>
+    <footer className="bg-black text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Column 1: Event Overview */}
