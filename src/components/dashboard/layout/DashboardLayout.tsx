@@ -16,8 +16,12 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         <div className="flex-1 pt-16">
           <div className="flex min-h-[calc(100vh-4rem)]">
             <DashboardSidebar />
-            <main className="flex-1 bg-white p-6">
-              <ErrorBoundary>{children}</ErrorBoundary>
+            <main className="flex-1 overflow-auto">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="max-w-7xl mx-auto">
+                  <ErrorBoundary>{children}</ErrorBoundary>
+                </div>
+              </div>
             </main>
           </div>
         </div>
