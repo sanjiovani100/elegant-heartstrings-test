@@ -10,11 +10,11 @@ import ModelsPage from "@/pages/models";
 import ProfilePage from "@/pages/profile";
 import RolesPage from "@/pages/admin/roles";
 import CreateEventPage from "@/pages/admin/events/Create";
-import DashboardPage from "@/pages/dashboard/Index";
-import DashboardEventsPage from "@/pages/dashboard/events/Index";
-import DashboardTalentPage from "@/pages/dashboard/talent/Index";
-import DashboardAnalyticsPage from "@/pages/dashboard/analytics/Index";
-import DashboardSettingsPage from "@/pages/dashboard/settings/Index";
+import DashboardPage from "@/pages/dashboard";
+import DashboardEventsPage from "@/pages/dashboard/events";
+import DashboardTalentPage from "@/pages/dashboard/talent";
+import DashboardAnalyticsPage from "@/pages/dashboard/analytics";
+import DashboardSettingsPage from "@/pages/dashboard/settings";
 
 const router = createBrowserRouter([
   {
