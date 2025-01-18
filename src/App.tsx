@@ -1,89 +1,110 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { PublicLayout } from "@/components/layouts/PublicLayout";
+import { DashboardLayout } from "@/components/dashboard/layout/DashboardLayout";
+import { AuthLayout } from "@/components/layouts/AuthLayout";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { RoleProtectedRoute } from "@/components/auth/RoleProtectedRoute";
+
+// Public Pages
+import HomePage from "@/pages/Index";
+import AboutPage from "@/pages/about/Index";
+import SchedulePage from "@/pages/schedule/Index";
+import TicketsPage from "@/pages/tickets/index";
+import DesignersPage from "@/pages/designers/Index";
+import SponsorsPage from "@/pages/sponsors/index";
+import ModelsPage from "@/pages/models/index";
+import ContactPage from "@/pages/contact/Index";
+import FAQPage from "@/pages/faqs/Index";
+
+// Auth Pages
 import LoginPage from "@/pages/auth/Login";
 import RegisterPage from "@/pages/auth/Register";
-import EventsPage from "@/pages/events";
-import TicketsPage from "@/pages/tickets/index";
-import SponsorsPage from "@/pages/sponsors/index";
-import SponsorshipApplicationPage from "@/pages/sponsors/Apply";
-import DesignerPage from "@/pages/designer/index";
-import ModelsPage from "@/pages/models/index";
 import ProfilePage from "@/pages/profile/index";
-import RolesPage from "@/pages/admin/roles/index";
-import CreateEventPage from "@/pages/admin/events/Create";
+
+// Dashboard Pages
 import DashboardPage from "@/pages/dashboard/Index";
 import DashboardEventsPage from "@/pages/dashboard/events/Index";
 import DashboardTalentPage from "@/pages/dashboard/talent/Index";
+import DashboardSponsorsPage from "@/pages/dashboard/sponsors/Index";
+import DashboardTicketsPage from "@/pages/dashboard/tickets/Index";
 import DashboardAnalyticsPage from "@/pages/dashboard/analytics/Index";
 import DashboardSettingsPage from "@/pages/dashboard/settings/Index";
+import DashboardRolesPage from "@/pages/dashboard/settings/roles/Index";
+import CreateEventPage from "@/pages/dashboard/events/Create";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <EventsPage />,
+    element: <PublicLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "about", element: <AboutPage /> },
+      { path: "schedule", element: <SchedulePage /> },
+      { path: "tickets", element: <TicketsPage /> },
+      { path: "designers", element: <DesignersPage /> },
+      { path: "sponsors", element: <SponsorsPage /> },
+      { path: "models", element: <ModelsPage /> },
+      { path: "contact", element: <ContactPage /> },
+      { path: "faqs", element: <FAQPage /> },
+    ],
   },
   {
-    path: "/login",
-    element: <LoginPage />,
+    element: <AuthLayout />,
+    children: [
+      { path: "login", element: <LoginPage /> },
+      { path: "register", element: <RegisterPage /> },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+    ],
   },
   {
-    path: "/register",
-    element: <RegisterPage />,
-  },
-  {
-    path: "/events",
-    element: <EventsPage />,
-  },
-  {
-    path: "/tickets",
-    element: <TicketsPage />,
-  },
-  {
-    path: "/sponsors",
-    element: <SponsorsPage />,
-  },
-  {
-    path: "/sponsors/apply",
-    element: <SponsorshipApplicationPage />,
-  },
-  {
-    path: "/designer",
-    element: <DesignerPage />,
-  },
-  {
-    path: "/models",
-    element: <ModelsPage />,
-  },
-  {
-    path: "/profile",
-    element: <ProfilePage />,
-  },
-  {
-    path: "/admin/roles",
-    element: <RolesPage />,
-  },
-  {
-    path: "/admin/events/create",
-    element: <CreateEventPage />,
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardPage />,
-  },
-  {
-    path: "/dashboard/events",
-    element: <DashboardEventsPage />,
-  },
-  {
-    path: "/dashboard/talent",
-    element: <DashboardTalentPage />,
-  },
-  {
-    path: "/dashboard/analytics",
-    element: <DashboardAnalyticsPage />,
-  },
-  {
-    path: "/dashboard/settings",
-    element: <DashboardSettingsPage />,
+    path: "dashboard",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      { index: true, element: <DashboardPage /> },
+      {
+        path: "events",
+        children: [
+          { index: true, element: <DashboardEventsPage /> },
+          {
+            path: "create",
+            element: (
+              <RoleProtectedRoute allowedRoles={["admin"]}>
+                <CreateEventPage />
+              </RoleProtectedRoute>
+            ),
+          },
+        ],
+      },
+      { path: "talent", element: <DashboardTalentPage /> },
+      { path: "sponsors", element: <DashboardSponsorsPage /> },
+      { path: "tickets", element: <DashboardTicketsPage /> },
+      { path: "analytics", element: <DashboardAnalyticsPage /> },
+      {
+        path: "settings",
+        children: [
+          { index: true, element: <DashboardSettingsPage /> },
+          {
+            path: "roles",
+            element: (
+              <RoleProtectedRoute allowedRoles={["admin"]}>
+                <DashboardRolesPage />
+              </RoleProtectedRoute>
+            ),
+          },
+        ],
+      },
+    ],
   },
 ]);
 
