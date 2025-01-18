@@ -30,7 +30,7 @@ import DashboardTicketsPage from "@/pages/dashboard/tickets/index";
 import DashboardAnalyticsPage from "@/pages/dashboard/analytics/index";
 import DashboardSettingsPage from "@/pages/dashboard/settings/index";
 import DashboardRolesPage from "@/pages/dashboard/settings/roles/index";
-import CreateEventPage from "@/pages/dashboard/events/Create";
+import CreateEventPage from "@/pages/dashboard/events/create";
 
 const router = createBrowserRouter([
   {
