@@ -50,11 +50,13 @@ export const DashboardSidebar = () => {
   const location = useLocation();
 
   return (
-    <Sidebar>
+    <Sidebar className="fixed left-0 w-64 h-full bg-white border-r border-gray-200 shadow-sm">
       <SidebarContent>
         <ProfileSection />
         <SidebarGroup>
-          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-gray-500 font-medium px-4 py-2">
+            Dashboard
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -62,6 +64,7 @@ export const DashboardSidebar = () => {
                   <SidebarMenuButton
                     asChild
                     isActive={location.pathname === item.href}
+                    className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                   >
                     <Link to={item.href}>
                       <item.icon className="h-4 w-4" />

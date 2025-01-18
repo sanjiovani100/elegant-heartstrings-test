@@ -41,16 +41,20 @@ export const ProfileSection = () => {
   if (loading) return <LoadingState />;
 
   return (
-    <div className="flex items-center space-x-4 px-4 py-2">
+    <div className="flex items-center space-x-4 px-4 py-4 border-b border-gray-200">
       <Avatar>
         <AvatarImage src={profile?.avatar_url || undefined} />
-        <AvatarFallback>
+        <AvatarFallback className="bg-gray-200 text-gray-700">
           {profile?.full_name?.[0]?.toUpperCase() || "U"}
         </AvatarFallback>
       </Avatar>
       <div className="space-y-1">
-        <p className="text-sm font-medium">{profile?.full_name || "User"}</p>
-        <p className="text-xs text-gray-500 capitalize">{role || "Loading..."}</p>
+        <p className="text-sm font-medium text-gray-900">
+          {profile?.full_name || "User"}
+        </p>
+        <p className="text-xs text-gray-500 capitalize">
+          {role || "Loading..."}
+        </p>
       </div>
     </div>
   );
