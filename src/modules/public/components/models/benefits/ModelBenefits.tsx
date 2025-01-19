@@ -1,5 +1,5 @@
 import { Star, Camera, Users } from "lucide-react";
-import HighlightCard from "@/components/cards/HighlightCard";
+import HighlightCard from "@/modules/public/components/highlights/HighlightCard";
 
 const ModelBenefits = () => {
   const benefits = [

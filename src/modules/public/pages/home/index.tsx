@@ -9,7 +9,10 @@ import SponsorShowcase from "@/modules/public/components/sponsors/SponsorShowcas
 const HomePage = () => {
   return (
     <PublicLayout>
-      <Hero />
+      <Hero 
+        title="Fashionistas: A Night of Glamour & Fashion"
+        subtitle="Celebrate Valentine's Day with Medellín's most glamorous lingerie fashion show."
+      />
       <Highlights />
       <LingerieShowcase />
       <Tickets />
