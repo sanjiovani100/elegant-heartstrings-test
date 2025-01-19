@@ -1,4 +1,4 @@
-import type { Database } from '../types';
+import type { Database } from '../../integrations/supabase/types';
 
 // Row Types
 export type EventRow = Database['public']['Tables']['events']['Row'];
