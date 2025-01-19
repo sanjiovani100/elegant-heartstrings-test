@@ -1,5 +1,5 @@
+import { EventStatus, EventCategory } from '../enums';
 import { Json } from '../database';
-import { EventCategory, EventStatus } from '../enums';
 
 export interface EventRow {
   id: string;
