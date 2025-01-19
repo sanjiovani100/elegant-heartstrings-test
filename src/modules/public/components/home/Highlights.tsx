@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import HighlightCard from "@/modules/public/components/highlights/HighlightCard";
+import HighlightCard from "@/components/cards/HighlightCard";
 import NavigationControls from "@/modules/public/components/highlights/NavigationControls";
 import Pagination from "@/modules/public/components/highlights/Pagination";
 
