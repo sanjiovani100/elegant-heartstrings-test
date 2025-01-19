@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import HighlightCard from "./highlights/HighlightCard";
-import NavigationControls from "./highlights/NavigationControls";
-import Pagination from "./highlights/Pagination";
+import HighlightCard from "./HighlightCard";
+import NavigationControls from "./NavigationControls";
+import Pagination from "./Pagination";
 
 const highlights = [
   {
@@ -64,6 +64,18 @@ const Highlights = () => {
             />
           ))}
         </div>
+
+        <NavigationControls 
+          onPrevious={handlePrevious} 
+          onNext={handleNext} 
+          activeIndex={activeIndex}
+          total={highlights.length}
+        />
+        <Pagination 
+          activeIndex={activeIndex}
+          total={highlights.length}
+          onSelect={scrollToCard}
+        />
       </div>
     </section>
   );
