@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const ModelHero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative h-screen">
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-fade-up"
         style={{ backgroundImage: 'url(/hero2.jpg)' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/90" />
@@ -20,14 +23,16 @@ const ModelHero = () => {
           <div className="space-x-4 animate-fade-up delay-200">
             <Button 
               size="lg"
-              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6"
+              onClick={() => document.getElementById('model-signup')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6 transition-all duration-300"
             >
               Apply to Be a Model
             </Button>
             <Button 
               variant="outline"
               size="lg"
-              className="bg-white/10 text-white hover:bg-white/20 px-8 py-6"
+              onClick={() => document.getElementById('model-benefits')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white/10 text-white hover:bg-white/20 px-8 py-6 transition-all duration-300"
             >
               Learn More
             </Button>

@@ -11,10 +11,13 @@ const ModelsPage = () => {
     <PublicLayout>
       <main className="min-h-screen bg-black text-white">
         <ModelHero />
-        <ModelBenefits />
+        
+        <section id="model-benefits" className="scroll-mt-20">
+          <ModelBenefits />
+        </section>
 
         {/* How to Participate Section */}
-        <section className="py-20 px-4 bg-white/5 relative overflow-hidden">
+        <section className="py-20 px-4 bg-white/5 relative overflow-hidden scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-16">
               How to Participate
@@ -24,7 +27,7 @@ const ModelsPage = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
               Success Stories
@@ -34,7 +37,7 @@ const ModelsPage = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 bg-white/5">
+        <section className="py-20 px-4 bg-white/5 scroll-mt-20">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
               Frequently Asked Questions
@@ -44,7 +47,7 @@ const ModelsPage = () => {
         </section>
 
         {/* Sign Up Section */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 scroll-mt-20">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
               Apply Now

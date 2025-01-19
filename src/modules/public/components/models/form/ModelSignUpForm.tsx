@@ -22,7 +22,7 @@ const formSchema = z.object({
   }),
   portfolioLink: z.string().url({
     message: "Please enter a valid portfolio URL.",
-  }).optional(),
+  }).optional().or(z.literal('')),
 });
 
 const ModelSignUpForm = () => {
@@ -38,24 +38,37 @@ const ModelSignUpForm = () => {
     },
   });
 
-  function onSubmit(values: ModelFormData) {
-    console.log(values);
-    toast({
-      title: "Application Submitted!",
-      description: "We'll review your application and get back to you soon.",
-    });
-    form.reset();
+  async function onSubmit(values: ModelFormData) {
+    try {
+      // Here you would typically make an API call to submit the form
+      console.log(values);
+      
+      toast({
+        title: "Application Submitted!",
+        description: "We'll review your application and get back to you soon.",
+        variant: "default",
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8" id="model-signup">
         <ModelFormFields form={form} />
         <Button 
           type="submit" 
-          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white"
+          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-all duration-300"
+          disabled={form.formState.isSubmitting}
         >
-          Submit Application
+          {form.formState.isSubmitting ? "Submitting..." : "Submit Application"}
         </Button>
       </form>
     </Form>
