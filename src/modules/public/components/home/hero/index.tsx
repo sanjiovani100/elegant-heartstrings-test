@@ -1,20 +1,13 @@
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { FloatingHeart } from "./FloatingHeart";
-import { HeroContent } from "./HeroContent";
-import { HeroActions } from "./HeroActions";
+import { Button } from "@/shared/components/ui/Button";
+import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import { getAnimationDelay } from "@/shared/utils/animation";
 import { HeroProps } from "./types";
+import FloatingHeart from "./FloatingHeart";
+import HeroContent from "./HeroContent";
+import HeroActions from "./HeroActions";
 
 const Hero = ({ title, subtitle }: HeroProps) => {
-  const navigate = useNavigate();
-
-  const handleGetTickets = useCallback(() => {
-    navigate('/tickets');
-  }, [navigate]);
-
-  const handleSignUp = useCallback(() => {
-    navigate('/signup');
-  }, [navigate]);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <div className="relative h-screen overflow-hidden">
@@ -37,14 +30,8 @@ const Hero = ({ title, subtitle }: HeroProps) => {
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center px-4 space-y-8 max-w-4xl mx-auto">
-          <HeroContent 
-            title="Fashionistas: A Night of Glamour & Fashion"
-            subtitle="Celebrate Valentine's Day with Medellín's most glamorous lingerie fashion show."
-          />
-          <HeroActions 
-            onGetTickets={handleGetTickets}
-            onSignUp={handleSignUp}
-          />
+          <HeroContent title={title} subtitle={subtitle} />
+          <HeroActions isMobile={isMobile} />
         </div>
       </div>
     </div>
