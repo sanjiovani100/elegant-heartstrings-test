@@ -1,21 +1,26 @@
-import {
+import type { 
+  Tables as DatabaseTables,
+  EventRow,
   ProfileRow,
-  ProfileInsert,
-  ProfileUpdate,
+  SponsorProfileRow,
+  TicketRow,
+  MediaCollectionRow,
+  MediaItemRow,
   ModelProfile,
   ModelFormData
-} from './database/tables/profile.types';
+} from "./database";
 
-export interface Tables {
-  profiles: ProfileRow;
-}
+export interface Tables extends DatabaseTables {}
+export interface TablesInsert extends Tables {}
+export interface TablesUpdate extends Tables {}
 
-export interface TablesInsert {
-  profiles: ProfileInsert;
-}
-
-export interface TablesUpdate {
-  profiles: ProfileUpdate;
-}
-
-export type { ModelProfile, ModelFormData };
+export type {
+  EventRow,
+  ProfileRow,
+  SponsorProfileRow,
+  TicketRow,
+  MediaCollectionRow,
+  MediaItemRow,
+  ModelProfile,
+  ModelFormData
+};
