@@ -4,8 +4,6 @@ interface ImageSkeletonProps {
   className?: string;
 }
 
-const ImageSkeleton = ({ className }: ImageSkeletonProps) => {
+export const ImageSkeleton = ({ className }: ImageSkeletonProps) => {
   return <Skeleton className={className} />;
 };
-
-export default ImageSkeleton;
