@@ -8,7 +8,7 @@ const EventsHeroSection = () => {
     queryFn: async () => {
       const { data: events } = await supabase
         .from("events")
-        .select("id, location")
+        .select("id, location, date")
         .eq("status", "published");
 
       const uniqueLocations = new Set(events?.map(event => event.location));
@@ -23,14 +23,12 @@ const EventsHeroSection = () => {
 
   return (
     <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: 'url(/hero2.jpg)' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/90" />
 
-      {/* Content */}
       <div className="relative container mx-auto px-4 text-center space-y-8">
         <h1 className="text-4xl md:text-6xl font-playfair text-white drop-shadow-lg animate-fade-up">
           Upcoming Fashion Events
@@ -40,7 +38,6 @@ const EventsHeroSection = () => {
           Discover Medellín's Most Exclusive Fashion Experiences
         </p>
 
-        {/* Stats */}
         <div className="flex flex-wrap justify-center gap-8 mt-8 animate-fade-up delay-200">
           <div className="flex items-center gap-2 text-white">
             <Calendar className="w-6 h-6 text-fashionista-pink" />
