@@ -17,7 +17,7 @@ import {
   TicketUpdate,
   TicketTypeUpdate,
   ProfileUpdate
-} from './database';
+} from './database/tables';
 
 export interface Tables {
   events: EventRow;
