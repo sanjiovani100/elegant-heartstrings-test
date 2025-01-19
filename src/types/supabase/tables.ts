@@ -1,5 +1,5 @@
-import type { 
-  Tables as DatabaseTables,
+import type { Database } from "@/integrations/supabase/types";
+import type {
   EventRow,
   ProfileRow,
   SponsorProfileRow,
@@ -8,11 +8,11 @@ import type {
   MediaItemRow,
   ModelProfile,
   ModelFormData
-} from "./database";
+} from "./database/tables";
 
-export interface Tables extends DatabaseTables {}
-export interface TablesInsert extends Tables {}
-export interface TablesUpdate extends Tables {}
+export type Tables = Database['public']['Tables'];
+export type TablesInsert = Database['public']['Tables'];
+export type TablesUpdate = Database['public']['Tables'];
 
 export type {
   EventRow,

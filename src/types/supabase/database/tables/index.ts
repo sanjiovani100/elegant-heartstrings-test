@@ -12,12 +12,8 @@ export type MediaItemRow = Database["public"]["Tables"]["media_items"]["Row"];
 // Re-export model specific types
 export type { ModelProfile, ModelFormData };
 
-// Export all table types
-export interface Tables {
-  events: EventRow;
-  profiles: ProfileRow;
-  sponsor_profiles: SponsorProfileRow;
-  tickets: TicketRow;
-  media_collections: MediaCollectionRow;
-  media_items: MediaItemRow;
-}
+// Export table types from other files
+export * from "./event.types";
+export * from "./sponsor.types";
+export * from "./ticket.types";
+export * from "./profile.types";
