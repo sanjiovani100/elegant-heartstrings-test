@@ -68,12 +68,13 @@ const Highlights = () => {
         <NavigationControls 
           onPrevious={handlePrevious} 
           onNext={handleNext} 
-          activeIndex={activeIndex} 
-          total={highlights.length} 
+          activeIndex={activeIndex}
+          total={highlights.length}
         />
         <Pagination 
-          activeIndex={activeIndex} 
-          total={highlights.length} 
+          activeIndex={activeIndex}
+          total={highlights.length}
+          onSelect={scrollToCard}
         />
       </div>
     </section>
