@@ -3,8 +3,8 @@ import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
 import LingerieShowcase from "@/components/LingerieShowcase";
 import Tickets from "@/components/tickets/Tickets";
-import SignUpSection from "@/components/signup/SignUpSection";
-import SponsorShowcase from "@/components/sponsors/SponsorShowcase";
+import SignUpSection from "@/modules/public/components/signup/SignUpSection";
+import SponsorShowcase from "@/modules/public/components/sponsors/SponsorShowcase";
 import Footer from "@/components/footer/Footer";
 
 const Index = () => {

@@ -116,7 +116,7 @@ const SponsorLogo = ({ name, logo, url, className }: SponsorLogoProps) => {
         "transition-all duration-300",
         "hover:shadow-glow",
         "flex items-center justify-center",
-        "aspect-square w-full max-w-[200px] mx-auto" // Added max-width and centered
+        "aspect-square w-full max-w-[200px] mx-auto"
       )}>
         <img
           src={logo}
