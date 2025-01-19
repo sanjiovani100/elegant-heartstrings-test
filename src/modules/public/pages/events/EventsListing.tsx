@@ -1,53 +1,56 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Event } from '@/types/events';
-import { transformVenueDetails, transformScheduleTimeline } from '@/types/utils/transformers';
 import EventCard from '@/components/events/EventCard';
 import EventFilters from '@/components/events/EventFilters';
 import { supabase } from '@/integrations/supabase/client';
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const EventsListing = () => {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: events, isLoading, error } = useQuery({
+    queryKey: ['events'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('events')
+        .select('*')
+        .eq('status', 'published')
+        .is('deleted_at', null);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .eq('status', 'published')
-          .is('deleted_at', null);
-
-        if (error) throw error;
-
-        const transformedEvents = data.map(event => ({
-          ...event,
-          venue_details: transformVenueDetails(event.venue_details),
-          schedule_timeline: transformScheduleTimeline(event.schedule_timeline)
-        }));
-
-        setEvents(transformedEvents);
-      } catch (error) {
+      if (error) {
         console.error('Error fetching events:', error);
-      } finally {
-        setLoading(false);
+        throw error;
       }
-    };
 
-    fetchEvents();
-  }, []);
+      return data as Event[];
+    },
+  });
 
-  if (loading) {
-    return <div>Loading events...</div>;
+  if (error) {
+    return (
+      <Alert variant="destructive" className="m-4">
+        <AlertDescription>
+          There was an error loading the events. Please try again later.
+        </AlertDescription>
+      </Alert>
+    );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
       <EventFilters />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {events.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
+        {isLoading ? (
+          // Loading skeleton cards
+          [...Array(6)].map((_, index) => (
+            <div
+              key={index}
+              className="bg-white/5 border border-white/10 rounded-lg h-[400px] animate-pulse"
+            />
+          ))
+        ) : (
+          events?.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))
+        )}
       </div>
     </div>
   );
