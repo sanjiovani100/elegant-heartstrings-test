@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ErrorBoundary from "@/shared/components/error/ErrorBoundary";
+import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
 import ModelHero from "../../components/models/hero/ModelHero";
 import ModelBenefits from "../../components/models/benefits/ModelBenefits";
 import ModelGallery from "../../components/models/gallery/ModelGallery";
@@ -8,7 +8,7 @@ import ModelRequirements from "../../components/models/requirements/ModelRequire
 import ModelFAQ from "../../components/models/faq/ModelFAQ";
 import ModelTestimonialCarousel from "../../components/models/testimonials/ModelTestimonialCarousel";
 import ModelSignUpForm from "../../components/models/form/ModelSignUpForm";
-import ImageSkeleton from "@/shared/components/ui/ImageSkeleton";
+import { ImageSkeleton } from "@/shared/components/ui/ImageSkeleton";
 
 const ModelsPage = () => {
   return (

@@ -24,7 +24,7 @@ const highlights = [
   }
 ];
 
-const Highlights = ({ title = "Event Highlights", subtitle }: HighlightsProps) => {
+const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }: HighlightsProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ const Highlights = ({ title = "Event Highlights", subtitle }: HighlightsProps) =
   };
 
   const handleNext = () => {
-    const newIndex = Math.min(activeIndex + 1, highlights.length - 1);
+    const newIndex = Math.min(activeIndex + 1, items.length - 1);
     scrollToCard(newIndex);
   };
 
@@ -73,7 +73,7 @@ const Highlights = ({ title = "Event Highlights", subtitle }: HighlightsProps) =
             ref={containerRef}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            {highlights.map((highlight, index) => (
+            {items.map((highlight, index) => (
               <HighlightCard
                 key={highlight.title}
                 {...highlight}
@@ -91,12 +91,12 @@ const Highlights = ({ title = "Event Highlights", subtitle }: HighlightsProps) =
             onPrevious={handlePrevious} 
             onNext={handleNext} 
             activeIndex={activeIndex}
-            total={highlights.length}
+            total={items.length}
             disabled={isLoading}
           />
           <Pagination 
             activeIndex={activeIndex}
-            total={highlights.length}
+            total={items.length}
             onSelect={scrollToCard}
           />
         </div>
