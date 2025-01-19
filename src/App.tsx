@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "@/modules/public/pages/home";
 import AboutPage from "@/modules/public/pages/about";
 import ContactPage from "@/modules/public/pages/contact";
@@ -17,32 +17,47 @@ import RoleProtectedRoute from "@/components/auth/RoleProtectedRoute";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/designer" element={<DesignerPage />} />
-        <Route path="/models" element={<ModelsPage />} />
-        <Route path="/sponsors" element={<SponsorsPage />} />
-        <Route path="/tickets" element={<TicketsPage />} />
-        <Route path="/events/*" element={<EventsPage />} />
-        <Route path="/login" element={<LoginPage />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/faq" element={<FAQPage />} />
+      <Route path="/designer" element={<DesignerPage />} />
+      <Route path="/models" element={<ModelsPage />} />
+      <Route path="/sponsors" element={<SponsorsPage />} />
+      <Route path="/tickets" element={<TicketsPage />} />
+      <Route path="/events/*" element={<EventsPage />} />
+      <Route path="/login" element={<LoginPage />} />
 
-        {/* Protected Routes */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/sponsors/apply" element={<SponsorshipApplicationPage />} />
-        </Route>
+      {/* Protected Routes */}
+      <Route 
+        path="/sponsors/apply" 
+        element={
+          <ProtectedRoute>
+            <SponsorshipApplicationPage />
+          </ProtectedRoute>
+        } 
+      />
 
-        {/* Admin Routes */}
-        <Route element={<RoleProtectedRoute allowedRoles={["admin"]} />}>
-          <Route path="/admin/events/create" element={<CreateEventPage />} />
-          <Route path="/admin/roles" element={<RoleManagementPage />} />
-        </Route>
-      </Routes>
-    </Router>
+      {/* Admin Routes */}
+      <Route 
+        path="/admin/events/create" 
+        element={
+          <RoleProtectedRoute allowedRoles={["admin"]}>
+            <CreateEventPage />
+          </RoleProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/roles" 
+        element={
+          <RoleProtectedRoute allowedRoles={["admin"]}>
+            <RoleManagementPage />
+          </RoleProtectedRoute>
+        } 
+      />
+    </Routes>
   );
 };
 
