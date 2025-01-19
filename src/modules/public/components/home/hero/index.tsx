@@ -9,6 +9,14 @@ import { HeroActions } from "./HeroActions";
 const Hero = ({ title, subtitle }: HeroProps) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  const handleGetTickets = () => {
+    // Handle get tickets action
+  };
+
+  const handleSignUp = () => {
+    // Handle sign up action
+  };
+
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Floating Hearts */}
@@ -31,7 +39,7 @@ const Hero = ({ title, subtitle }: HeroProps) => {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center px-4 space-y-8 max-w-4xl mx-auto">
           <HeroContent title={title} subtitle={subtitle} />
-          <HeroActions isMobile={isMobile} />
+          <HeroActions onGetTickets={handleGetTickets} onSignUp={handleSignUp} />
         </div>
       </div>
     </div>
