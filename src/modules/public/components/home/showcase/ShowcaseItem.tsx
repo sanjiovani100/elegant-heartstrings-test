@@ -44,7 +44,8 @@ export const ShowcaseItem = ({
             Explore
           </Button>
           <Button 
-            className="flex-1 bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-colors duration-300"
+            variant="gradient"
+            className="flex-1"
             onClick={onDetails}
           >
             Details
