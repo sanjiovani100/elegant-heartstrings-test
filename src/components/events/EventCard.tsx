@@ -27,7 +27,7 @@ const EventCard = ({ event }: EventCardProps) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           <div className="absolute top-4 right-4">
-            <span className="inline-block bg-fashionista-red px-3 py-1 rounded-full text-xs font-medium text-white">
+            <span className="inline-block bg-gradient-primary px-3 py-1 rounded-full text-xs font-medium text-white">
               {event.category}
             </span>
           </div>

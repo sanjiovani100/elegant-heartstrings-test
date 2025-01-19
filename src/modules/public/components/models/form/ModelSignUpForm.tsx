@@ -100,7 +100,8 @@ const ModelSignUpForm = () => {
         <ModelFormFields form={form} />
         <Button 
           type="submit" 
-          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-all duration-300"
+          variant="gradient"
+          className="w-full text-white transition-all duration-300"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
@@ -116,5 +117,3 @@ const ModelSignUpForm = () => {
     </Form>
   );
 };
-
-export default ModelSignUpForm;

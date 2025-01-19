@@ -6,7 +6,8 @@ export const HeroActions = ({ onGetTickets, onSignUp }: HeroActionsProps) => {
     <div className="space-x-6 animate-fade-up delay-200">
       <Button 
         size="lg" 
-        className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:shadow-glow font-inter"
+        variant="gradient"
+        className="text-white px-8 py-6 text-lg transition-all duration-300 hover:shadow-glow font-inter"
         onClick={onGetTickets}
       >
         Get Tickets

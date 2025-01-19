@@ -20,7 +20,8 @@ const DesignerHero = () => {
           <div className="space-x-4 animate-fade-up delay-200">
             <Button 
               size="lg"
-              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6"
+              variant="gradient"
+              className="text-white px-8 py-6"
             >
               Apply as a Designer
             </Button>
@@ -37,5 +38,3 @@ const DesignerHero = () => {
     </section>
   );
 };
-
-export default DesignerHero;

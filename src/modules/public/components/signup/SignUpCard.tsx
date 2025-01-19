@@ -43,7 +43,8 @@ const SignUpCard = ({
         <h3 className="text-2xl font-playfair text-white">{title}</h3>
         <p className="text-gray-300 font-montserrat text-sm md:text-base">{description}</p>
         <Button
-          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white transition-all duration-300 mt-4"
+          variant="gradient"
+          className="w-full text-white transition-all duration-300 mt-4"
           onClick={() => window.location.href = link}
         >
           Sign Up Now

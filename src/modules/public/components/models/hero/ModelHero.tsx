@@ -23,8 +23,9 @@ const ModelHero = () => {
           <div className="space-x-4 animate-fade-up delay-200">
             <Button 
               size="lg"
+              variant="gradient"
               onClick={() => document.getElementById('model-signup')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6 transition-all duration-300"
+              className="text-white px-8 py-6 transition-all duration-300"
             >
               Apply to Be a Model
             </Button>
@@ -42,5 +43,3 @@ const ModelHero = () => {
     </section>
   );
 };
-
-export default ModelHero;

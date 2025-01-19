@@ -193,7 +193,7 @@ const Navbar = () => {
               </>
             ) : (
               <Link to="/login">
-                <Button className="bg-fashionista-red hover:bg-fashionista-red/90 text-white">
+                <Button variant="gradient" className="text-white">
                   Sign In
                 </Button>
               </Link>

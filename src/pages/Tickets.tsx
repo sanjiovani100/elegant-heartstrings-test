@@ -34,7 +34,8 @@ const Tickets = () => {
       {/* Mobile Sticky CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/90 border-t border-fashionista-red/20 backdrop-blur md:hidden">
         <Button 
-          className="w-full bg-fashionista-red hover:bg-fashionista-red/90 text-white"
+          variant="gradient"
+          className="w-full text-white"
           onClick={() => document.getElementById('ticket-tiers')?.scrollIntoView({ behavior: 'smooth' })}
         >
           Get Tickets

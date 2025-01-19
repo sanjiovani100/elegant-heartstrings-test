@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus, Calendar, ArrowRight } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface EventCTAProps {
   className?: string;
@@ -40,7 +40,8 @@ const EventCTA = ({ className }: EventCTAProps) => {
               <DialogTrigger asChild>
                 <Button 
                   size="lg"
-                  className="group/btn bg-fashionista-red hover:bg-fashionista-red/90 text-white shadow-glow transition-all duration-300 hover:scale-105"
+                  variant="gradient"
+                  className="group/btn text-white shadow-glow transition-all duration-300 hover:scale-105"
                 >
                   <Plus className="w-5 h-5 mr-2 transition-transform group-hover/btn:rotate-90" />
                   Create New Event
@@ -63,11 +64,9 @@ const EventCTA = ({ className }: EventCTAProps) => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-fashionista-pink text-fashionista-pink hover:bg-fashionista-pink hover:text-white group/learn transition-all duration-300"
+              className="border-fashionista-pink text-fashionista-pink hover:bg-fashionista-pink hover:text-white"
             >
-              <Calendar className="w-5 h-5 mr-2" />
               Learn More
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/learn:translate-x-1" />
             </Button>
           </div>
         </div>
