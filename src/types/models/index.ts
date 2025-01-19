@@ -27,3 +27,11 @@ export interface ModelApplication {
   submittedAt: string;
   feedback?: string;
 }
+
+export interface ModelFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  experience: string;
+  portfolioLink?: string;
+}
