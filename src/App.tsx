@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Index from "@/pages/Index";
+import Index from "@/modules/public/pages/home";
 import Models from "@/pages/Models";
 import Designer from "@/pages/Designer";
 import EventsListing from "@/pages/events/EventsListing";
