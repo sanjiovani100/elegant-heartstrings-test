@@ -25,10 +25,18 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         fashionista: {
-          red: "#800000",
-          pink: "#FFC1C1",
+          pink: {
+            primary: "#FF00CC",
+            hover: "#FF1AD4",
+            active: "#E600B8",
+          },
+          purple: {
+            primary: "#333399",
+            hover: "#3D3DB2",
+            active: "#2D2D87",
+          },
           grey: "#F0F0F0",
-          dark: "#000000",
+          dark: "#1A1F2C",
         },
         sponsor: {
           bg: {
@@ -97,6 +105,16 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(to right, #FF00CC, #333399)',
+        'gradient-hover': 'linear-gradient(to right, #FF1AD4, #3D3DB2)',
+        'gradient-active': 'linear-gradient(to right, #E600B8, #2D2D87)',
+      },
+      boxShadow: {
+        glow: "0 0 15px rgba(255, 0, 204, 0.3)",
+        'sponsor-card': "0 2px 4px rgba(51, 51, 153, 0.05)",
+        'sponsor-hover': "0 4px 6px rgba(255, 0, 204, 0.1)",
       },
       fontFamily: {
         playfair: ["Playfair Display", "serif"],
