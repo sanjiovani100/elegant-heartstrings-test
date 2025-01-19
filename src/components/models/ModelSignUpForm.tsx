@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import ModelFormFields from "./form/ModelFormFields";
+import type { ModelFormData } from "@/types/supabase/tables";
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -24,11 +25,9 @@ const formSchema = z.object({
   }).optional(),
 });
 
-type FormValues = z.infer<typeof formSchema>;
-
 const ModelSignUpForm = () => {
   const { toast } = useToast();
-  const form = useForm<FormValues>({
+  const form = useForm<ModelFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
@@ -39,7 +38,7 @@ const ModelSignUpForm = () => {
     },
   });
 
-  function onSubmit(values: FormValues) {
+  function onSubmit(values: ModelFormData) {
     console.log(values);
     toast({
       title: "Application Submitted!",
