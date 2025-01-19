@@ -26,6 +26,11 @@
     --input: 0 0% 20%;
     --ring: 0 100% 38%;
     --radius: 0.5rem;
+
+    /* Layout Variables */
+    --navbar-height: 4rem;
+    --banner-height: 3rem;
+    --section-spacing: 2rem;
   }
 }
 
@@ -135,6 +140,14 @@
 
 .nav-link:hover::after {
   @apply w-full;
+}
+
+/* Ticket Hero Styles */
+.ticket-hero {
+  @apply relative min-h-[calc(100vh-var(--navbar-height))] flex items-center justify-center pt-[calc(var(--navbar-height)+var(--banner-height))] pb-[var(--section-spacing)];
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/hero2.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 /* Keep other existing styles */
