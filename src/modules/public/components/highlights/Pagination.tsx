@@ -1,8 +1,4 @@
-interface PaginationProps {
-  activeIndex: number;
-  total: number;
-  onSelect: (index: number) => void;
-}
+import { PaginationProps } from "./types";
 
 const Pagination = ({ activeIndex, total, onSelect }: PaginationProps) => {
   return (

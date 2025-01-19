@@ -1,12 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface NavigationControlsProps {
-  onPrevious: () => void;
-  onNext: () => void;
-  activeIndex: number;
-  total: number;
-}
+import { NavigationControlsProps } from "./types";
 
 const NavigationControls = ({ 
   onPrevious, 

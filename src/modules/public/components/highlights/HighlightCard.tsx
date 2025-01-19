@@ -1,11 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-interface HighlightCardProps {
-  title: string;
-  description: string;
-  image: string;
-}
+import { HighlightCardProps } from "./types";
 
 const HighlightCard = ({ title, description, image }: HighlightCardProps) => {
   return (
