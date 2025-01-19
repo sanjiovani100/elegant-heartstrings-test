@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { Event } from "@/types/events";
+import { transformVenueDetails } from "@/types/utils/transformers";
 
 interface EventCardProps {
   event: Event;
@@ -11,6 +12,7 @@ interface EventCardProps {
 
 const EventCard = ({ event }: EventCardProps) => {
   const navigate = useNavigate();
+  const venueDetails = transformVenueDetails(event.venue_details);
 
   return (
     <Card className="bg-white/5 border-white/10 overflow-hidden group hover:border-fashionista-pink/50 transition-all duration-300">
@@ -45,13 +47,15 @@ const EventCard = ({ event }: EventCardProps) => {
           <div className="flex items-center gap-2">
             <Ticket className="w-4 h-4 text-fashionista-pink" />
             <span className="text-sm">
-              {event.capacity ? `${event.capacity} tickets available` : event.price}
+              {venueDetails ? `${venueDetails.seating_capacity} seats available` : 'Contact for tickets'}
             </span>
           </div>
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-white font-medium">{event.price}</span>
+          <span className="text-white font-medium">
+            {event.price || 'Price on request'}
+          </span>
           <Button 
             variant="outline"
             className="border-fashionista-pink text-fashionista-pink hover:bg-fashionista-pink hover:text-white"
