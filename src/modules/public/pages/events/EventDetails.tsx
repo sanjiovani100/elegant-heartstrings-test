@@ -5,6 +5,8 @@ import { supabase } from "@/integrations/supabase/client";
 import EventDetailsComponent from "@/components/events/EventDetails";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
+import { Event } from "@/types/events";
+import { transformVenueDetails, transformScheduleTimeline } from "@/types/utils/transformers";
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -24,9 +26,16 @@ const EventDetails = () => {
       if (error) throw error;
       if (!data) throw new Error('Event not found');
       
-      return data;
+      // Transform the data to match our Event type
+      const transformedEvent: Event = {
+        ...data,
+        venue_details: transformVenueDetails(data.venue_details),
+        schedule_timeline: transformScheduleTimeline(data.schedule_timeline)
+      };
+      
+      return transformedEvent;
     },
-    enabled: !!id, // Only run query if we have an ID
+    enabled: !!id // Only run query if we have an ID
   });
 
   React.useEffect(() => {
