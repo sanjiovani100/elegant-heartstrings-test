@@ -6,25 +6,13 @@ import Pagination from "./Pagination";
 import { HighlightsProps } from "./types";
 import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
 
-const highlights = [
-  {
-    title: "Runway Collection",
-    description: "Experience our exclusive Valentine's collection featuring elegant evening wear and haute couture designs.",
-    image: "/lovable-uploads/356fce11-fc3c-49c5-aa17-53b584a0bcf8.png"
-  },
-  {
-    title: "Luxury Lingerie",
-    description: "Discover our curated selection of premium silk and satin pieces in romantic blush tones.",
-    image: "/lovable-uploads/9d7f93fc-b3ee-4a60-8e66-a7dd53721a75.png"
-  },
-  {
-    title: "Backstage Glamour",
-    description: "Get a glimpse of the behind-the-scenes magic and artistic preparation.",
-    image: "/lovable-uploads/520b431f-8c25-4a32-bb07-94ff7f89d575.png"
-  }
-];
-
-const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }: HighlightsProps) => {
+const Highlights = ({ 
+  title = "Event Highlights", 
+  subtitle, 
+  items = [], 
+  className = "",
+  testId = "highlights-section"
+}: HighlightsProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,6 +31,7 @@ const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }
         description: "Failed to navigate to the selected highlight.",
         variant: "destructive"
       });
+      console.error("Highlights navigation error:", error);
     }
   };
 
@@ -58,7 +47,10 @@ const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }
 
   return (
     <ErrorBoundary>
-      <section className="relative py-20 overflow-hidden bg-gradient-to-b from-black via-black/90 to-fashionista-red/20">
+      <section 
+        className={`relative py-20 overflow-hidden bg-gradient-to-b from-black via-black/90 to-fashionista-red/20 ${className}`}
+        data-testid={testId}
+      >
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-montserrat text-white text-center mb-4 animate-fade-up">
             {title}
@@ -72,6 +64,7 @@ const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }
           <div 
             ref={containerRef}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            data-testid={`${testId}-grid`}
           >
             {items.map((highlight, index) => (
               <HighlightCard
@@ -83,6 +76,7 @@ const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }
                   // Simulate loading state
                   setTimeout(() => setIsLoading(false), 1000);
                 }}
+                testId={`${testId}-card-${index}`}
               />
             ))}
           </div>
@@ -93,11 +87,13 @@ const Highlights = ({ title = "Event Highlights", subtitle, items = highlights }
             activeIndex={activeIndex}
             total={items.length}
             disabled={isLoading}
+            testId={`${testId}-nav`}
           />
           <Pagination 
             activeIndex={activeIndex}
             total={items.length}
             onSelect={scrollToCard}
+            testId={`${testId}-pagination`}
           />
         </div>
       </section>
