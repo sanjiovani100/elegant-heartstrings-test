@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Highlights from "@/components/Highlights";
+import Highlights from "@/modules/public/components/highlights/Highlights";
 import LingerieShowcase from "@/components/LingerieShowcase";
 import Tickets from "@/components/tickets/Tickets";
 import SignUpSection from "@/modules/public/components/signup/SignUpSection";

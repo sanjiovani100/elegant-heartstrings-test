@@ -1,4 +1,4 @@
-import HighlightCard from "@/components/highlights/HighlightCard";
+import HighlightCard from "@/modules/public/components/highlights/HighlightCard";
 
 const sponsorshipLevels = [
   {
