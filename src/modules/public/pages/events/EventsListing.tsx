@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { Event } from '@/types/events';
-import EventCard from '@/components/events/EventCard';
+import EventsGrid from '@/components/events/EventsGrid';
 import EventFilters from '@/components/events/EventFilters';
 import { supabase } from '@/integrations/supabase/client';
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { transformVenueDetails } from '@/types/utils/transformers';
 
 const EventsListing = () => {
   const { data: events, isLoading, error } = useQuery({
@@ -20,7 +21,21 @@ const EventsListing = () => {
         throw error;
       }
 
-      return data as Event[];
+      // Transform the raw data into the correct Event type
+      return data?.map(event => ({
+        id: event.id,
+        title: event.title,
+        description: event.description,
+        date: event.date,
+        location: event.location,
+        status: event.status,
+        cover_image: event.cover_image,
+        capacity: event.capacity,
+        category: event.category,
+        venue_details: transformVenueDetails(event.venue_details),
+        schedule_timeline: event.schedule_timeline,
+        price: event.price
+      })) as Event[];
     },
   });
 
@@ -37,21 +52,7 @@ const EventsListing = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <EventFilters />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {isLoading ? (
-          // Loading skeleton cards
-          [...Array(6)].map((_, index) => (
-            <div
-              key={index}
-              className="bg-white/5 border border-white/10 rounded-lg h-[400px] animate-pulse"
-            />
-          ))
-        ) : (
-          events?.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))
-        )}
-      </div>
+      <EventsGrid events={events || []} isLoading={isLoading} />
     </div>
   );
 };
