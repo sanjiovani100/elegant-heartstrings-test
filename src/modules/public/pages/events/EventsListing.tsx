@@ -33,8 +33,7 @@ const EventsListing = () => {
         capacity: event.capacity,
         category: event.category,
         venue_details: transformVenueDetails(event.venue_details),
-        schedule_timeline: event.schedule_timeline,
-        price: event.price
+        schedule_timeline: event.schedule_timeline
       })) as Event[];
     },
   });
