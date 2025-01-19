@@ -1,0 +1,11 @@
+.fade-up {
+  @apply opacity-0 translate-y-4 transition-all duration-500;
+}
+
+.fade-up.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-glow;
+}

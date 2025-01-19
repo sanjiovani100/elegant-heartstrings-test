@@ -1,0 +1,36 @@
+/* Sponsorship Form Specific Styles */
+.sponsorship-form {
+  @apply bg-sponsor-bg-primary text-sponsor-text-primary;
+}
+
+.sponsorship-form label {
+  @apply text-sponsor-text-label font-medium;
+}
+
+.sponsorship-form input,
+.sponsorship-form select,
+.sponsorship-form textarea {
+  @apply bg-sponsor-bg-primary border-sponsor-border-input text-sponsor-text-primary 
+         focus:border-sponsor-border-focus focus:ring-sponsor-border-focus/10
+         disabled:bg-sponsor-bg-disabled disabled:text-sponsor-text-secondary;
+}
+
+.sponsorship-form .error-message {
+  @apply text-sponsor-accent-error text-sm mt-1;
+}
+
+.sponsorship-form .helper-text {
+  @apply text-sponsor-text-secondary text-sm mt-1;
+}
+
+.form-step-title {
+  @apply text-2xl font-montserrat text-sponsor-text-primary mb-6;
+}
+
+.form-section {
+  @apply space-y-6 p-6 bg-sponsor-bg-secondary rounded-lg border border-sponsor-border-input;
+}
+
+.form-field-group {
+  @apply space-y-4;
+}

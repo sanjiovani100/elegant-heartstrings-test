@@ -1,0 +1,10 @@
+/* Button Styles */
+.btn-primary {
+  @apply bg-sponsor-button-primary hover:bg-sponsor-button-primary-hover text-white
+         transition-colors duration-300;
+}
+
+.btn-secondary {
+  @apply bg-sponsor-button-secondary hover:bg-sponsor-button-secondary-hover text-sponsor-text-primary
+         transition-colors duration-300;
+}

@@ -1,0 +1,24 @@
+/* Card Hover Effects */
+.sponsor-card {
+  @apply transition-all duration-300 hover:shadow-sponsor-hover;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+.ticket-card {
+  @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 transition-all duration-300;
+}
+
+.ticket-card:hover {
+  @apply transform scale-105 shadow-glow;
+}
+
+.benefit-card {
+  @apply relative overflow-hidden rounded-lg bg-black/50 border border-white/10;
+}
+
+.benefit-card-content {
+  @apply absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent;
+}

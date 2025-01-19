@@ -1,0 +1,12 @@
+/* Navigation Link */
+.nav-link {
+  @apply relative text-white hover:text-fashionista-pink transition-colors duration-300;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute left-0 bottom-[-5px] w-0 h-[2px] bg-fashionista-pink transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}

@@ -1,0 +1,16 @@
+/* Progress Indicator Styles */
+.progress-step {
+  @apply transition-all duration-300;
+}
+
+.progress-step.completed {
+  @apply text-sponsor-progress-completed;
+}
+
+.progress-step.current {
+  @apply text-sponsor-progress-current;
+}
+
+.progress-step.upcoming {
+  @apply text-sponsor-progress-upcoming;
+}
