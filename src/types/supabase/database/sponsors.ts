@@ -35,8 +35,6 @@ export interface SponsorshipApplicationRow {
   event_participation: Json | null;
   event_segments: string[] | null;
   previous_sponsorships: Json | null;
-  reviewed_at: string | null;
-  reviewed_by: string | null;
   signature_data: Json | null;
   sponsorship_goals: string[] | null;
   terms_accepted: boolean | null;

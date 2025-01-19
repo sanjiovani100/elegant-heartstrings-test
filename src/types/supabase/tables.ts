@@ -1,28 +1,29 @@
-import * as Database from './database';
+import type { Database } from './database';
+import * as DatabaseTypes from './database';
 
 export interface Tables {
-  events: Database.EventRow;
-  sponsor_profiles: Database.SponsorProfileRow;
-  sponsorship_applications: Database.SponsorshipApplicationRow;
-  tickets: Database.TicketRow;
-  ticket_types: Database.TicketTypeRow;
-  profiles: Database.ProfileRow;
+  events: DatabaseTypes.EventRow;
+  sponsor_profiles: DatabaseTypes.SponsorProfileRow;
+  sponsorship_applications: DatabaseTypes.SponsorshipApplicationRow;
+  tickets: DatabaseTypes.TicketRow;
+  ticket_types: DatabaseTypes.TicketTypeRow;
+  profiles: DatabaseTypes.ProfileRow;
 }
 
 export interface TablesInsert {
-  events: Database.EventInsert;
-  sponsor_profiles: Database.SponsorProfileInsert;
-  sponsorship_applications: Database.SponsorshipApplicationInsert;
-  tickets: Database.TicketInsert;
-  ticket_types: Database.TicketTypeInsert;
-  profiles: Database.ProfileInsert;
+  events: DatabaseTypes.EventInsert;
+  sponsor_profiles: DatabaseTypes.SponsorProfileInsert;
+  sponsorship_applications: DatabaseTypes.SponsorshipApplicationInsert;
+  tickets: DatabaseTypes.TicketInsert;
+  ticket_types: DatabaseTypes.TicketTypeInsert;
+  profiles: DatabaseTypes.ProfileInsert;
 }
 
 export interface TablesUpdate {
-  events: Database.EventUpdate;
-  sponsor_profiles: Database.SponsorProfileUpdate;
-  sponsorship_applications: Database.SponsorshipApplicationUpdate;
-  tickets: Database.TicketUpdate;
-  ticket_types: Database.TicketTypeUpdate;
-  profiles: Database.ProfileUpdate;
+  events: DatabaseTypes.EventUpdate;
+  sponsor_profiles: DatabaseTypes.SponsorProfileUpdate;
+  sponsorship_applications: DatabaseTypes.SponsorshipApplicationUpdate;
+  tickets: DatabaseTypes.TicketUpdate;
+  ticket_types: DatabaseTypes.TicketTypeUpdate;
+  profiles: DatabaseTypes.ProfileUpdate;
 }
