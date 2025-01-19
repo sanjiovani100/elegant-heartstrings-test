@@ -66,11 +66,10 @@ export const TicketCard = ({
         {/* CTA */}
         <div className="space-y-4">
           <Button 
-            className={`w-full h-12 text-lg font-semibold transition-all duration-300 ${
-              isVip 
-                ? 'bg-fashionista-red hover:bg-fashionista-red/90' 
-                : 'bg-white/10 hover:bg-white/20'
-            } text-white`}
+            variant="gradient"
+            className={`w-full h-12 text-lg font-semibold ${
+              isVip ? 'shadow-glow' : ''
+            }`}
           >
             Select Ticket
           </Button>
