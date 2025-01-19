@@ -5,9 +5,6 @@ export interface HighlightItem {
   title: string;
   description: string;
   image: string;
-  link?: string;
-  category?: string;
-  tags?: string[];
 }
 
 /**
@@ -17,7 +14,6 @@ export interface HighlightCardProps extends HighlightItem {
   onLearnMore?: () => void;
   className?: string;
   isLoading?: boolean;
-  testId?: string;
 }
 
 /**
@@ -27,8 +23,6 @@ export interface HighlightsProps {
   title?: string;
   subtitle?: string;
   items: HighlightItem[];
-  className?: string;
-  testId?: string;
 }
 
 /**
@@ -40,8 +34,6 @@ export interface NavigationControlsProps {
   activeIndex: number;
   total: number;
   disabled?: boolean;
-  className?: string;
-  testId?: string;
 }
 
 /**
@@ -51,6 +43,4 @@ export interface PaginationProps {
   activeIndex: number;
   total: number;
   onSelect: (index: number) => void;
-  className?: string;
-  testId?: string;
 }
