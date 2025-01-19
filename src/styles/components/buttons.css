@@ -1,30 +1,32 @@
-/* Button Styles */
-.btn-primary {
-  @apply bg-gradient-primary hover:bg-gradient-hover active:bg-gradient-active text-white
-         transition-all duration-300;
-}
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-gradient-primary hover:bg-gradient-hover active:bg-gradient-active text-white
+           transition-all duration-300;
+  }
 
-.btn-secondary {
-  @apply bg-transparent border border-transparent hover:border-fashionista-pink-primary
-         bg-clip-padding backdrop-filter backdrop-blur-sm
-         hover:bg-gradient-hover/10 text-white
-         transition-all duration-300;
-}
+  .btn-secondary {
+    @apply bg-transparent border border-transparent hover:border-fashionista-pink-primary
+           bg-clip-padding backdrop-filter backdrop-blur-sm
+           hover:bg-opacity-10 text-white
+           transition-all duration-300;
+  }
 
-.btn-outline {
-  @apply border-2 border-transparent hover:border-fashionista-pink-primary
-         text-white hover:bg-gradient-hover/10
-         transition-all duration-300;
-}
+  .btn-outline {
+    @apply border-2 border-transparent hover:border-fashionista-pink-primary
+           text-white hover:bg-opacity-10
+           transition-all duration-300;
+  }
 
-/* Focus States */
-.btn-focus {
-  @apply focus:ring-2 focus:ring-fashionista-pink-primary focus:ring-offset-2
-         focus:ring-offset-background focus:outline-none;
-}
+  /* Focus States */
+  .btn-focus {
+    @apply focus:ring-2 focus:ring-fashionista-pink-primary focus:ring-offset-2
+           focus:ring-offset-background focus:outline-none;
+  }
 
-/* Loading States */
-.btn-loading {
-  @apply relative overflow-hidden before:absolute before:inset-0
-         before:bg-gradient-primary before:animate-shimmer;
+  /* Loading States */
+  .btn-loading {
+    @apply relative overflow-hidden before:absolute before:inset-0
+           before:bg-gradient-primary before:animate-shimmer;
+  }
 }

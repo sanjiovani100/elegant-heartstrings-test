@@ -121,11 +121,6 @@ export default {
         montserrat: ["Montserrat", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
-      boxShadow: {
-        glow: "0 0 15px rgba(255, 193, 193, 0.5)",
-        "sponsor-card": "0 2px 4px rgba(0, 0, 0, 0.05)",
-        "sponsor-hover": "0 4px 6px rgba(128, 0, 0, 0.1)",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
