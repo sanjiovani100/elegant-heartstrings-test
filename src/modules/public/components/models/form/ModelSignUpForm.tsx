@@ -117,3 +117,5 @@ const ModelSignUpForm = () => {
     </Form>
   );
 };
+
+export default ModelSignUpForm;

@@ -43,3 +43,5 @@ const ModelHero = () => {
     </section>
   );
 };
+
+export default ModelHero;

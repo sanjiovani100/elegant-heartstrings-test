@@ -38,3 +38,5 @@ const DesignerHero = () => {
     </section>
   );
 };
+
+export default DesignerHero;
