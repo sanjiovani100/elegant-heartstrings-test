@@ -1,7 +1,9 @@
-.checkout-step {
-  @apply relative flex items-center gap-4 p-4 rounded-lg bg-white/5 border border-white/10;
-}
+@layer components {
+  .checkout-step {
+    @apply relative flex items-center gap-4 p-4 rounded-lg bg-white/5 border border-white/10;
+  }
 
-.checkout-step-number {
-  @apply w-8 h-8 rounded-full bg-fashionista-red flex items-center justify-center text-white font-bold;
+  .checkout-step-number {
+    @apply w-8 h-8 rounded-full bg-fashionista-pink-primary flex items-center justify-center text-white font-bold;
+  }
 }
