@@ -9,11 +9,18 @@ import './index.css';
 const suppressResizeObserverWarning = () => {
   const originalError = window.console.error;
   window.console.error = (...args) => {
-    if (args[0]?.includes?.('ResizeObserver')) return;
+    if (
+      args.length > 0 &&
+      typeof args[0] === 'string' &&
+      args[0].includes('ResizeObserver loop completed with undelivered notifications')
+    ) {
+      return;
+    }
     originalError.apply(window.console, args);
   };
 };
 
+// Apply the suppression
 suppressResizeObserverWarning();
 
 const rootElement = document.getElementById('root');
@@ -27,6 +34,7 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 60 * 1000, // 1 minute
       retry: 1,
+      refetchOnWindowFocus: false,
     },
   },
 });
