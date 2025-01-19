@@ -7,7 +7,7 @@ import DesignerPage from "@/pages/Designer";
 import ModelsPage from "@/pages/Models";
 import SponsorsPage from "@/pages/Sponsors";
 import TicketsPage from "@/pages/Tickets";
-import EventsPage from "@/pages/events";
+import EventsPage from "@/modules/public/pages/events";
 import LoginPage from "@/pages/auth/Login";
 import SponsorshipApplicationPage from "@/pages/sponsors/SponsorshipApplication";
 import CreateEventPage from "@/pages/admin/CreateEvent";
