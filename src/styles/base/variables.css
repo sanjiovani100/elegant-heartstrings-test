@@ -13,38 +13,25 @@
     
     /* Focus Ring */
     --ring-gradient: linear-gradient(to right, rgba(255, 0, 204, 0.5), rgba(51, 51, 153, 0.5));
-    --focus-ring: 320 100% 50%;
     
-    /* System Colors */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 100%;
+    /* Animation Durations */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
     
-    /* Interactive States */
-    --primary: var(--gradient-primary);
-    --primary-foreground: 0 0% 100%;
-    --secondary: 320 100% 50%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 70%;
-    --accent: var(--gradient-primary);
-    --accent-foreground: 0 0% 100%;
+    /* Z-index Layers */
+    --z-header: 1000;
+    --z-modal: 2000;
+    --z-tooltip: 3000;
     
-    /* Status Colors */
-    --success: 142 72% 29%;
-    --warning: 38 92% 50%;
-    --error: 0 84% 60%;
-    --info: 217 91% 60%;
-    
-    /* Border & Input */
-    --border: 320 100% 50%;
-    --input: 0 0% 20%;
-    --ring: 320 100% 50%;
-    
-    /* Layout */
-    --radius: 0.5rem;
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 @import './styles/base/variables.css';
 @import './styles/base/typography.css';
+@import './styles/components/brand.css';
 @import './styles/components/forms.css';
 @import './styles/components/progress.css';
 @import './styles/components/buttons.css';
@@ -16,5 +17,16 @@
 @layer base {
   * {
     @apply border-border;
+  }
+  
+  /* Ensure smooth scrolling except for users who prefer reduced motion */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

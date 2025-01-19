@@ -1,0 +1,47 @@
+@layer components {
+  /* Logo Treatments */
+  .logo {
+    @apply relative inline-block;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateZ(0); /* Hardware acceleration */
+  }
+  
+  .logo:hover {
+    background: var(--gradient-hover);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Gradient Headers */
+  .gradient-header {
+    @apply font-bold relative;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateZ(0);
+  }
+  
+  /* Accent Decorations */
+  .accent-line {
+    @apply h-1 rounded-full;
+    background: var(--gradient-primary);
+    transform: translateZ(0);
+  }
+  
+  .accent-dot {
+    @apply w-2 h-2 rounded-full;
+    background: var(--gradient-primary);
+    transform: translateZ(0);
+  }
+  
+  /* Background Patterns */
+  .gradient-bg {
+    @apply relative overflow-hidden;
+    background: 
+      radial-gradient(circle at 0% 0%, rgba(255, 0, 204, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(51, 51, 153, 0.1) 0%, transparent 50%);
+    transform: translateZ(0);
+  }
+}

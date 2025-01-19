@@ -1,11 +1,64 @@
-.fade-up {
-  @apply opacity-0 translate-y-4 transition-all duration-500;
-}
-
-.fade-up.visible {
-  @apply opacity-100 translate-y-0;
-}
-
-.hover-glow {
-  @apply transition-all duration-300 hover:shadow-glow;
+@layer utilities {
+  /* Interactive States */
+  .hover-lift {
+    @apply transition-transform duration-300;
+    transform: translateZ(0);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px) translateZ(0);
+  }
+  
+  /* Loading Animations */
+  .loading-gradient {
+    background: linear-gradient(
+      270deg,
+      var(--gradient-muted),
+      var(--gradient-primary),
+      var(--gradient-muted)
+    );
+    background-size: 200% 100%;
+    animation: loading 2s ease-in-out infinite;
+    transform: translateZ(0);
+  }
+  
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Transitions */
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(10px) translateZ(0);
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+  }
+  
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateY(-10px) translateZ(0);
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+  }
+  
+  /* Click States */
+  .click-scale {
+    @apply active:scale-95 transition-transform duration-150;
+    transform: translateZ(0);
+  }
+  
+  /* Focus Visible States */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    --tw-ring-color: rgba(255, 0, 204, 0.5);
+  }
 }
