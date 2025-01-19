@@ -25,7 +25,7 @@ export const useModelApplication = (userId?: string) => {
           .from('model_applications')
           .select('status, created_at, feedback')
           .eq('user_id', userId)
-          .single();
+          .maybeSingle();
 
         if (error) throw error;
 
