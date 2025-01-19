@@ -1,57 +1,38 @@
-import { useQuery } from '@tanstack/react-query';
-import { Event } from '@/types/events';
-import EventsGrid from '@/components/events/EventsGrid';
-import EventFilters from '@/components/events/EventFilters';
-import { supabase } from '@/integrations/supabase/client';
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { transformVenueDetails } from '@/types/utils/transformers';
+import EventsHeroSection from "@/modules/public/components/events/EventsHeroSection";
+import EventsFilters from "@/modules/public/components/events/EventsFilters";
+import EventsGrid from "@/modules/public/components/events/EventsGrid";
+import EventsCTA from "@/modules/public/components/events/EventsCTA";
+import { ResizeErrorBoundary } from "@/components/error/ResizeErrorBoundary";
 
 const EventsListing = () => {
-  const { data: events, isLoading, error } = useQuery({
-    queryKey: ['events'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('events')
-        .select('*')
-        .eq('status', 'published')
-        .is('deleted_at', null);
-
-      if (error) {
-        console.error('Error fetching events:', error);
-        throw error;
-      }
-
-      // Transform the raw data into the correct Event type
-      return data?.map(event => ({
-        id: event.id,
-        title: event.title,
-        description: event.description,
-        date: event.date,
-        location: event.location,
-        status: event.status,
-        cover_image: event.cover_image,
-        capacity: event.capacity,
-        category: event.category,
-        venue_details: transformVenueDetails(event.venue_details),
-        schedule_timeline: event.schedule_timeline
-      })) as Event[];
-    },
-  });
-
-  if (error) {
-    return (
-      <Alert variant="destructive" className="m-4">
-        <AlertDescription>
-          There was an error loading the events. Please try again later.
-        </AlertDescription>
-      </Alert>
-    );
-  }
+  const handleFiltersChange = (filters: any) => {
+    // Handle filter changes
+    console.log("Filters changed:", filters);
+  };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <EventFilters />
-      <EventsGrid events={events || []} isLoading={isLoading} />
+    <div className="min-h-screen bg-black">
+      <ResizeErrorBoundary>
+        <EventsHeroSection />
+      </ResizeErrorBoundary>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="flex flex-col md:flex-row gap-8">
+          <ResizeErrorBoundary>
+            <EventsFilters onFiltersChange={handleFiltersChange} />
+          </ResizeErrorBoundary>
+
+          <main className="flex-1">
+            <ResizeErrorBoundary>
+              <EventsGrid />
+            </ResizeErrorBoundary>
+          </main>
+        </div>
+      </div>
+
+      <ResizeErrorBoundary>
+        <EventsCTA />
+      </ResizeErrorBoundary>
     </div>
   );
 };
