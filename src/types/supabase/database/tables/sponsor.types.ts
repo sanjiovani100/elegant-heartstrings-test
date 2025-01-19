@@ -1,4 +1,4 @@
-import { Database } from "@/integrations/supabase/types";
+import type { Database } from "@/integrations/supabase/types";
 
 export type SponsorProfileRow = Database['public']['Tables']['sponsor_profiles']['Row'];
 export type SponsorProfileInsert = Database['public']['Tables']['sponsor_profiles']['Insert'];
