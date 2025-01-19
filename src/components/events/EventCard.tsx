@@ -60,8 +60,8 @@ const EventCard = ({ event }: EventCardProps) => {
               {event.price || 'Price on request'}
             </span>
             <Button 
-              variant="outline"
-              className="border-fashionista-pink text-fashionista-pink hover:bg-fashionista-pink hover:text-white"
+              variant="gradient"
+              className="text-white hover:shadow-glow transition-all duration-300"
               onClick={() => navigate(`/events/${event.id}`)}
             >
               Get Tickets

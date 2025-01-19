@@ -50,14 +50,15 @@ const Hero = () => {
           <div className="space-x-6 animate-fade-up delay-200">
             <Button 
               size="lg" 
-              className="bg-fashionista-red hover:bg-fashionista-red/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:shadow-glow font-inter"
+              variant="gradient"
+              className="text-white px-8 py-6 text-lg transition-all duration-300 hover:shadow-glow font-inter"
             >
               Get Tickets
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-[#F0F0F0] text-black hover:bg-white px-8 py-6 text-lg transition-all duration-300 font-inter"
+              className="bg-white/10 text-white hover:bg-white/20 px-8 py-6 text-lg transition-all duration-300 font-inter"
             >
               Sign Up Now
             </Button>
