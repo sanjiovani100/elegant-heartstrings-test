@@ -1,22 +1,9 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { useEvents } from "@/hooks/use-events";
 import EventCard from "@/modules/public/components/events/EventCard";
 
 const EventsListing = () => {
-  const { data: events, isLoading } = useQuery({
-    queryKey: ['events'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('events')
-        .select('*')
-        .eq('is_deleted', false)
-        .order('date', { ascending: true });
-      
-      if (error) throw error;
-      return data;
-    }
-  });
+  const { data: events, isLoading } = useEvents();
 
   if (isLoading) {
     return <div>Loading events...</div>;

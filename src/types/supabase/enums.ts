@@ -1,6 +1,21 @@
 export type ApplicationStatus = 'draft' | 'submitted' | 'under_review' | 'approved' | 'declined';
 export type AuditAction = 'INSERT' | 'UPDATE' | 'DELETE' | 'SOFT_DELETE';
 export type EventStatus = 'draft' | 'published' | 'completed' | 'cancelled';
+export type EventCategory = 
+  | 'Fashion Show'
+  | 'Gala'
+  | 'Workshop'
+  | 'Exhibition'
+  | 'Conference'
+  | 'Networking'
+  | 'Awards_Ceremony'
+  | 'Runway_Show'
+  | 'Masterclass'
+  | 'Pop_Up_Shop'
+  | 'VIP_Reception'
+  | 'Industry_Mixer'
+  | 'Designer_Showcase'
+  | 'Trend_Presentation';
 export type MediaStatus = 'draft' | 'published';
 export type MediaType = 'gallery' | 'highlights' | 'promotional';
 export type MessageStatus = 'sent' | 'delivered' | 'read';

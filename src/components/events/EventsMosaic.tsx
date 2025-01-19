@@ -24,7 +24,7 @@ const EventsMosaic = ({ events }: EventsMosaicProps) => {
             >
               <div className="aspect-square w-full">
                 <img
-                  src={event.imageUrl}
+                  src={event.cover_image || '/placeholder.svg'}
                   alt={event.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

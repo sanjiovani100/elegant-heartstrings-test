@@ -1,4 +1,5 @@
 import { EventStatus, EventCategory } from '@/types/supabase/enums';
+import { Json } from '@/types/supabase/database';
 
 export interface Event {
   id: string;
@@ -28,8 +29,15 @@ export interface Event {
   } | null;
 }
 
-// Helper function to transform database events to frontend format
 export const transformDatabaseEvent = (dbEvent: any): Event => {
+  const venue_details = typeof dbEvent.venue_details === 'string' 
+    ? JSON.parse(dbEvent.venue_details)
+    : dbEvent.venue_details;
+
+  const schedule_timeline = typeof dbEvent.schedule_timeline === 'string'
+    ? JSON.parse(dbEvent.schedule_timeline)
+    : dbEvent.schedule_timeline;
+
   return {
     id: dbEvent.id,
     title: dbEvent.title,
@@ -40,8 +48,8 @@ export const transformDatabaseEvent = (dbEvent: any): Event => {
     cover_image: dbEvent.cover_image,
     capacity: dbEvent.capacity,
     category: dbEvent.category,
-    price: "From $99", // Default price - should be updated with actual ticket prices
-    venue_details: dbEvent.venue_details,
-    schedule_timeline: dbEvent.schedule_timeline
+    price: dbEvent.ticket_types?.[0]?.price ? `From $${dbEvent.ticket_types[0].price}` : "Price TBA",
+    venue_details,
+    schedule_timeline
   };
 };
