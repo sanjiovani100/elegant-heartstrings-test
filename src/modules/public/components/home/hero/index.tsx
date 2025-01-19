@@ -2,9 +2,9 @@ import { Button } from "@/shared/components/ui/Button";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { getAnimationDelay } from "@/shared/utils/animation";
 import { HeroProps } from "./types";
-import FloatingHeart from "./FloatingHeart";
-import HeroContent from "./HeroContent";
-import HeroActions from "./HeroActions";
+import { FloatingHeart } from "./FloatingHeart";
+import { HeroContent } from "./HeroContent";
+import { HeroActions } from "./HeroActions";
 
 const Hero = ({ title, subtitle }: HeroProps) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
