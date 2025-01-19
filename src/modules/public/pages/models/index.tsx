@@ -1,10 +1,13 @@
+import { Suspense } from "react";
 import ErrorBoundary from "../../components/models/ErrorBoundary";
 import ModelHero from "../../components/models/hero/ModelHero";
 import ModelBenefits from "../../components/models/benefits/ModelBenefits";
+import ModelGallery from "../../components/models/gallery/ModelGallery";
+import ModelSchedule from "../../components/models/schedule/ModelSchedule";
+import ModelRequirements from "../../components/models/requirements/ModelRequirements";
 import ModelFAQ from "../../components/models/faq/ModelFAQ";
 import ModelTestimonialCarousel from "../../components/models/testimonials/ModelTestimonialCarousel";
 import ModelSignUpForm from "../../components/models/form/ModelSignUpForm";
-import { Suspense } from "react";
 import ImageSkeleton from "../../components/models/ImageSkeleton";
 
 const ModelsPage = () => {
@@ -17,6 +20,18 @@ const ModelsPage = () => {
         
         <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading benefits...</div>}>
           <ModelBenefits />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading gallery...</div>}>
+          <ModelGallery />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading schedule...</div>}>
+          <ModelSchedule />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading requirements...</div>}>
+          <ModelRequirements />
         </Suspense>
         
         <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading testimonials...</div>}>
