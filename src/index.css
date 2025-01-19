@@ -15,6 +15,32 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Gradient System */
+    --gradient-primary: linear-gradient(to right, #FF00CC, #333399);
+    --gradient-hover: linear-gradient(to right, #FF1AD4, #3D3DB2);
+    --gradient-active: linear-gradient(to right, #E600B8, #2D2D87);
+    --gradient-muted: linear-gradient(to right, rgba(255, 0, 204, 0.1), rgba(51, 51, 153, 0.1));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 15px rgba(255, 0, 204, 0.3);
+    --shadow-card: 0 2px 4px rgba(51, 51, 153, 0.05);
+    --shadow-hover: 0 4px 6px rgba(255, 0, 204, 0.1);
+    
+    /* Focus Ring */
+    --ring-gradient: linear-gradient(to right, rgba(255, 0, 204, 0.5), rgba(51, 51, 153, 0.5));
+    
+    /* Animation Durations */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+    
+    /* Z-index Layers */
+    --z-header: 1000;
+    --z-modal: 2000;
+    --z-tooltip: 3000;
+  }
+  
   * {
     @apply border-border;
   }
@@ -28,5 +54,57 @@
     html {
       scroll-behavior: auto;
     }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Gradient Text Utilities */
+  .gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  /* Interactive Elements */
+  .interactive-hover {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .interactive-click {
+    @apply active:scale-95 transition-transform duration-150;
+  }
+
+  /* Loading States */
+  .loading-gradient {
+    @apply animate-gradient-shift bg-gradient-primary bg-[length:200%_200%];
+  }
+
+  .loading-pulse {
+    @apply animate-pulse-gradient;
+  }
+
+  /* Accent Decorations */
+  .accent-line {
+    @apply h-px bg-gradient-primary;
+  }
+
+  .accent-dot {
+    @apply w-2 h-2 rounded-full bg-gradient-primary;
+  }
+
+  /* Background Patterns */
+  .pattern-dots {
+    background-image: var(--pattern-dots);
+    background-size: 20px 20px;
+  }
+
+  .pattern-lines {
+    background-image: var(--pattern-lines);
+    background-size: 10px 10px;
   }
 }

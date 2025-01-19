@@ -110,16 +110,20 @@ export default {
         'gradient-primary': 'linear-gradient(to right, #FF00CC, #333399)',
         'gradient-hover': 'linear-gradient(to right, #FF1AD4, #3D3DB2)',
         'gradient-active': 'linear-gradient(to right, #E600B8, #2D2D87)',
+        'gradient-muted': 'linear-gradient(to right, rgba(255, 0, 204, 0.1), rgba(51, 51, 153, 0.1))',
+        'pattern-dots': 'radial-gradient(circle, #FF00CC 1px, transparent 1px)',
+        'pattern-lines': 'repeating-linear-gradient(45deg, #FF00CC 0, #FF00CC 1px, transparent 0, transparent 50%)',
       },
-      boxShadow: {
-        glow: "0 0 15px rgba(255, 0, 204, 0.3)",
-        'sponsor-card': "0 2px 4px rgba(51, 51, 153, 0.05)",
-        'sponsor-hover': "0 4px 6px rgba(255, 0, 204, 0.1)",
-      },
-      fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        montserrat: ["Montserrat", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+      typography: {
+        'gradient': {
+          css: {
+            background: 'linear-gradient(to right, #FF00CC, #333399)',
+            '-webkit-background-clip': 'text',
+            '-webkit-text-fill-color': 'transparent',
+            'background-clip': 'text',
+            'color': 'transparent',
+          },
+        },
       },
       keyframes: {
         "accordion-down": {
@@ -140,11 +144,38 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "gradient-shift": {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
+          },
+        },
+        "pulse-gradient": {
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0.5",
+          },
+        },
+        "scale-click": {
+          "0%, 100%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(0.95)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out forwards",
+        "gradient-shift": "gradient-shift 3s ease infinite",
+        "pulse-gradient": "pulse-gradient 2s ease-in-out infinite",
+        "scale-click": "scale-click 0.2s ease-in-out",
       },
     },
   },
