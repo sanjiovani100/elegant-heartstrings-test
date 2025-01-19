@@ -1,36 +1,44 @@
-/* Sponsorship Form Specific Styles */
-.sponsorship-form {
-  @apply bg-sponsor-bg-primary text-sponsor-text-primary;
-}
+@layer components {
+  /* Input Base */
+  .form-input {
+    @apply w-full px-4 py-2 bg-black/5 border border-gray-700 rounded-md
+           focus:outline-none focus:border-pink-primary focus:ring-2 focus:ring-pink-primary/50
+           transition-all duration-300;
+  }
 
-.sponsorship-form label {
-  @apply text-sponsor-text-label font-medium;
-}
+  /* Input States */
+  .form-input-error {
+    @apply border-error focus:border-error focus:ring-error/50;
+  }
 
-.sponsorship-form input,
-.sponsorship-form select,
-.sponsorship-form textarea {
-  @apply bg-sponsor-bg-primary border-sponsor-border-input text-sponsor-text-primary 
-         focus:border-sponsor-border-focus focus:ring-sponsor-border-focus/10
-         disabled:bg-sponsor-bg-disabled disabled:text-sponsor-text-secondary;
-}
+  .form-input-success {
+    @apply border-success focus:border-success focus:ring-success/50;
+  }
 
-.sponsorship-form .error-message {
-  @apply text-sponsor-accent-error text-sm mt-1;
-}
+  /* Labels */
+  .form-label {
+    @apply block text-sm font-medium text-gray-200 mb-1;
+  }
 
-.sponsorship-form .helper-text {
-  @apply text-sponsor-text-secondary text-sm mt-1;
-}
+  /* Error Message */
+  .form-error {
+    @apply text-sm text-error mt-1;
+  }
 
-.form-step-title {
-  @apply text-2xl font-montserrat text-sponsor-text-primary mb-6;
-}
+  /* Form Groups */
+  .form-group {
+    @apply space-y-2 mb-4;
+  }
 
-.form-section {
-  @apply space-y-6 p-6 bg-sponsor-bg-secondary rounded-lg border border-sponsor-border-input;
-}
+  /* Checkbox and Radio */
+  .form-checkbox, .form-radio {
+    @apply text-pink-primary focus:ring-pink-primary/50;
+  }
 
-.form-field-group {
-  @apply space-y-4;
+  /* Select */
+  .form-select {
+    @apply w-full px-4 py-2 bg-black/5 border border-gray-700 rounded-md
+           focus:outline-none focus:border-pink-primary focus:ring-2 focus:ring-pink-primary/50
+           transition-all duration-300;
+  }
 }

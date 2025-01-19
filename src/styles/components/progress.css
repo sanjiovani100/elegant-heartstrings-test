@@ -1,16 +1,53 @@
-/* Progress Indicator Styles */
-.progress-step {
-  @apply transition-all duration-300;
-}
+@layer components {
+  /* Progress Bar Container */
+  .progress-container {
+    @apply w-full bg-gray-800 rounded-full overflow-hidden;
+  }
 
-.progress-step.completed {
-  @apply text-sponsor-progress-completed;
-}
+  /* Progress States */
+  .progress-completed {
+    @apply h-2 bg-gradient-primary rounded-full transition-all duration-300;
+  }
 
-.progress-step.current {
-  @apply text-sponsor-progress-current;
-}
+  .progress-current {
+    @apply h-2 bg-gradient-hover rounded-full transition-all duration-300;
+  }
 
-.progress-step.upcoming {
-  @apply text-sponsor-progress-upcoming;
+  .progress-upcoming {
+    @apply h-2 bg-gray-700 rounded-full transition-all duration-300;
+  }
+
+  /* Progress Steps */
+  .progress-step {
+    @apply relative flex items-center;
+  }
+
+  .progress-step-completed {
+    @apply text-pink-primary;
+  }
+
+  .progress-step-current {
+    @apply text-white;
+  }
+
+  .progress-step-upcoming {
+    @apply text-gray-400;
+  }
+
+  /* Progress Indicators */
+  .progress-indicator {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-white font-bold;
+  }
+
+  .progress-indicator-completed {
+    @apply bg-gradient-primary;
+  }
+
+  .progress-indicator-current {
+    @apply bg-gradient-hover;
+  }
+
+  .progress-indicator-upcoming {
+    @apply bg-gray-700;
+  }
 }
