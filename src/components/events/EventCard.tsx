@@ -6,9 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Event } from "@/types/events";
 
 interface EventCardProps {
-  event: Event & {
-    capacity?: number;
-  };
+  event: Event;
 }
 
 const EventCard = ({ event }: EventCardProps) => {
@@ -18,7 +16,7 @@ const EventCard = ({ event }: EventCardProps) => {
     <Card className="bg-white/5 border-white/10 overflow-hidden group hover:border-fashionista-pink/50 transition-all duration-300">
       <div className="relative aspect-[4/3]">
         <img
-          src={event.imageUrl}
+          src={event.cover_image || '/placeholder.svg'}
           alt={event.title}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
@@ -57,7 +55,7 @@ const EventCard = ({ event }: EventCardProps) => {
           <Button 
             variant="outline"
             className="border-fashionista-pink text-fashionista-pink hover:bg-fashionista-pink hover:text-white"
-            onClick={() => navigate(`/tickets/${event.id}`)}
+            onClick={() => navigate(`/events/${event.id}`)}
           >
             Get Tickets
           </Button>
