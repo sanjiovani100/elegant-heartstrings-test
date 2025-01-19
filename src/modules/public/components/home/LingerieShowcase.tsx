@@ -3,7 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import LingeriePiece from "../LingeriePiece";
+import LingeriePiece from "./LingeriePiece";
 import { useState } from "react";
 
 const showcaseItems = [
