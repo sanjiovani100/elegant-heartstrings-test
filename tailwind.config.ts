@@ -20,8 +20,18 @@ export default {
     extend: {
       fontFamily: typography.fontFamily,
       colors,
-      backgroundImage: backgrounds.backgroundImage,
-      boxShadow: effects.boxShadow,
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(to right, #FF00CC, #333399)',
+        'gradient-hover': 'linear-gradient(to right, #FF1AD4, #3D3DB2)',
+        'gradient-active': 'linear-gradient(to right, #E600B8, #2D2D87)',
+        ...backgrounds.backgroundImage,
+      },
+      boxShadow: {
+        'glow': '0 0 15px rgba(255, 0, 204, 0.3)',
+        'glow-hover': '0 0 20px rgba(255, 0, 204, 0.4)',
+        'glow-active': '0 0 10px rgba(255, 0, 204, 0.2)',
+        ...effects.boxShadow,
+      },
       typography: typography.gradient,
       keyframes: animations.keyframes,
       animation: animations.animation,

@@ -20,15 +20,14 @@ const DesignerHero = () => {
           <div className="space-x-4 animate-fade-up delay-200">
             <Button 
               size="lg"
-              variant="gradient"
-              className="text-white px-8 py-6"
+              className="bg-gradient-primary hover:bg-gradient-hover text-white px-8 py-6 transition-all duration-300 hover:shadow-glow"
             >
               Apply as a Designer
             </Button>
             <Button 
               variant="outline"
               size="lg"
-              className="bg-white/10 text-white hover:bg-white/20 px-8 py-6"
+              className="bg-white/10 text-white hover:bg-white/20 px-8 py-6 transition-all duration-300"
             >
               Learn More About the Event
             </Button>
