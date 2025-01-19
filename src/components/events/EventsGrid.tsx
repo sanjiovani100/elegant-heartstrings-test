@@ -1,6 +1,7 @@
 import React from "react";
 import EventCard from "./EventCard";
 import { Event } from "@/types/events";
+import { ResizeErrorBoundary } from "../error/ResizeErrorBoundary";
 
 interface EventsGridProps {
   events: Event[];
@@ -20,7 +21,9 @@ const EventsGrid = ({ events, isLoading }: EventsGridProps) => {
         ))
       ) : (
         events.map((event) => (
-          <EventCard key={event.id} event={event} />
+          <ResizeErrorBoundary key={event.id}>
+            <EventCard event={event} />
+          </ResizeErrorBoundary>
         ))
       )}
     </div>
