@@ -4,7 +4,7 @@ import AboutPage from "@/modules/public/pages/about";
 import ContactPage from "@/modules/public/pages/contact";
 import FAQPage from "@/modules/public/pages/faq";
 import DesignerPage from "@/pages/Designer";
-import ModelsPage from "@/pages/Models";
+import ModelsPage from "@/modules/public/pages/models";
 import SponsorsPage from "@/pages/Sponsors";
 import TicketsPage from "@/pages/Tickets";
 import EventsPage from "@/modules/public/pages/events";
