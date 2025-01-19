@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Users } from "lucide-react";
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
+const Navbar: React.FC = () => {
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [user, setUser] = React.useState<User | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const { toast } = useToast();
@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const isSponsorsApplyPage = location.pathname === "/sponsors/apply";
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
