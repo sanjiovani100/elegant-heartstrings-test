@@ -114,6 +114,11 @@ export default {
         'pattern-dots': 'radial-gradient(circle, #FF00CC 1px, transparent 1px)',
         'pattern-lines': 'repeating-linear-gradient(45deg, #FF00CC 0, #FF00CC 1px, transparent 0, transparent 50%)',
       },
+      boxShadow: {
+        glow: "0 0 15px rgba(255, 0, 204, 0.3)",
+        'sponsor-card': "0 2px 4px rgba(51, 51, 153, 0.05)",
+        'sponsor-hover': "0 4px 6px rgba(255, 0, 204, 0.1)",
+      },
       typography: {
         'gradient': {
           css: {
