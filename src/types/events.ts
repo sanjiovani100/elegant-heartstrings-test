@@ -1,22 +1,29 @@
 import { EventStatus, EventCategory } from '@/types/supabase/enums';
+import { Json } from '@/types/supabase/database';
 
-// Strongly typed venue details interface
+// Strongly typed venue details interface with index signature
 export interface VenueDetails {
   layout: string;
   seating_capacity: number;
   standing_capacity: number;
   accessibility_features: string[];
   facilities: string[];
+  [key: string]: string | number | string[] | undefined;
 }
 
-// Strongly typed schedule timeline interface
+// Strongly typed schedule timeline interface with index signature
 export interface ScheduleTimeline {
   setup_time: string;
   rehearsal_time: string;
   doors_open: string;
   main_event: string;
-  intervals: any[];
+  intervals: Array<{
+    start_time: string;
+    end_time: string;
+    description: string;
+  }>;
   closing_time: string;
+  [key: string]: string | Array<any> | undefined;
 }
 
 // Event interface for frontend use
