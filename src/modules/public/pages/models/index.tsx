@@ -1,62 +1,40 @@
-import PublicLayout from "@/modules/public/layouts/PublicLayout";
-import ModelHero from "@/modules/public/components/models/hero/ModelHero";
-import ModelBenefits from "@/modules/public/components/models/benefits/ModelBenefits";
-import ModelTestimonialCarousel from "@/modules/public/components/models/testimonials/ModelTestimonialCarousel";
-import ModelSignUpForm from "@/modules/public/components/models/form/ModelSignUpForm";
-import ModelFAQ from "@/modules/public/components/models/faq/ModelFAQ";
-import ProcessSteps from "@/components/process/ProcessSteps";
+import ErrorBoundary from "../../components/models/ErrorBoundary";
+import ModelHero from "../../components/models/hero/ModelHero";
+import ModelBenefits from "../../components/models/benefits/ModelBenefits";
+import ModelFAQ from "../../components/models/faq/ModelFAQ";
+import ModelTestimonialCarousel from "../../components/models/testimonials/ModelTestimonialCarousel";
+import ModelSignUpForm from "../../components/models/form/ModelSignUpForm";
+import { Suspense } from "react";
+import ImageSkeleton from "../../components/models/ImageSkeleton";
 
 const ModelsPage = () => {
   return (
-    <PublicLayout>
-      <main className="min-h-screen bg-black text-white">
-        <ModelHero />
+    <ErrorBoundary>
+      <div className="min-h-screen">
+        <Suspense fallback={<ImageSkeleton className="w-full h-[60vh]" />}>
+          <ModelHero />
+        </Suspense>
         
-        <section id="model-benefits" className="scroll-mt-20">
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading benefits...</div>}>
           <ModelBenefits />
-        </section>
-
-        {/* How to Participate Section */}
-        <section className="py-20 px-4 bg-white/5 relative overflow-hidden scroll-mt-20">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-16">
-              How to Participate
-            </h2>
-            <ProcessSteps />
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-20 px-4 scroll-mt-20">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
-              Success Stories
-            </h2>
-            <ModelTestimonialCarousel />
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-20 px-4 bg-white/5 scroll-mt-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
-              Frequently Asked Questions
-            </h2>
-            <ModelFAQ />
-          </div>
-        </section>
-
-        {/* Sign Up Section */}
-        <section className="py-20 px-4 scroll-mt-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-montserrat text-center mb-12">
-              Apply Now
-            </h2>
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading testimonials...</div>}>
+          <ModelTestimonialCarousel />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading FAQ...</div>}>
+          <ModelFAQ />
+        </Suspense>
+        
+        <section id="apply" className="py-16 px-4 md:px-8 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8">Apply Now</h2>
+          <ErrorBoundary>
             <ModelSignUpForm />
-          </div>
+          </ErrorBoundary>
         </section>
-      </main>
-    </PublicLayout>
+      </div>
+    </ErrorBoundary>
   );
 };
 

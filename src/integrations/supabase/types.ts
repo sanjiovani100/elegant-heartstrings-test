@@ -386,6 +386,45 @@ export type Database = {
           },
         ]
       }
+      model_applications: {
+        Row: {
+          created_at: string | null
+          email: string
+          experience: string
+          full_name: string
+          id: string
+          phone: string
+          portfolio_link: string | null
+          status: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          experience: string
+          full_name: string
+          id?: string
+          phone: string
+          portfolio_link?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          experience?: string
+          full_name?: string
+          id?: string
+          phone?: string
+          portfolio_link?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       notification_preferences: {
         Row: {
           category: Database["public"]["Enums"]["notification_category"]
