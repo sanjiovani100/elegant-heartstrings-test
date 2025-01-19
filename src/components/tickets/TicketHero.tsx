@@ -66,7 +66,8 @@ const TicketHero = () => {
         <div className="flex flex-col md:flex-row justify-center gap-4 pt-8 animate-fade-up">
           <Button 
             size="lg"
-            className="bg-fashionista-red hover:bg-fashionista-red/90 text-white text-lg px-8 py-6"
+            variant="gradient"
+            className="text-white text-lg px-8 py-6 shadow-glow hover:shadow-glow-hover"
             onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Get Tickets
