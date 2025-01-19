@@ -1,9 +1,21 @@
 import React from "react";
 import { useEvents } from "@/hooks/use-events";
 import EventCard from "@/modules/public/components/events/EventCard";
+import { transformVenueDetails, transformScheduleTimeline } from "@/types/utils/transformers";
+import { Event } from "@/types/events";
 
 const EventsListing = () => {
-  const { data: events, isLoading } = useEvents();
+  const { data: rawEvents, isLoading } = useEvents();
+
+  const events: Event[] = React.useMemo(() => {
+    if (!rawEvents) return [];
+    
+    return rawEvents.map(event => ({
+      ...event,
+      venue_details: transformVenueDetails(event.venue_details),
+      schedule_timeline: transformScheduleTimeline(event.schedule_timeline)
+    }));
+  }, [rawEvents]);
 
   if (isLoading) {
     return <div>Loading events...</div>;

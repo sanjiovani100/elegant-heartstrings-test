@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { Event, transformDatabaseEvent } from "@/types/events";
+import { Event } from "@/types/events";
 
 export const useEvents = () => {
   return useQuery({
@@ -21,7 +21,7 @@ export const useEvents = () => {
         throw error;
       }
 
-      return data.map(transformDatabaseEvent);
+      return data;
     },
   });
 };
