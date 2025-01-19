@@ -7,13 +7,15 @@ import Footer from "@/components/footer/Footer";
 
 const roadmapItems = [
   {
-    phase: "Phase 1: Foundation",
+    phase: "Phase 1: Foundation (Completed)",
     status: "completed",
     timeframe: "Q1 2024",
     items: [
       "Basic event management system",
       "User authentication",
       "Model registration portal",
+      "Event type system alignment with database",
+      "Event card component optimization",
     ],
   },
   {
@@ -24,6 +26,8 @@ const roadmapItems = [
       "Advanced ticket management",
       "Designer showcase platform",
       "Integrated payment system",
+      "Event details page implementation",
+      "Model portfolio management",
     ],
   },
   {
@@ -34,6 +38,8 @@ const roadmapItems = [
       "Multi-event support",
       "Analytics dashboard",
       "Mobile application",
+      "Advanced search and filtering",
+      "Automated model matching system",
     ],
   },
 ];

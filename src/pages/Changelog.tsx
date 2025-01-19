@@ -7,6 +7,24 @@ import Footer from "@/components/footer/Footer";
 
 const changelogEntries = [
   {
+    version: "v1.2.1",
+    date: "March 16, 2024",
+    changes: [
+      {
+        type: "improvement",
+        description: "Updated Event interface to match Supabase schema",
+      },
+      {
+        type: "fix",
+        description: "Fixed image handling in EventCard component",
+      },
+      {
+        type: "improvement",
+        description: "Enhanced type definitions for venue details and event categories",
+      },
+    ],
+  },
+  {
     version: "v1.2.0",
     date: "March 15, 2024",
     changes: [
