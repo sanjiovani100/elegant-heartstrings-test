@@ -1,5 +1,4 @@
-import type { Database } from './database';
-import {
+import type {
   EventRow,
   SponsorProfileRow,
   SponsorshipApplicationRow,
