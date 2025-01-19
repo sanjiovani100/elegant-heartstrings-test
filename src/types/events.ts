@@ -1,5 +1,21 @@
-import { EventStatus, EventCategory } from '@/types/supabase/enums';
+import { EventStatus } from '@/types/supabase/enums';
 import { Json } from '@/types/supabase/database';
+
+export type EventCategory = 
+  | 'Fashion Show'
+  | 'Gala'
+  | 'Workshop'
+  | 'Exhibition'
+  | 'Conference'
+  | 'Networking'
+  | 'Awards_Ceremony'
+  | 'Runway_Show'
+  | 'Masterclass'
+  | 'Pop_Up_Shop'
+  | 'VIP_Reception'
+  | 'Industry_Mixer'
+  | 'Designer_Showcase'
+  | 'Trend_Presentation';
 
 export interface Event {
   id: string;
